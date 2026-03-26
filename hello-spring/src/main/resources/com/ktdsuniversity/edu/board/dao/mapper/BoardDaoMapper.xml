@@ -1,0 +1,40 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ktdsuniversity.edu.board.dao.BoardDao">
+
+    <!-- ListBoardVO getAllBoard();
+    int getBoardCount();-->
+    <select id="getAllBoard" resultType="com.ktdsuniversity.edu.board.vo.BoardVO">
+        SELECT ID
+		     , SUBJECT
+		     , CONTENT
+		     , EMAIL
+		     , VIEW_CNT
+		     , CRT_DT
+		     , MDFY_DT
+		     , FILE_NAME
+		     , ORIGIN_FILE_NAME
+		  FROM BOARD
+    </select>
+    
+    <select id="getBoardCount" resultType="_int">
+        SELECT COUNT(ID)
+          FROM BOARD
+    </select>
+    
+    <select id="createBoard">
+	    INSERT INTO BOARD 
+		( ID
+		, SUBJECT
+		, CONTENT
+		, EMAIL
+		, CRT_DT) VALUES 
+		( 'BD-' || TO_CHAR(SYSDATE, 'YYMMDD-') || LPAD(SEQ_BOARD_PK.NEXTVAL, 6, '0')
+		, #{subject}
+		, #{content}
+		, #{email}
+		, SYSDATE)
+    </select>
+</mapper>

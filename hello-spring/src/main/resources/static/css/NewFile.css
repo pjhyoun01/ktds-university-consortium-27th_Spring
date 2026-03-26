@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+	color: #333;
+}
+
+body {
+	margin: 0;
+	background-color: red;
+}
