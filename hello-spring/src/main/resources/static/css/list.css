@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+
+body {
+    width: 80%;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu > div > a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 20px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.menu > div > a:first-child{
+    margin-right: 20px;
+}
+
+
+table {
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}
+
+
+tr > * {
+    border: 1px solid #999;
+    padding: 4px 10px;
+}

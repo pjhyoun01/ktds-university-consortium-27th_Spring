@@ -6,22 +6,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Board list</title>
+<link rel="stylesheet" href="/css/list.css">
 </head>
 <body>
     <h1>Board list</h1>
-    <p>${boardCount}개의 게시물</p>
-    <c:forEach var="board" items="${boardList}">
-        <div>아이디: ${board.id}</div>
-        <div>제목: ${board.subject}</div>
-        <div>컨텐츠: ${board.content}</div>
-        <div>이메일: ${board.email}</div>
-        <div>조회수: ${board.viewCnt}</div>
-        <div>작성일: ${board.crtDt}</div>
-        <div>수정일: ${board.mdfyDt}</div>
-        <div>파일명: ${board.fileName}</div>
-        <div>확장명: ${board.originFileName}</div>
-    </c:forEach>
+    <div class="menu">
+        <p>${boardCount}개의 게시물</p>
+        <div>
+            <a href="/board/write">게시글 작성</a>
+            <a href="/member/create">회원 가입</a>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th>아이디</th>
+            <th>제목</th>
+            <th>컨텐츠</th>
+            <th>이메일</th>
+            <th>조회수</th>
+            <th>작성일</th>
+            <th>수정일</th>
+            <th>파일명</th>
+            <th>확장명</th>
+        </tr>
+        <c:forEach var="board" items="${boardList}">
+            <tr>
+                <td>${board.id}</td>
+                <td>${board.subject}</td>
+                <td>${board.content}</td>
+                <td>${board.email}</td>
+                <td>${board.viewCnt}</td>
+                <td>${board.crtDt}</td>
+                <td>${board.mdfyDt}</td>
+                <td>${board.fileName}</td>
+                <td>${board.originFileName}</td>
+            </tr>
+        </c:forEach>
 
-    <a href="/board/write">게시글 작성</a>
+
+    </table>
+    
+
 </body>
 </html>

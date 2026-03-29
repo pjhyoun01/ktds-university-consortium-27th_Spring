@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.board.vo;
+package com.ktdsuniversity.edu.board.vo.response;
 
 public class BoardVO {
 	private String id;
@@ -10,7 +10,6 @@ public class BoardVO {
 	private String mdfyDt;
 	private String fileName;
 	private String originFileName;
-	
 	public String getId() {
 		return this.id;
 	}
@@ -36,7 +35,7 @@ public class BoardVO {
 		this.email = email;
 	}
 	public int getViewCnt() {
-		return viewCnt;
+		return this.viewCnt;
 	}
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
@@ -65,6 +64,8 @@ public class BoardVO {
 	public void setOriginFileName(String originFileName) {
 		this.originFileName = originFileName;
 	}
+	
+	
 	
 	
 }

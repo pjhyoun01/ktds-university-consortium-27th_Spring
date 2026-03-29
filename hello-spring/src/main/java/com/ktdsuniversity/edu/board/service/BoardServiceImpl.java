@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ktdsuniversity.edu.board.dao.BoardDao;
-import com.ktdsuniversity.edu.board.vo.BoardVO;
-import com.ktdsuniversity.edu.board.vo.SearchResultVO;
+import com.ktdsuniversity.edu.board.vo.request.WriteVO;
+import com.ktdsuniversity.edu.board.vo.response.BoardVO;
+import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -30,9 +31,22 @@ public class BoardServiceImpl implements BoardService {
 
 
 	@Override
-	public int createBoard(BoardVO boardVO) {
-		int success = this.boardDao.createBoard(boardVO);
-		return success;
+	public boolean createBoard(WriteVO writeVO) {
+		int  isSuccess = this.boardDao.createBoard(writeVO);
+		return isSuccess == 1;
 	}
+
+
+	@Override
+	public BoardVO readBoardById(String boardId) {
+		this.boardDao.updateBoardViewCount(boardId);
+		System.out.println(boardId);
+		BoardVO boardById = this.boardDao.selectBoardById(boardId);
+		
+		System.out.println(boardById.getViewCnt());
+		
+		return boardById;
+	}
+
 
 }

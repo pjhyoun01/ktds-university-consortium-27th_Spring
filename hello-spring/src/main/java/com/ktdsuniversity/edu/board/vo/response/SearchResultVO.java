@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.board.vo;
+package com.ktdsuniversity.edu.board.vo.response;
 
 import java.util.List;
 

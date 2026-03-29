@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ktdsuniversity.edu.board.service.BoardService;
-import com.ktdsuniversity.edu.board.vo.BoardVO;
-import com.ktdsuniversity.edu.board.vo.SearchResultVO;
+import com.ktdsuniversity.edu.board.vo.request.WriteVO;
+import com.ktdsuniversity.edu.board.vo.response.BoardVO;
+import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
 
 @Controller
 @RequestMapping("/board/")
@@ -37,11 +39,22 @@ public class BoardController {
 	}
 	
 	@PostMapping("write")
-	public String createBoard(BoardVO boardVO) {
-		int success = this.boardService.createBoard(boardVO);
+	public String createBoard(WriteVO writeVO) {
+		boolean isSuccess = this.boardService.createBoard(writeVO);
+		if(isSuccess) {
+			return "redirect:view";
+		} else {
+			return "404";
+		}
 		
-		
-		return "redirect:view";
 	}
 	
+	@GetMapping("view/{boardId}")
+	public String viewBoardDetail(@PathVariable String boardId, Model model) {
+//		System.out.println(boardId);
+		BoardVO readOneBoard = this.boardService.readBoardById(boardId);
+		model.addAttribute("board", readOneBoard);
+		
+		return "board/detail";
+	}
 }

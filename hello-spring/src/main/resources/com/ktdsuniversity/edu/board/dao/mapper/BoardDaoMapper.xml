@@ -4,9 +4,7 @@
 
 <mapper namespace="com.ktdsuniversity.edu.board.dao.BoardDao">
 
-    <!-- ListBoardVO getAllBoard();
-    int getBoardCount();-->
-    <select id="getAllBoard" resultType="com.ktdsuniversity.edu.board.vo.BoardVO">
+    <select id="getAllBoard" resultType="com.ktdsuniversity.edu.board.vo.response.BoardVO">
         SELECT ID
 		     , SUBJECT
 		     , CONTENT
@@ -24,17 +22,42 @@
           FROM BOARD
     </select>
     
-    <select id="createBoard">
+    <insert id="createBoard" parameterType="com.ktdsuniversity.edu.board.vo.request.WriteVO">
 	    INSERT INTO BOARD 
 		( ID
 		, SUBJECT
 		, CONTENT
 		, EMAIL
 		, CRT_DT) VALUES 
-		( 'BD-' || TO_CHAR(SYSDATE, 'YYMMDD-') || LPAD(SEQ_BOARD_PK.NEXTVAL, 6, '0')
+		( 'BD-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_BOARD_PK.NEXTVAL, 6, '0')
 		, #{subject}
 		, #{content}
 		, #{email}
 		, SYSDATE)
+    </insert>
+
+    <select id="selectBoardById"
+            parameterType="string"
+            resultType="com.ktdsuniversity.edu.board.vo.response.BoardVO">
+        SELECT ID
+             , SUBJECT
+             , CONTENT
+             , EMAIL
+             , VIEW_CNT
+             , CRT_DT
+             , MDFY_DT
+             , FILE_NAME
+             , ORIGIN_FILE_NAME
+          FROM BOARD
+         WHERE ID = #{_parameter}
     </select>
+    
+    
+    <update id="updateBoardViewCount" parameterType="string">
+        UPDATE BOARD
+		   SET VIEW_CNT = VIEW_CNT + 1
+		 WHERE ID = #{_parameter}
+    </update>
+    
+    
 </mapper>

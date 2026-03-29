@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ktdsuniversity.edu.genre.dao.GenreDao">
+
+    <select id="selectAllGenreByMovieId"
+            parameterType="string"
+            resultType="com.ktdsuniversity.edu.genre.vo.GenreVO">
+            <!-- 테이블 조인 하다가 말았음 -->
+        SELECT C.CATEGORY_NAME 
+		  FROM GENRE G
+		 INNER JOIN CATEGORIES C
+		    ON G.CATEGORY_ID = C.CATEGORY_ID
+		 WHERE MOVIE_ID = 'MV-20260227-000001'
+    </select>
+</mapper>
