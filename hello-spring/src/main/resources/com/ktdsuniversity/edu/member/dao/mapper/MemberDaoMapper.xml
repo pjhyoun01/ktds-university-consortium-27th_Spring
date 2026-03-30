@@ -3,9 +3,7 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ktdsuniversity.edu.member.dao.MemberDao">
-<!-- int selectEmailCount(String email);
-    int insertMember(MemberVO memberVO); -->
-    <select id="selectEmailCount" parameterType="com.ktdsuniversity.edu.member.vo.MemberVO">
+    <select id="selectEmailCount" parameterType="string">
         SELECT COUNT(EMAIL)
 		  FROM MEMBERS
 		 WHERE EMAIL = #{email}
@@ -19,4 +17,37 @@
 		, #{name}
 		, #{password})
     </insert>
+
+    <select id="selectAllMember"
+            resultType="com.ktdsuniversity.edu.member.vo.MemberVO">
+        SELECT EMAIL
+		     , NAME
+		     , PASSWORD
+		  FROM MEMBERS
+    </select>
+
+    <select id="selectOneMemberByEmail"
+            parameterType="string"
+            resultType="com.ktdsuniversity.edu.member.vo.MemberVO">
+        SELECT EMAIL
+		     , NAME
+		     , PASSWORD
+		  FROM MEMBERS
+		 WHERE EMAIL = #{_parameter}
+    </select>
+    
+    <update id="updateMemberByEmail"
+            parameterType="com.ktdsuniversity.edu.member.vo.MemberVO">
+        UPDATE MEMBERS
+		   SET NAME = #{name}
+		     , PASSWORD = #{password}
+		 WHERE EMAIL = #{email}
+    </update>
+    
+    <delete id="deleteMemberByEmail"
+            parameterType="string">
+        DELETE FROM MEMBERS
+		 WHERE EMAIL = #{_parameter}
+    </delete>
+    
 </mapper>

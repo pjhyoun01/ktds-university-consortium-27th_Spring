@@ -1,9 +1,9 @@
 package com.ktdsuniversity.edu.board.vo.request;
 
 public class WriteVO {
-	private  String subject;
-	private  String email;
-	private  String content;
+	private String subject;
+	private String email;
+	private String content;
 	
 	public String getSubject() {
 		return this.subject;

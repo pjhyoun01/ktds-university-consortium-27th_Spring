@@ -35,5 +35,9 @@
     <div>
         <p>확장명: ${board.originFileName}</p>
     </div>
+
+    <a href="/update/${board.id}">
+        <button>수정</button>
+    </a>
 </body>
 </html>

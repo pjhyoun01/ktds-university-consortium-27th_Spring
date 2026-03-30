@@ -14,7 +14,6 @@
     <div class="content">
         <h2 class="content__title">인기 영화</h2>
         <div class="content__body">
-
             <div class="body__side">
                 <div>
                     <div>정렬</div>

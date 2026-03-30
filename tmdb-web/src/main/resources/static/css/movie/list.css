@@ -1,10 +1,8 @@
 @charset "UTF-8";
 
-
 .content {
     width: 1400px;
     margin: 0 auto;
-    /* margin-top: 60px; */
 }
 
 .content__body {
@@ -61,6 +59,13 @@
 
 .body__content > * > * > *:first-child {
     border-bottom: 1px solid #cdcdcd89;
+    height: 273px;
+}
+
+.body__content img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 180px;
     height: 273px;
 }
 

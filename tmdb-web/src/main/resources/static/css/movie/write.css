@@ -90,7 +90,8 @@ button[type="submit"] {
     text-align: center;
 }
 
-button:hover, .btn-cancel:hover {
+button:hover,
+.btn-cancel:hover {
     opacity: 0.85;
 }
 

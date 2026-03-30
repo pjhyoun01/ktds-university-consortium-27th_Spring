@@ -59,5 +59,11 @@
 		 WHERE ID = #{_parameter}
     </update>
     
-    
+    <update id="updateOneBoardById" parameterType="com.ktdsuniversity.edu.board.vo.request.UpdateVO">
+        UPDATE BOARD
+		   SET SUBJECT = #{subject}
+		     , CONTENT = #{content}
+		     , EMAIL = #{email}
+		 WHERE ID = #{id}
+    </update>
 </mapper>

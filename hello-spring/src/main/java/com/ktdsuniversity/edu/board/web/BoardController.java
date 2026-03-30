@@ -6,16 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ktdsuniversity.edu.board.enums.ReadType;
 import com.ktdsuniversity.edu.board.service.BoardService;
+import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.BoardVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
 
 @Controller
-@RequestMapping("/board/")
+@RequestMapping("/")
 public class BoardController {
 
 	@Autowired
@@ -51,10 +55,33 @@ public class BoardController {
 	
 	@GetMapping("view/{boardId}")
 	public String viewBoardDetail(@PathVariable String boardId, Model model) {
-//		System.out.println(boardId);
-		BoardVO readOneBoard = this.boardService.readBoardById(boardId);
+		BoardVO readOneBoard = this.boardService.readBoardById(boardId, ReadType.VIEW);
 		model.addAttribute("board", readOneBoard);
 		
 		return "board/detail";
 	}
+	
+	@GetMapping("update/{articleId}")
+	public String viewUpdatePage(@PathVariable String articleId, Model model) {
+		BoardVO readOneBoard = this.boardService.readBoardById(articleId, ReadType.UPDATE);
+		model.addAttribute("article", readOneBoard);
+		
+		return "board/update";
+	}
+	
+	@PostMapping("update/{articleId}")
+	public String doUpdatePage(@PathVariable String articleId,
+							   UpdateVO updateVO) {
+		updateVO.setId(articleId);
+		boolean isSuccessUpdate = this.boardService.updateOneArticle(updateVO);
+		if (isSuccessUpdate) {
+//			return "redirect:view/{articleId}";
+			return "redirect:" + articleId;
+		} else {
+			return "404";
+		}
+	}
+//	
+//	PostMapping()
+//	public String doDelete
 }

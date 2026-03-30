@@ -13,8 +13,8 @@
     <div class="menu">
         <p>${boardCount}개의 게시물</p>
         <div>
-            <a href="/board/write">게시글 작성</a>
-            <a href="/member/create">회원 가입</a>
+            <a href="/write">게시글 작성</a>
+            <a href="/member/view">회원 목록</a>
         </div>
     </div>
     <table>
@@ -29,23 +29,30 @@
             <th>파일명</th>
             <th>확장명</th>
         </tr>
-        <c:forEach var="board" items="${boardList}">
-            <tr>
-                <td>${board.id}</td>
-                <td>${board.subject}</td>
-                <td>${board.content}</td>
-                <td>${board.email}</td>
-                <td>${board.viewCnt}</td>
-                <td>${board.crtDt}</td>
-                <td>${board.mdfyDt}</td>
-                <td>${board.fileName}</td>
-                <td>${board.originFileName}</td>
-            </tr>
-        </c:forEach>
 
-
+        <c:choose>
+            <c:when test="${not empty boardList}">
+                <c:forEach var="board" items="${boardList}">
+                    <tr>
+                        <td>
+                            <a href="/view/${board.id}">${board.id}</a>
+                        </td>
+                        <td>${board.subject}</td>
+                        <td>${board.content}</td>
+                        <td>${board.email}</td>
+                        <td>${board.viewCnt}</td>
+                        <td>${board.crtDt}</td>
+                        <td>${board.mdfyDt}</td>
+                        <td>${board.fileName}</td>
+                        <td>${board.originFileName}</td>
+                    </tr>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <td colspan="9">게시글이 없습니다</td>
+            </c:otherwise>
+        </c:choose>
+        
     </table>
-    
-
 </body>
 </html>

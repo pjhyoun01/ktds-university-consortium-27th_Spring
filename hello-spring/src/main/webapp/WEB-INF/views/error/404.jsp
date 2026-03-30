@@ -10,8 +10,11 @@
     <h1>404 error</h1>
     <div>페이지를 찾을 수 없습니다</div>
     <div>
-	    <a href="/board/view">
+	    <a href="/view">
 	        <button>게시글로 돌아가기</button>
+	    </a>
+	    <a href="/member/view">
+	        <button>회원목록으로 돌아가기</button>
 	    </a>
     </div>
 </body>

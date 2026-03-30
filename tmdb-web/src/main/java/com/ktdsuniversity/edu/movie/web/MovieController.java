@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ktdsuniversity.edu.category.service.CategoryService;
 import com.ktdsuniversity.edu.genre.service.GenreService;
-import com.ktdsuniversity.edu.genre.vo.GenreVO;
 import com.ktdsuniversity.edu.movie.service.MovieService;
 import com.ktdsuniversity.edu.movie.vo.request.MovieCreateVO;
 import com.ktdsuniversity.edu.movie.vo.response.MovieListVO;
@@ -21,10 +21,10 @@ import com.ktdsuniversity.edu.movie.vo.response.OneMovieVO;
 @RequestMapping("/")
 public class MovieController {
 
-//	기능		Controller		Service 			Mapper/DAO
+//	기능		Controller		Service 		Mapper/DAO
 //	조회 목록	view이름List		readAll이름		selectAll이름
 //	조회 상세	view이름Detail	read이름ById		select이름ById
-//	생성 		doCreate이름		create이름		insert이름
+//	생성 	doCreate이름		create이름		insert이름
 //	수정		doUpdate이름		update이름		update이름
 //	삭제		doDelete이름		delete이름		delete이름
 	
@@ -32,40 +32,39 @@ public class MovieController {
 	private MovieService movieService;
 	
 	@Autowired
-	private GenreService genreService;
+	private CategoryService categoryService;
 	
 	@GetMapping("list")
 	public String viewMovieList(Model model) {
 		
 		List<MovieListVO> movieList = this.movieService.readAllMovie();
 		model.addAttribute("movieList", movieList);
-		
-		for (MovieListVO movieListVO : movieList) {
-			
-			System.out.println(movieListVO.getMovieId());
-		}
 		return "movie/list";
 	}
 	
 	@GetMapping("view/{movieId}")
 	public String viewMovieById(@PathVariable String movieId, Model model) {
 		OneMovieVO oneMovieById = this.movieService.readMovieById(movieId);
-		List<GenreVO> genreListByMovieId = this.genreService.readAllGenreByMovieId(movieId);
+		List<String> categoryNameListById = this.categoryService.readAllCategoryNameByMovieId(movieId);
+		
 		model.addAttribute("movie", oneMovieById);
+		model.addAttribute("categoryNameList", categoryNameListById);
 		return "movie/view";
 	}
-	
+
 	@GetMapping("write")
 	public String doCreate() {
 		return "movie/write";
 	}
-	
+
 	@PostMapping("write")
 	public String doCreate(MovieCreateVO movieCreateVO) {
-		
+
 		boolean isSuccess = this.movieService.createMovie(movieCreateVO);
-		
-		return "redirect:list";
+		if (isSuccess) {
+			return "redirect:list";
+		} else {
+			return "errer/404";
+		}
 	}
-	
 }

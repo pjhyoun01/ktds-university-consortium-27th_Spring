@@ -17,7 +17,8 @@
         <div>팬덤</div>
         <div>공유</div>
     </div>
-    <div class="content">
+    <div class="content" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                      url('${movie.posterUrl}');">
         <div class="content__header">
             <div class="content__header__left">
                 <img src="${movie.posterUrl}" alt="${movie.title} 이미지">
@@ -34,7 +35,18 @@
                             <span>(${movie.openCountry})</span>
                         </div>
                         <span>·</span>
-                        <div class="movie__genre">장르, 장르, 장르</div>
+                        <div class="movie__genre">
+                            <c:choose>
+                                <c:when test="${not empty categoryNameList}">
+                                    <c:forEach items="${categoryNameList}" var="categoryName">
+                                        ${categoryName}
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <div>장르 미정</div>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
                         <span>·</span>
                         <div class="movie__runningtime">${movie.runningTime}</div>
                     </div>
@@ -51,7 +63,9 @@
                     </div>
                 </div>
                 <div>
-                    <div class="movie__introduce">${movie.introduce}</div>
+                    <div class="movie__introduce">
+                            ${movie.introduce}
+                    </div>
                     <div class="synopsis">개요</div>
                     <div class="movie__synopsis">${movie.synopsis}</div>
                 </div>

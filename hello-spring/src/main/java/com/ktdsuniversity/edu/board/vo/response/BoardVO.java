@@ -10,6 +10,7 @@ public class BoardVO {
 	private String mdfyDt;
 	private String fileName;
 	private String originFileName;
+	
 	public String getId() {
 		return this.id;
 	}

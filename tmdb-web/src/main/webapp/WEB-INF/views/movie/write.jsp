@@ -65,7 +65,7 @@
 
         <div class="button-group">
             <button type="submit">등록</button>
-            <a href="/movie/list" class="btn-cancel">취소</a>
+            <a href="/list" class="btn-cancel">취소</a>
         </div>
     </form>
 </div>
