@@ -4,7 +4,7 @@
 
 <mapper namespace="com.ktdsuniversity.edu.board.dao.BoardDao">
 
-    <select id="getAllBoard" resultType="com.ktdsuniversity.edu.board.vo.response.BoardVO">
+    <select id="getAllBoard" resultType="com.ktdsuniversity.edu.board.vo.BoardVO">
         SELECT ID
 		     , SUBJECT
 		     , CONTENT
@@ -22,33 +22,77 @@
           FROM BOARD
     </select>
     
-    <insert id="createBoard" parameterType="com.ktdsuniversity.edu.board.vo.request.WriteVO">
+    <insert id="createBoard" 
+            parameterType="com.ktdsuniversity.edu.board.vo.request.WriteVO">
+        <selectKey order="BEFORE"
+                   resultType="string"
+                   keyProperty="id">
+            SELECT 'BD-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_BOARD_PK.NEXTVAL, 6, '0')
+              FROM DUAL
+        </selectKey>
 	    INSERT INTO BOARD 
 		( ID
 		, SUBJECT
 		, CONTENT
 		, EMAIL
-		, CRT_DT) VALUES 
-		( 'BD-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_BOARD_PK.NEXTVAL, 6, '0')
+		, CRT_DT)
+		VALUES 
+		( #{id}
 		, #{subject}
 		, #{content}
 		, #{email}
 		, SYSDATE)
     </insert>
 
+    <resultMap type="com.ktdsuniversity.edu.board.vo.BoardVO" 
+               id="BoardVOMap"
+               autoMapping="true">
+        <id column="ID" property="id"/>
+        <!-- <result column="SUBJECT" property="subject"/>
+        <result column="CONTENT" property="content"/>
+        <result column="EMAIL" property="email"/>
+        <result column="VIEW_CNT" property="viewCnt"/>
+        <result column="CRT_DT" property="crtDt"/>
+        <result column="MDFY_DT" property="mdfyDt"/>
+        <result column="FILE_NAME" property="fileName"/>
+        <result column="ORIGIN_FILE_NAME" property="originFileName"/> -->
+        
+        <collection property="files"
+                    javaType="list"
+                    ofType="com.ktdsuniversity.edu.files.vo.FilesVO"
+                    autoMapping="true">
+	        <id column="FILE_NUM" property="fileNum"/>
+	        <id column="FILE_GROUP_ID" property="fileGroupId"/>
+	        <!-- <result column="OBFUSCATE_NAME" property="obfuscateName"/>
+	        <result column="DISPLAY_NAME" property="displayName"/>
+	        <result column="EXTEND_NAME" property="extendName"/>
+	        <result column="FILE_LENGTH" property="fileLength"/>
+	        <result column="FILE_PATH" property="filePath"/> -->
+        </collection>
+    </resultMap>
+
     <select id="selectBoardById"
             parameterType="string"
-            resultType="com.ktdsuniversity.edu.board.vo.response.BoardVO">
-        SELECT ID
-             , SUBJECT
-             , CONTENT
-             , EMAIL
-             , VIEW_CNT
-             , CRT_DT
-             , MDFY_DT
-             , FILE_NAME
-             , ORIGIN_FILE_NAME
-          FROM BOARD
+            resultMap="BoardVOMap">
+        SELECT B.ID
+		     , B.SUBJECT
+		     , B.CONTENT
+		     , B.EMAIL
+		     , B.VIEW_CNT
+		     , B.CRT_DT
+		     , B.MDFY_DT
+		     , B.FILE_NAME
+		     , B.ORIGIN_FILE_NAME
+		     , F.FILE_NUM
+		     , F.FILE_GROUP_ID
+		     , F.OBFUSCATE_NAME
+		     , F.DISPLAY_NAME
+		     , F.EXTEND_NAME
+		     , F.FILE_LENGTH
+		     , F.FILE_PATH
+		  FROM BOARD B
+		  LEFT OUTER JOIN FILES F
+		    ON B.ID = F.FILE_GROUP_ID
          WHERE ID = #{_parameter}
     </select>
     

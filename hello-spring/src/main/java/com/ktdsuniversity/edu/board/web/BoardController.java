@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ktdsuniversity.edu.board.enums.ReadType;
 import com.ktdsuniversity.edu.board.service.BoardService;
+import com.ktdsuniversity.edu.board.vo.BoardVO;
 import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
-import com.ktdsuniversity.edu.board.vo.response.BoardVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
 
 @Controller
@@ -25,7 +25,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@GetMapping("view")
+	@GetMapping("")
 	public String viewBoard(Model model) {
 		SearchResultVO searchResultVO = this.boardService.getAllBoard();
 		
@@ -37,46 +37,44 @@ public class BoardController {
 		return "board/list";
 	}
 	
-	@GetMapping("write")
-	public String createBoard() {
-		return "board/write";
-	}
-	
-	@PostMapping("write")
-	public String createBoard(WriteVO writeVO) {
-		boolean isSuccess = this.boardService.createBoard(writeVO);
-		if(isSuccess) {
-			return "redirect:view";
-		} else {
-			return "404";
-		}
-		
-	}
-	
 	@GetMapping("view/{boardId}")
 	public String viewBoardDetail(@PathVariable String boardId, Model model) {
 		BoardVO readOneBoard = this.boardService.readBoardById(boardId, ReadType.VIEW);
 		model.addAttribute("board", readOneBoard);
 		
-		return "board/detail";
+		return "board/view";
 	}
 	
-	@GetMapping("update/{articleId}")
-	public String viewUpdatePage(@PathVariable String articleId, Model model) {
-		BoardVO readOneBoard = this.boardService.readBoardById(articleId, ReadType.UPDATE);
-		model.addAttribute("article", readOneBoard);
+	@GetMapping("create")
+	public String createBoard() {
+		return "board/create";
+	}
+	
+	@PostMapping("create")
+	public String createBoard(WriteVO writeVO) {
+		boolean isSuccess = this.boardService.createBoard(writeVO);
+		if(isSuccess) {
+			return "redirect:/";
+		} else {
+			return "404";
+		}
+	}
+	
+	@GetMapping("update/{boardId}")
+	public String viewUpdatePage(@PathVariable String boardId, Model model) {
+		BoardVO readOneBoard = this.boardService.readBoardById(boardId, ReadType.UPDATE);
+		model.addAttribute("board", readOneBoard);
 		
 		return "board/update";
 	}
 	
-	@PostMapping("update/{articleId}")
-	public String doUpdatePage(@PathVariable String articleId,
+	@PostMapping("update/{boardId}")
+	public String doUpdatePage(@PathVariable String boardId,
 							   UpdateVO updateVO) {
-		updateVO.setId(articleId);
+		updateVO.setId(boardId);
 		boolean isSuccessUpdate = this.boardService.updateOneArticle(updateVO);
 		if (isSuccessUpdate) {
-//			return "redirect:view/{articleId}";
-			return "redirect:" + articleId;
+			return "redirect:/view/" + boardId;
 		} else {
 			return "404";
 		}

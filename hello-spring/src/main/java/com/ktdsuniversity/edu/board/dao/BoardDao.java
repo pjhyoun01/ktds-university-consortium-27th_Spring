@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.ktdsuniversity.edu.board.vo.BoardVO;
 import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
-import com.ktdsuniversity.edu.board.vo.response.BoardVO;
 
 @Mapper
 public interface BoardDao {

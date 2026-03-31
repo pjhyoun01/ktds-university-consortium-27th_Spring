@@ -11,7 +11,7 @@ public class OneMovieVO {
 	private int runningTime;
 	private String introduce;
 	private String synopsis;
-	private String orignalTitle;
+	private String originalTitle;
 	private String state;
 	private String language;
 	private double budget;
@@ -77,11 +77,11 @@ public class OneMovieVO {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-	public String getOrignalTitle() {
-		return this.orignalTitle;
+	public String getOriginalTitle() {
+		return this.originalTitle;
 	}
-	public void setOrignalTitle(String orignalTitle) {
-		this.orignalTitle = orignalTitle;
+	public void setOriginalTitle(String originalTitle) {
+		this.originalTitle = originalTitle;
 	}
 	public String getState() {
 		return this.state;

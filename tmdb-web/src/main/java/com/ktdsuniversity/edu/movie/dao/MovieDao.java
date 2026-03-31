@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.ktdsuniversity.edu.movie.vo.request.MovieCreateVO;
+import com.ktdsuniversity.edu.movie.vo.request.InsertVO;
 import com.ktdsuniversity.edu.movie.vo.response.MovieListVO;
 import com.ktdsuniversity.edu.movie.vo.response.OneMovieVO;
 
@@ -13,7 +13,7 @@ public interface MovieDao {
 
 	List<MovieListVO> selectAllMovie();
 
-	int insertMovie(MovieCreateVO movieCreateVO);
+	int insertMovie(InsertVO movieInsertVO);
 
 	OneMovieVO selectMovieById(String movieId);
 

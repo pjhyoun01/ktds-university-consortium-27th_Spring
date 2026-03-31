@@ -21,7 +21,7 @@
                       url('${movie.posterUrl}');">
         <div class="content__header">
             <div class="content__header__left">
-                <img src="${movie.posterUrl}" alt="${movie.title} 이미지">
+                <img src="${movie.posterUrl}" alt="${movie.title} 포스터">
             </div>
             <div class="content__header__right">
                 <div>

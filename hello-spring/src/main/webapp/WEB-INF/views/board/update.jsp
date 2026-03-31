@@ -1,36 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Board Write</title>
-    <link type="text/css" rel="stylesheet" href="/css/write.css">
-    <script type="text/javascript" src="/js/jquery-4.0.0.slim.min.js"></script>
-    <script type="text/javascript" src="/js/write.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>게시글 수정</title>
+    <link rel="stylesheet" type="text/css" href="/css/hello-spring.css" />
+  </head>
+  <body>
     <h1>게시글 수정</h1>
-    <div>
-        <form action="/update/${article.id}" method="post">
-            <div>
-                제목
-                <input type="text" name="subject" value="${article.subject}">
-            </div>
-            <div>
-                내용
-                <textarea name="content">${article.content}</textarea>
-            </div>
-            <div>
-                이메일
-                <input type="text" name="email" value="${article.email}">
-            </div>
+    <%-- action ==> form 내부의 value를 전송할 엔드포인트 --%>
+    <form action="/update/${article.id}" method="post">
+      <div class="grid update">
+        <label for="subject">제목</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          placeholder="제목을 입력하세요."
+          value="${article.subject}"
+        />
 
-            <a href="/view/${article.id}">
-                <button type="submit">저장</button>
-            </a>
-            <button type="reset">다시 쓰기</button>
-        </form>
-    </div>
-</body>
+        <label for="email">이메일</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="이메일을 입력하세요."
+          value="${article.email}"
+        />
+
+        <label for="content">내용</label>
+        <textarea id="content" name="content" placeholder="내용을 입력하세요">${article.content}</textarea>
+
+        <div class="btn-group">
+          <div class="right-align">
+            <input type="submit" value="저장" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
 </html>

@@ -10,7 +10,7 @@
 		     , MOVIE_RATING
              , TO_CHAR(OPEN_DATE, 'YYYY') AS openYear
              , TO_CHAR(OPEN_DATE, 'MM"년 "DD') AS openDate
-		  FROM MOVIES
+		  FROM MOVIE
     </select>
     
     <select id="selectMovieById"
@@ -26,17 +26,17 @@
              , RUNNING_TIME
              , INTRODUCE
              , SYNOPSIS
-             , ORIGNAL_TITLE
+             , ORIGINAL_TITLE
              , STATE
              , LANGUAGE
              , BUDGET
              , PROFIT
-          FROM MOVIES
+          FROM MOVIE
          WHERE MOVIE_ID = #{_parameter}
     </select>
     
-    <insert id="insertMovie" parameterType="com.ktdsuniversity.edu.movie.vo.request.MovieCreateVO">
-        INSERT INTO MOVIES
+    <insert id="insertMovie" parameterType="com.ktdsuniversity.edu.movie.vo.request.InsertVO">
+        INSERT INTO MOVIE
 		 (MOVIE_ID
 		, POSTER_URL
 		, TITLE
@@ -46,11 +46,11 @@
 		, RUNNING_TIME
 		, INTRODUCE
 		, SYNOPSIS
-		, ORIGNAL_TITLE
+		, ORIGINAL_TITLE
 		, LANGUAGE
 		, BUDGET
 		, PROFIT) VALUES
-		 ('MV-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_MOVIES_PK.NEXTVAL, 6, '0')
+		 ('MV-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_MOVIE_PK.NEXTVAL, 6, '0')
 		, #{posterUrl}
 		, #{title}
 		, #{movieRating}
@@ -59,7 +59,7 @@
 		, #{runningTime}
 		, #{introduce}
 		, #{synopsis}
-		, #{orignalTitle}
+		, #{originalTitle}
 		, #{language}
 		, #{budget}
 		, #{profit})

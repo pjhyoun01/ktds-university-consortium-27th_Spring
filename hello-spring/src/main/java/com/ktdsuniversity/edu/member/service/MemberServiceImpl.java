@@ -40,6 +40,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean updateMemberByEmail(MemberVO memberVO) {
 		int updateSuccessCount = this.memberDao.updateMemberByEmail(memberVO);
+		System.out.println("updateSuccessCount" + updateSuccessCount);
 		return updateSuccessCount == 1;
 	}
 

@@ -37,7 +37,7 @@
                     <a href="/view/${movie.movieId}">
                         <div>
                             <div>
-                                <img src="${movie.posterUrl}" alt="${movie.title} 이미지">
+                                <img src="${movie.posterUrl}" alt="${movie.title} 포스터">
                             </div>
                             <div>
                                 <div>${movie.title}</div>

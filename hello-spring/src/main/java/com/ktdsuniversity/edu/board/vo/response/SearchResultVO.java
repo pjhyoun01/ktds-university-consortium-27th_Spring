@@ -2,6 +2,8 @@ package com.ktdsuniversity.edu.board.vo.response;
 
 import java.util.List;
 
+import com.ktdsuniversity.edu.board.vo.BoardVO;
+
 public class SearchResultVO {
 
 	private List<BoardVO> result;

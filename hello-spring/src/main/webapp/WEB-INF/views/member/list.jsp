@@ -1,46 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>회원 목록</title>
-    <link rel="stylesheet" href="/css/list.css">
-</head>
-<body>
-    <h1>회원 목록</h1>
-    <div class="menu">
-        <p>${boardCount}개의 게시물</p>
-        <div>
-            <a href="/member/create">회원 등록</a>
-            <a href="/view">게시물 목록</a>
+    <link rel="stylesheet" type="text/css" href="/css/hello-spring.css">
+  </head>
+  <body>
+    <div class="grid list">
+      <h1>회원 목록</h1>
+      <div class="header__nav">
+        <div>총 ${searchCount}명의 회원이 검색되었습니다.</div>
+        <div class="btn-group">
+          <div class="right-align flex">
+            <a href="/member/create">새로운 회원 등록</a>
+            <a href="/">게시글 목록</a>
+          </div>
         </div>
-    </div>
-    <table>
-        <tr>
-            <th>이메일</th>
-            <th>이름</th>
-            <th>비밀번호</th>
-        </tr>
+      </div>
+      <ul class="grid member-list">
+        <li class="header">
+          <ul class="header-item">
+            <li>이메일</li>
+            <li>이름</li>
+            <li>비밀번호</li>
+          </ul>
+        </li>
         <c:choose>
-            <c:when test="${not empty memberList}">
-                <c:forEach var="member" items="${memberList}">
-                    <tr>
-                        <td>
-                            <a href="/member/view/${member.email}">${member.email}</a>
-                        </td>
-                        <td>${member.name}</td>
-                        <td>${member.password}</td>
-                    </tr>
-                </c:forEach>
-            </c:when>
-            <c:otherwise>
-                <td colspan="3">회원이 없습니다</td>
-            </c:otherwise>
-        </c:choose>
+          <c:when test="${not empty memberList}">
+            <!-- memberList가 존재하면, 반복하여 데이터를 보여주고 -->
+            <li class="body">
+              <c:forEach items="${memberList}" var="member">
+                <ul class="body-item">
+                  <li>${member.email}</li>
+                  <li>
+                    <a href="/member/view/${member.email}">${member.name}</a>
+                  </li>
+                  <li>${member.password}</li>
+                </ul>
+              </c:forEach>
+            </li>
+          </c:when>
+          <c:otherwise>
+            <!-- searchResult가 존재하지 않으면, "검색된 데이터가 없습니다"를 보여주고 -->
+            <li class="footer">
+              <ul class="footer-item">
+                <li class="center">검색된 회원이 없습니다.</li>
+              </ul>
+            </li>
+          </c:otherwise>
+          </c:choose>
+      </ul>
 
-
-    </table>
-</body>
+      
+    </div>
+  </body>
 </html>

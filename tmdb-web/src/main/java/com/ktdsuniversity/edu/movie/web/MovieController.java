@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ktdsuniversity.edu.category.service.CategoryService;
-import com.ktdsuniversity.edu.genre.service.GenreService;
 import com.ktdsuniversity.edu.movie.service.MovieService;
-import com.ktdsuniversity.edu.movie.vo.request.MovieCreateVO;
+import com.ktdsuniversity.edu.movie.service.MovieServiceImpl;
+import com.ktdsuniversity.edu.movie.vo.request.InsertVO;
 import com.ktdsuniversity.edu.movie.vo.response.MovieListVO;
 import com.ktdsuniversity.edu.movie.vo.response.OneMovieVO;
 
@@ -21,48 +21,58 @@ import com.ktdsuniversity.edu.movie.vo.response.OneMovieVO;
 @RequestMapping("/")
 public class MovieController {
 
+    private final MovieServiceImpl movieServiceImpl;
+
 //	기능		Controller		Service 		Mapper/DAO
 //	조회 목록	view이름List		readAll이름		selectAll이름
 //	조회 상세	view이름Detail	read이름ById		select이름ById
-//	생성 	doCreate이름		create이름		insert이름
+//	생성 	doInsert이름		insert이름		insert이름
 //	수정		doUpdate이름		update이름		update이름
 //	삭제		doDelete이름		delete이름		delete이름
-	
+
 	@Autowired
 	private MovieService movieService;
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	
-	@GetMapping("list")
+
+    MovieController(MovieServiceImpl movieServiceImpl) {
+        this.movieServiceImpl = movieServiceImpl;
+    }
+
+	@GetMapping("")
 	public String viewMovieList(Model model) {
-		
 		List<MovieListVO> movieList = this.movieService.readAllMovie();
+
 		model.addAttribute("movieList", movieList);
 		return "movie/list";
 	}
-	
+
 	@GetMapping("view/{movieId}")
 	public String viewMovieById(@PathVariable String movieId, Model model) {
 		OneMovieVO oneMovieById = this.movieService.readMovieById(movieId);
 		List<String> categoryNameListById = this.categoryService.readAllCategoryNameByMovieId(movieId);
-		
+
 		model.addAttribute("movie", oneMovieById);
 		model.addAttribute("categoryNameList", categoryNameListById);
 		return "movie/view";
 	}
 
-	@GetMapping("write")
-	public String doCreate() {
-		return "movie/write";
+	@GetMapping("insert")
+	public String doInsert() {
+		return "movie/insert";
 	}
 
-	@PostMapping("write")
-	public String doCreate(MovieCreateVO movieCreateVO) {
+//	1. tmdb 프로젝트에서 영화를 등록할 때, 포스터 한 장을 업로드 할 수 있도록 개선.
+//	2. 영화 내용 조회할 때 업로드 한 포스터가 이미지로 노출될 수 있도록 개선.
+	@PostMapping("insert")
+	public String doInsert(InsertVO insertVO) {
+		
+		System.out.println(insertVO.getPosterUrl());
+		boolean isSuccess = this.movieService.insertMovie(insertVO);
 
-		boolean isSuccess = this.movieService.createMovie(movieCreateVO);
 		if (isSuccess) {
-			return "redirect:list";
+			return "redirect:";
 		} else {
 			return "errer/404";
 		}

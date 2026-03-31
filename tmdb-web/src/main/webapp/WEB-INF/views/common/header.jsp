@@ -3,11 +3,11 @@
 <div class="header">
     <div class="header--witdh">
         <div class="header__left">
-            <a href="/list">
+            <a href="/">
                 <img class="left--logo" src="/images/logo.svg" alt="logo 이미지">
             </a>
             <div class="left__nav">
-                <a href="/list">
+                <a href="/">
                     <div>영화</div>
                 </a>
                 <div>TV 프로그램</div>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="header__right">
-            <a href="/write">영화 등록</a>
+            <a href="/insert">영화 등록</a>
             <div>로그인</div>
             <div>회원가입</div>
             <img class="search--img" src="/images/search.svg" alt="검색 이미지">

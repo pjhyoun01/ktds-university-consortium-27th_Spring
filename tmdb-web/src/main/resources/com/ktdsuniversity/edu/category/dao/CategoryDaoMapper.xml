@@ -8,7 +8,7 @@
             resultType="string">
         SELECT C.CATEGORY_NAME 
 		  FROM GENRE G
-		 INNER JOIN CATEGORIES C
+		 INNER JOIN CATEGORY C
 		    ON G.CATEGORY_ID = C.CATEGORY_ID
 		 WHERE MOVIE_ID = #{_parameter}
     </select>
