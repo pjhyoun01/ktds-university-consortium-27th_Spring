@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>게시글 수정</title>
     <link rel="stylesheet" type="text/css" href="/css/hello-spring.css" />
+    <script src="/js/jquery-4.0.0.slim.min.js"></script>
+    <script src="/js/board/files.js"></script>
   </head>
   <body>
     <h1>게시글 수정</h1>
     <%-- action ==> form 내부의 value를 전송할 엔드포인트 --%>
-    <form action="/update/${article.id}" method="post">
+    <form action="/update/${board.id}" method="post" enctype="multipart/form-data">
       <div class="grid update">
         <label for="subject">제목</label>
         <input
@@ -17,7 +20,7 @@
           id="subject"
           name="subject"
           placeholder="제목을 입력하세요."
-          value="${article.subject}"
+          value="${board.subject}"
         />
 
         <label for="email">이메일</label>
@@ -26,11 +29,26 @@
           id="email"
           name="email"
           placeholder="이메일을 입력하세요."
-          value="${article.email}"
+          value="${board.email}"
         />
 
+        <label for="attach-files">첨부파일</label>
+        <div id="attach-files" class="attach-files">
+          
+          <c:forEach items="${board.files}" var="file">
+            <div>
+              <input type="checkbox" name="deleteFileNum" id="${file.displayName}" value="${file.fileNum}">
+              <label for="${file.displayName}">${file.displayName}</label>
+            </div>
+            <div></div>
+          </c:forEach>
+
+          <input type="file" name="attachFile" />
+          <button type="button" class="add-file">+</button>
+        </div>
+
         <label for="content">내용</label>
-        <textarea id="content" name="content" placeholder="내용을 입력하세요">${article.content}</textarea>
+        <textarea id="content" name="content" placeholder="내용을 입력하세요">${board.content}</textarea>
 
         <div class="btn-group">
           <div class="right-align">

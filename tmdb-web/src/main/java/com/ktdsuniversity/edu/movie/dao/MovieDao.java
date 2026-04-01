@@ -13,8 +13,10 @@ public interface MovieDao {
 
 	List<MovieListVO> selectAllMovie();
 
-	int insertMovie(InsertVO movieInsertVO);
+	int insertMovie(InsertVO insertVO);
 
 	OneMovieVO selectMovieById(String movieId);
+
+	String selectNextMovieId();
 
 }

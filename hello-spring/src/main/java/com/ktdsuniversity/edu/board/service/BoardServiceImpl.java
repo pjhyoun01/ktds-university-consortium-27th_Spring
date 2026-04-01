@@ -1,9 +1,8 @@
 package com.ktdsuniversity.edu.board.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
-
+import com.ktdsuniversity.edu.utils.MultiFileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,66 +14,30 @@ import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
 import com.ktdsuniversity.edu.files.dao.FilesDao;
-import com.ktdsuniversity.edu.files.vo.request.UploadVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardDao boardDao;
-	
+
 	@Autowired
 	private FilesDao filesDao;
-	
+
+	@Autowired
+	private MultiFileHandler multiFileHandler;
+
 	@Override
 	public SearchResultVO getAllBoard() {
-		List<BoardVO> list= this.boardDao.getAllBoard();
+		List<BoardVO> list = this.boardDao.getAllBoard();
 		int count = this.boardDao.getBoardCount();
-		
+
 		SearchResultVO result = new SearchResultVO();
 		result.setResult(list);
 		result.setCount(count);
-		
+
 		return result;
 	}
-
-
-	@Override
-	public boolean createBoard(WriteVO writeVO) {
-		int  isSuccess = this.boardDao.createBoard(writeVO);
-		
-		// 첨부 파일 업로드
-	      List<MultipartFile> attachFiles = writeVO.getAttachFile();
-	      if (attachFiles != null && attachFiles.size() > 0) {
-	         for (int i = 0; i < attachFiles.size(); i++) {
-	            File storeFile = new File("C:\\dev_programs\\test", attachFiles.get(i).getOriginalFilename());
-	            // C:\\uploadfiles 폴더가 없으면 생성해라
-	            if (!storeFile.getParentFile().exists()) {
-	               storeFile.getParentFile().mkdirs();
-	            }
-	            try {
-	               attachFiles.get(i).transferTo(storeFile);
-	               // FILES 테이블에 첨부파일 데이터를 INSERT
-	               UploadVO uploadVO = new UploadVO();
-	               String fileName = attachFiles.get(i).getOriginalFilename();
-	               String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
-	               uploadVO.setFileNum(i + 1);
-	               uploadVO.setFileGroupId(writeVO.getId());
-	               uploadVO.setObfuscateName(fileName);
-	               uploadVO.setDisplayName(fileName);
-	               uploadVO.setExtendName(ext);
-	               uploadVO.setFileLength(storeFile.length());
-	               uploadVO.setFilePath(storeFile.getAbsolutePath());
-	               this.filesDao.insertAttachFile(uploadVO);
-	            } catch (IllegalStateException | IOException e) {
-	               e.printStackTrace();
-	            }
-	         }
-	      }
-	      
-	      return isSuccess == 1;
-	   }
-
 
 	@Override
 	public BoardVO readBoardById(String boardId, ReadType readType) {
@@ -86,17 +49,53 @@ public class BoardServiceImpl implements BoardService {
 //			return null;
 //		}
 		BoardVO boardById = this.boardDao.selectBoardById(boardId);
-		
-		
+
 		return boardById;
 	}
 
+	@Override
+	public boolean createBoard(WriteVO writeVO) {
+		int insertScuccessCount = this.boardDao.createBoard(writeVO);
+
+		System.out.println("writeVO: " + writeVO.getAttachFile());
+		// 첨부 파일 업로드
+		List<MultipartFile> attachFiles = writeVO.getAttachFile();
+		this.multiFileHandler.upload(attachFiles, writeVO.getId());
+
+		return insertScuccessCount == 1;
+	}
 
 	@Override
 	public boolean updateOneArticle(UpdateVO updateVO) {
-		int isSuccess = this.boardDao.updateOneBoardById(updateVO);
-		return isSuccess == 1;
+		int updateScuccessCount = this.boardDao.updateOneBoardById(updateVO);
+
+		if (updateVO.getDeleteFileNum() != null && updateVO.getDeleteFileNum().size() >= 0) {
+
+			List<String> deleteTargets = this.filesDao.selectFilePathByFileGroupIdAndFileNums(updateVO);
+			for (String target : deleteTargets) {
+				new File(target).delete();
+			}
+
+			this.filesDao.delectFilePathByFileGroupIdAndFileNums(updateVO);
+		}
+		List<MultipartFile> attachFiles = updateVO.getAttachFile();
+		this.multiFileHandler.upload(attachFiles, updateVO.getId());
+
+		return updateScuccessCount == 1;
 	}
 
+	@Override
+	public boolean deleteOneBoardById(String boardId) {
+		int deleteSuccessCount = this.boardDao.deleteBoardById(boardId);
+		
+		List<String> filePathByGroupId = this.filesDao.selectFilePathByGroupId(boardId);
+		for (String filePath : filePathByGroupId) {
+			new File(filePath).delete();
+		}
+		
+		this.filesDao.delectFilePathByGroupId(filePathByGroupId);
+		
+		return deleteSuccessCount == 1;
+	}
 
 }

@@ -21,7 +21,7 @@ import com.ktdsuniversity.edu.movie.vo.response.OneMovieVO;
 @RequestMapping("/")
 public class MovieController {
 
-    private final MovieServiceImpl movieServiceImpl;
+	private final MovieServiceImpl movieServiceImpl;
 
 //	기능		Controller		Service 		Mapper/DAO
 //	조회 목록	view이름List		readAll이름		selectAll이름
@@ -36,9 +36,9 @@ public class MovieController {
 	@Autowired
 	private CategoryService categoryService;
 
-    MovieController(MovieServiceImpl movieServiceImpl) {
-        this.movieServiceImpl = movieServiceImpl;
-    }
+	MovieController(MovieServiceImpl movieServiceImpl) {
+		this.movieServiceImpl = movieServiceImpl;
+	}
 
 	@GetMapping("")
 	public String viewMovieList(Model model) {
@@ -67,8 +67,6 @@ public class MovieController {
 //	2. 영화 내용 조회할 때 업로드 한 포스터가 이미지로 노출될 수 있도록 개선.
 	@PostMapping("insert")
 	public String doInsert(InsertVO insertVO) {
-		
-		System.out.println(insertVO.getPosterUrl());
 		boolean isSuccess = this.movieService.insertMovie(insertVO);
 
 		if (isSuccess) {

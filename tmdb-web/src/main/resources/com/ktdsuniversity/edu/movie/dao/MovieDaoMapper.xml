@@ -1,42 +1,48 @@
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ktdsuniversity.edu.movie.dao.MovieDao">
 
-    <select id="selectAllMovie" resultType="com.ktdsuniversity.edu.movie.vo.response.MovieListVO">
-        SELECT MOVIE_ID
-		     , POSTER_URL
-		     , TITLE
-		     , MOVIE_RATING
-             , TO_CHAR(OPEN_DATE, 'YYYY') AS openYear
-             , TO_CHAR(OPEN_DATE, 'MM"년 "DD') AS openDate
+	<select id="selectAllMovie" resultType="com.ktdsuniversity.edu.movie.vo.response.MovieListVO">
+		SELECT MOVIE_ID
+			 , POSTER_URL
+			 , TITLE
+			 , MOVIE_RATING
+			 , TO_CHAR(OPEN_DATE, 'YYYY') AS openYear
+			 , TO_CHAR(OPEN_DATE, 'MM"년 "DD') AS openDate
 		  FROM MOVIE
-    </select>
-    
-    <select id="selectMovieById"
-            parameterType="string"
-            resultType="com.ktdsuniversity.edu.movie.vo.response.OneMovieVO">
-        SELECT MOVIE_ID
-             , POSTER_URL
-             , TITLE
-             , MOVIE_RATING
-             , TO_CHAR(OPEN_DATE, 'YYYY') AS openYear
-             , TO_CHAR(OPEN_DATE, 'YYYY/MM/DD') AS openDate
-             , OPEN_COUNTRY
-             , RUNNING_TIME
-             , INTRODUCE
-             , SYNOPSIS
-             , ORIGINAL_TITLE
-             , STATE
-             , LANGUAGE
-             , BUDGET
-             , PROFIT
-          FROM MOVIE
-         WHERE MOVIE_ID = #{_parameter}
-    </select>
-    
-    <insert id="insertMovie" parameterType="com.ktdsuniversity.edu.movie.vo.request.InsertVO">
-        INSERT INTO MOVIE
+	</select>
+	
+	<select id="selectMovieById"
+			parameterType="string"
+			resultType="com.ktdsuniversity.edu.movie.vo.response.OneMovieVO">
+		SELECT MOVIE_ID
+			 , POSTER_URL
+			 , TITLE
+			 , MOVIE_RATING
+			 , TO_CHAR(OPEN_DATE, 'YYYY') AS openYear
+			 , TO_CHAR(OPEN_DATE, 'YYYY/MM/DD') AS openDate
+			 , OPEN_COUNTRY
+			 , RUNNING_TIME
+			 , INTRODUCE
+			 , SYNOPSIS
+			 , ORIGINAL_TITLE
+			 , STATE
+			 , LANGUAGE
+			 , BUDGET
+			 , PROFIT
+		  FROM MOVIE
+		 WHERE MOVIE_ID = #{_parameter}
+	</select>
+	
+	<select id="selectNextMovieId"
+			resultType="string">
+		SELECT 'MV-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_MOVIE_PK.NEXTVAL, 6, '0')
+		  FROM DUAL
+	</select>
+	
+	<insert id="insertMovie" parameterType="com.ktdsuniversity.edu.movie.vo.request.InsertVO">
+		INSERT INTO MOVIE
 		 (MOVIE_ID
 		, POSTER_URL
 		, TITLE
@@ -63,5 +69,5 @@
 		, #{language}
 		, #{budget}
 		, #{profit})
-    </insert>
+	</insert>
 </mapper>

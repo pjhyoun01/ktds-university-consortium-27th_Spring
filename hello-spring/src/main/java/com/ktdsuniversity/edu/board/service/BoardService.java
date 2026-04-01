@@ -10,10 +10,12 @@ public interface BoardService {
 
 	SearchResultVO getAllBoard();
 
-	boolean createBoard(WriteVO writeVO);
-
 	BoardVO readBoardById(String boardId, ReadType readType);
 
+	boolean createBoard(WriteVO writeVO);
+
 	boolean updateOneArticle(UpdateVO updateVO);
+
+	boolean deleteOneBoardById(String boardId);
 	
 }

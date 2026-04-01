@@ -52,6 +52,7 @@ public class BoardController {
 	
 	@PostMapping("create")
 	public String createBoard(WriteVO writeVO) {
+		System.out.println("이름: " + writeVO.getAttachFile().get(0).getName());
 		boolean isSuccess = this.boardService.createBoard(writeVO);
 		if(isSuccess) {
 			return "redirect:/";
@@ -79,7 +80,11 @@ public class BoardController {
 			return "404";
 		}
 	}
-//	
-//	PostMapping()
-//	public String doDelete
+
+	@PostMapping("delete/{boardId}")
+	public String doDelete(@PathVariable String boardId) {
+		boolean deleteSucces = this.boardService.deleteOneBoardById(boardId);
+		
+		return "redirect:/";
+	}
 }

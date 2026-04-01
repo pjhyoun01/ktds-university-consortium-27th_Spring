@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ktdsuniversity.edu.movie.dao.MovieDao;
 import com.ktdsuniversity.edu.movie.vo.request.InsertVO;
@@ -23,10 +24,22 @@ public class MovieServiceImpl implements MovieService {
 		return movieList;
 	}
 
+	@Transactional
 	@Override
-	public boolean insertMovie(InsertVO movieInsertVO) {
-		int isSuccess = this.movieDao.insertMovie(movieInsertVO);
-		return isSuccess == 1;
+	public boolean insertMovie(InsertVO insertVO) {
+		
+		/*
+		 * 파일 저장구현
+		 */
+		
+		String readNextMovieId = this.movieDao.selectNextMovieId();
+		insertVO.setMovieId(readNextMovieId);
+		System.out.println("readNextMovieId: " + readNextMovieId);
+		System.out.println("insertVO.getMovieId(): " + insertVO.getMovieId());
+//		int isSuccess = this.movieDao.insertMovie(insertVO);
+
+//		return isSuccess == 1;
+		return true;
 	}
 
 	@Override

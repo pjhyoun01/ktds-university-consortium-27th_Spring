@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 * {
   box-sizing: border-box;
 }
@@ -7,13 +8,7 @@ body {
   margin: 10px 50px;
   color: #333;
 }
-
-.header__nav {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
+/* list style 시작 */
 ul.vertical-list {
   margin: 0;
   padding: 0;
@@ -23,31 +18,54 @@ ul.vertical-list {
   gap: 0.625rem;
 }
 
-/* link style 시작 */
-a,
-button{
-  color: #555;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-a:hover,
-button:hover {
-  color: #ff2d2d;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-button {
-  border: none;
-  background-color: #fff;
-}
-
 .flex {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
+  font-size: 1rem;
+}
+
+button[type="submit"]:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #cccccc;
+}
+/* list style 끝 */
+
+/* link style 시작 */
+a {
+  color: #555;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff2d2d;
+  text-decoration: underline;
 }
 /* link style 끝 */
 
@@ -188,16 +206,29 @@ ul.articles > li.header > ul.header-item {
 /* 글쓰기 style 시작 */
 div.update {
   grid-template-columns: 5rem 1fr;
-  grid-template-rows: 1.75rem 1.75rem 20rem 1fr;
+  grid-template-rows: 1.75rem 1.75rem auto 1fr;
   row-gap: 0.625rem;
 }
 
 div.write {
   grid-template-columns: 5rem 1fr;
-  grid-template-rows: 1.75rem 1.75rem 20rem 1fr;
+  grid-template-rows: 1.75rem 1.75rem minmax(1.75rem, auto) 20rem 1fr;
   row-gap: 0.625rem;
 }
+
+div.write > div.attach-files {
+  display: grid;
+  grid-template-columns: 1fr minmax(80px, auto);
+  gap: 0.625rem;
+}
 /* 글쓰기 style 끝 */
+
+div.update > div.attach-files,
+div.write > div.attach-files {
+  display: grid;
+  grid-template-columns: 1fr minmax(80px, auto);
+  gap: 0.625rem;
+}
 
 /* 게시글 내용 조회 style 시작 */
 div.view {
@@ -236,3 +267,8 @@ ul.member-list > li.header > ul.header-item {
   grid-template-columns: repeat(3, 1fr);
 }
 /* 회원 목록 style 끝 */
+
+input[type="checkbox"]:checked + label {
+    color: rgb(255, 149, 149);
+    text-decoration: line-through;
+}

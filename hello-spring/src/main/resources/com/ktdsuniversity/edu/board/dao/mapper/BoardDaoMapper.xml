@@ -110,4 +110,12 @@
 		     , EMAIL = #{email}
 		 WHERE ID = #{id}
     </update>
+    
+    <!-- int deleteBoardById(String boardId); -->
+    <delete id="deleteBoardById"
+            parameterType="string">
+        DELETE
+		  FROM BOARD 
+		 WHERE ID = #{_parameter}
+    </delete>
 </mapper>
