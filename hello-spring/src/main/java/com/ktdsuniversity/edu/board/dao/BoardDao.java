@@ -11,18 +11,18 @@ import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 @Mapper
 public interface BoardDao {
 
-	List<BoardVO> getAllBoard();
+	int selectBoardCount();
 
-	int getBoardCount();
+	List<BoardVO> selectBoardList();
 
-	int updateBoardViewCount(String boardId);
+	int insertNewBoard(WriteVO writeVO);
 
-	BoardVO selectBoardById(String boardId);
+	BoardVO selectBoardById(String articleId);
 
-	int createBoard(WriteVO writeVO);
+	int updateViewCntIncreaseById(String articleId);
 
-	int updateOneBoardById(UpdateVO updateVO);
+	int deleteBoardById(String id);
 
-	int deleteBoardById(String boardId);
+	int updateBoardById(UpdateVO updateVO);
 
 }

@@ -18,10 +18,10 @@
         <div>공유</div>
     </div>
     <div class="content" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                      url('${movie.posterUrl}');">
+                      url(/file/${movie.movieId});">
         <div class="content__header">
             <div class="content__header__left">
-                <img src="${movie.posterUrl}" alt="${movie.title} 포스터">
+                <img src="/file/${movie.movieId}" alt="${movie.posterUrl}">
             </div>
             <div class="content__header__right">
                 <div>

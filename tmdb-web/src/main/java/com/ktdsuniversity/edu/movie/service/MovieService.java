@@ -10,8 +10,8 @@ public interface MovieService {
 
 	List<MovieListVO> readAllMovie();
 
-	boolean insertMovie(InsertVO insertVO);
-
 	OneMovieVO readMovieById(String movieId);
+
+	boolean insertMovie(InsertVO insertVO);
 
 }

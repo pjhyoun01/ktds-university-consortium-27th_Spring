@@ -15,8 +15,8 @@ public class FilesServiceImpl implements FilesService {
 
 	@Override
 	public DownloadVO findAttachFile(SearchFileVO searchFileVO) {
-		DownloadVO downloadVO = this.filesDao.selectFilesByFileGroupIdAndFileNum(searchFileVO);
-		return downloadVO;
+		DownloadVO result = this.filesDao.selectFilesByFileGroupIdAndFileNum(searchFileVO);
+		return result;
 	}
-
+	
 }

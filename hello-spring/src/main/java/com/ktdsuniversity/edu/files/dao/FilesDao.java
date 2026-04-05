@@ -18,10 +18,10 @@ public interface FilesDao {
 
 	List<String> selectFilePathByFileGroupIdAndFileNums(UpdateVO updateVO);
 
-	int delectFilePathByFileGroupIdAndFileNums(UpdateVO updateVO);
+	int deleteFilesByFileGroupIdAndFileNums(UpdateVO updateVO);
 
-	List<String> selectFilePathByGroupId(String boardId);
+	List<String> selectFilePathByFileGroupId(String id);
 
-	int delectFilePathByGroupId(List<String> filePathByGroupId);
+	int deleteFileByFileGroupId(String id);
 
 }

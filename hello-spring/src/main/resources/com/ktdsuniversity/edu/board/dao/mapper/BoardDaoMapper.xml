@@ -3,84 +3,104 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ktdsuniversity.edu.board.dao.BoardDao">
-
-    <select id="getAllBoard" resultType="com.ktdsuniversity.edu.board.vo.BoardVO">
-        SELECT ID
-		     , SUBJECT
-		     , CONTENT
-		     , EMAIL
-		     , VIEW_CNT
-		     , CRT_DT
-		     , MDFY_DT
-		     , FILE_NAME
-		     , ORIGIN_FILE_NAME
-		  FROM BOARD
-    </select>
-    
-    <select id="getBoardCount" resultType="_int">
+    <select id="selectBoardCount" 
+            resultType="_int">
         SELECT COUNT(ID)
           FROM BOARD
     </select>
     
-    <insert id="createBoard" 
+    <select id="selectBoardList" 
+            resultType="com.ktdsuniversity.edu.board.vo.BoardVO">
+        SELECT ID
+             , SUBJECT
+             , CONTENT
+             , EMAIL
+             , VIEW_CNT
+             , TO_CHAR(CRT_DT, 'YYYY-MM-DD HH24:MI:SS') AS CRT_DT
+             , TO_CHAR(MDFY_DT, 'YYYY-MM-DD HH24:MI:SS') AS MDFY_DT
+             , FILE_NAME
+             , ORIGIN_FILE_NAME
+          FROM BOARD
+         ORDER BY ID DESC
+    </select>
+    
+    <insert id="insertNewBoard" 
             parameterType="com.ktdsuniversity.edu.board.vo.request.WriteVO">
+        <!-- 새롭게 만들어지는 게시글의 PK를 미리 생성해서 WriteVO의 id 라는 변수에 할당한다. -->
         <selectKey order="BEFORE"
                    resultType="string"
                    keyProperty="id">
-            SELECT 'BD-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_BOARD_PK.NEXTVAL, 6, '0')
+            SELECT 'BO-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_BOARD_PK.NEXTVAL, 6, '0')
               FROM DUAL
         </selectKey>
-	    INSERT INTO BOARD 
-		( ID
-		, SUBJECT
-		, CONTENT
-		, EMAIL
-		, CRT_DT)
-		VALUES 
-		( #{id}
-		, #{subject}
-		, #{content}
-		, #{email}
-		, SYSDATE)
+        INSERT INTO BOARD 
+         (ID
+        , SUBJECT
+        , CONTENT
+        , EMAIL
+        , VIEW_CNT
+        , CRT_DT
+        , MDFY_DT
+        , FILE_NAME
+        , ORIGIN_FILE_NAME) 
+        VALUES
+         (#{id}
+        , #{subject}
+        , #{content}
+        , #{email}
+        , 0
+        , SYSDATE
+        , SYSDATE
+        , NULL
+        , NULL)
     </insert>
-
+    
+    <!-- JOIN을 사용하는 쿼리의 결과를
+    Has A를 사용하는 VO에게 값을 할당하기 위한
+    태그 -->
     <resultMap type="com.ktdsuniversity.edu.board.vo.BoardVO" 
                id="BoardVOMap"
                autoMapping="true">
+        <!-- 쿼리에 사용되는 테이블의 PK값을 변수에 저장할 때 사용. -->
         <id column="ID" property="id"/>
-        <!-- <result column="SUBJECT" property="subject"/>
-        <result column="CONTENT" property="content"/>
-        <result column="EMAIL" property="email"/>
-        <result column="VIEW_CNT" property="viewCnt"/>
-        <result column="CRT_DT" property="crtDt"/>
-        <result column="MDFY_DT" property="mdfyDt"/>
-        <result column="FILE_NAME" property="fileName"/>
-        <result column="ORIGIN_FILE_NAME" property="originFileName"/> -->
-        
+        <!-- 쿼리에 사용되는 테이브의 일반 컬럼의 값을 변수에 저장할 때 사용. -->
+        <!-- 
+        <result column="SUBJECT" property="subject" />
+        <result column="CONTENT" property="content" />
+        <result column="EMAIL" property="email" />
+        <result column="VIEW_CNT" property="viewCnt" />
+        <result column="CRT_DT" property="crtDt" />
+        <result column="MDFY_DT" property="mdfyDt" />
+        <result column="FILE_NAME" property="fileName" />
+        <result column="ORIGIN_FILE_NAME" property="originFileName" />
+         -->
+        <!-- BoardVO에 있는 list는 <collection> 태그 이용. -->
         <collection property="files"
                     javaType="list"
                     ofType="com.ktdsuniversity.edu.files.vo.FilesVO"
                     autoMapping="true">
-	        <id column="FILE_NUM" property="fileNum"/>
-	        <id column="FILE_GROUP_ID" property="fileGroupId"/>
-	        <!-- <result column="OBFUSCATE_NAME" property="obfuscateName"/>
-	        <result column="DISPLAY_NAME" property="displayName"/>
-	        <result column="EXTEND_NAME" property="extendName"/>
-	        <result column="FILE_LENGTH" property="fileLength"/>
-	        <result column="FILE_PATH" property="filePath"/> -->
+            <id column="FILE_NUM" property="fileNum" />
+            <id column="FILE_GROUP_ID" property="fileGroupId"/>
+            <!-- 
+            <result column="OBFUSCATE_NAME" property="obfuscateName" />
+            <result column="DISPLAY_NAME" property="displayName" />
+            <result column="EXTEND_NAME" property="extendName" />
+            <result column="FILE_LENGTH" property="fileLength" />
+            <result column="FILE_PATH" property="filePath" />
+             -->
         </collection>
     </resultMap>
-
+    
     <select id="selectBoardById"
-            parameterType="string"
-            resultMap="BoardVOMap">
+            resultMap="BoardVOMap"
+            parameterType="string">
         SELECT B.ID
 		     , B.SUBJECT
 		     , B.CONTENT
 		     , B.EMAIL
 		     , B.VIEW_CNT
-		     , B.CRT_DT
-		     , B.MDFY_DT
+		     , TO_CHAR(B.CRT_DT, 'YYYY-MM-DD HH24:MI:SS') AS CRT_DT
+		     , TO_CHAR(B.MDFY_DT, 'YYYY-MM-DD HH24:MI:SS') AS MDFY_DT
 		     , B.FILE_NAME
 		     , B.ORIGIN_FILE_NAME
 		     , F.FILE_NUM
@@ -93,29 +113,37 @@
 		  FROM BOARD B
 		  LEFT OUTER JOIN FILES F
 		    ON B.ID = F.FILE_GROUP_ID
-         WHERE ID = #{_parameter}
+		 WHERE B.ID = #{_parameter}
     </select>
-    
-    
-    <update id="updateBoardViewCount" parameterType="string">
+            
+    <update id="updateViewCntIncreaseById"
+            parameterType="string">
         UPDATE BOARD
-		   SET VIEW_CNT = VIEW_CNT + 1
-		 WHERE ID = #{_parameter}
+           SET VIEW_CNT = VIEW_CNT + 1
+         WHERE ID = #{_parameter}
     </update>
     
-    <update id="updateOneBoardById" parameterType="com.ktdsuniversity.edu.board.vo.request.UpdateVO">
-        UPDATE BOARD
-		   SET SUBJECT = #{subject}
-		     , CONTENT = #{content}
-		     , EMAIL = #{email}
-		 WHERE ID = #{id}
-    </update>
-    
-    <!-- int deleteBoardById(String boardId); -->
     <delete id="deleteBoardById"
             parameterType="string">
         DELETE
-		  FROM BOARD 
-		 WHERE ID = #{_parameter}
+          FROM BOARD
+         WHERE ID = #{_parameter}
     </delete>
+    
+    <update id="updateBoardById"
+            parameterType="com.ktdsuniversity.edu.board.vo.request.UpdateVO">
+        UPDATE BOARD
+		   SET SUBJECT = #{subject}
+		     , EMAIL = #{email}
+		     , CONTENT = #{content}
+		     , MDFY_DT = SYSDATE
+		 WHERE ID = #{id}
+    </update>
 </mapper>
+
+
+
+
+
+
+

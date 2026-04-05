@@ -1,0 +1,131 @@
+.form-container {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1.875rem;
+    background: #fff;
+    border-radius: .5rem;
+    box-shadow: 0 .25rem 1.25rem rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #032541;
+    margin-bottom: 1.875rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+
+
+.valid__error,
+.check__password,
+.check__email {
+    font-size: 12px;
+    font-weight: 400;
+    color: #f00;
+    margin-left: 10px;
+}
+
+input {
+    width: 100%;
+    padding: .75rem .9375rem;
+    border: .0625rem solid #ddd;
+    border-radius: .3125rem;
+    font-size: .875rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    resize : none;
+}
+
+input[name="email"]:focus, 
+input[name="name"]:focus {
+    outline: none;
+    border-color: #01b4e4;
+    box-shadow: 0 0 .3125rem rgba(1, 180, 228, 0.2);
+}
+
+
+
+
+
+
+
+
+
+.input--password {
+    display: flex;
+    justify-content: space-between;
+    border: .0625rem solid #ddd;
+    border-radius: .3125rem;
+    font-size: .875rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    align-items: center;
+}
+
+
+
+input[id="password"],
+input[id="confirm-password"] {
+    border: none;
+}
+
+input[id="password"]:focus,
+input[id="confirm-password"]:focus {
+    outline: none;
+}
+
+.input--password:has(input[type="password"]:focus) {
+    border-color: #01b4e4;
+    box-shadow: 0 0 .3125rem rgba(1, 180, 228, 0.2);
+}
+
+.input--password > label {
+    width: 10%;
+    text-align: right;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+#view-password,
+#view-confirm-password {
+    display: none;
+}
+
+
+
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: .9375rem;
+    margin-top: 1.25rem;
+}
+
+button {
+    padding: .75rem 2.5rem;
+    border: none;
+    border-radius: .3125rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+button[type="submit"] {
+    background-color: #032541;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #eee;
+    color: #666;
+    text-decoration: none;
+    display: inline-block;
+    padding: .75rem 2.5rem;
+    border-radius: .3125rem;
+    text-align: center;
+}

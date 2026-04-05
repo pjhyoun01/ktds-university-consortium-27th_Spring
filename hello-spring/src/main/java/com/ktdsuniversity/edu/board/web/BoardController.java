@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ktdsuniversity.edu.board.enums.ReadType;
 import com.ktdsuniversity.edu.board.service.BoardService;
@@ -18,73 +19,111 @@ import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
 
-@Controller
-@RequestMapping("/")
-public class BoardController {
+import jakarta.validation.Valid;
 
+@Controller
+public class BoardController {
+	/**
+	 * 빈 컨테이너에 들어있는 객체 중 타입이 일치하는 객체를 할당 받는다.
+	 */
 	@Autowired
 	private BoardService boardService;
-	
-	@GetMapping("")
-	public String viewBoard(Model model) {
-		SearchResultVO searchResultVO = this.boardService.getAllBoard();
-		
-		List<BoardVO> getAllBoard = searchResultVO.getResult();
-		int boardCount = searchResultVO.getCount();
-		
-		model.addAttribute("boardList", getAllBoard);
-		model.addAttribute("boardCount", boardCount);
-		return "board/list";
+
+	@GetMapping("/")
+	public String viewListPage(Model model) {
+
+		SearchResultVO searchResult = this.boardService.findAllBoard();
+
+		// 게시글의 목록을 조회.
+		List<BoardVO> list = searchResult.getResult();
+
+		// 게시글의 개수 조회.
+		int searchCount = searchResult.getCount();
+
+		model.addAttribute("searchResult", list);
+		model.addAttribute("searchCount", searchCount);
+
+		return "board/newlist";
 	}
-	
-	@GetMapping("view/{boardId}")
-	public String viewBoardDetail(@PathVariable String boardId, Model model) {
-		BoardVO readOneBoard = this.boardService.readBoardById(boardId, ReadType.VIEW);
-		model.addAttribute("board", readOneBoard);
-		
-		return "board/view";
+
+	// 게시글 등록 화면 보여주는 EndPoint
+	@GetMapping("/write")
+	public String viewWritePage() {
+		return "board/write";
 	}
-	
-	@GetMapping("create")
-	public String createBoard() {
-		return "board/create";
-	}
-	
-	@PostMapping("create")
-	public String createBoard(WriteVO writeVO) {
-		System.out.println("이름: " + writeVO.getAttachFile().get(0).getName());
-		boolean isSuccess = this.boardService.createBoard(writeVO);
-		if(isSuccess) {
+
+	// 게시글을 등록하는 EndPoint
+	@PostMapping("/write")
+	public String doWriteAction(@Valid @ModelAttribute WriteVO writeVO,
+			// @Valid의 결과를 받아오는 파라미터.
+			// 반드시 @Valid 파라미터 이후에 작성!
+			BindingResult bindingResult, Model model) {
+		// 사용자의 입력값을 검증 했을 때, 에러가 있다면
+		if (bindingResult.hasErrors()) {
+			// 브라우저에게 "board/write" 페이지를 보여주도록 하고
+			// 해당 페이지에 사용자가 입력한 값을 전달한다.
+			model.addAttribute("inputData", writeVO);
+			return "board/write";
+		}
+
+		// create, update, delete => 성공/실패 여부 반환.
+		boolean createResult = this.boardService.createNewBoard(writeVO);
+		if (createResult) {
 			return "redirect:/";
 		} else {
-			return "404";
+			return "error/404";
 		}
+
+		// redirect: 브라우저에게 다음 End Point를 요청하도록 지시.
+		// redirect:/ ==> 브라우저에게 "/" endpoint 로 이동하도록 지시.
 	}
-	
-	@GetMapping("update/{boardId}")
-	public String viewUpdatePage(@PathVariable String boardId, Model model) {
-		BoardVO readOneBoard = this.boardService.readBoardById(boardId, ReadType.UPDATE);
-		model.addAttribute("board", readOneBoard);
-		
+
+	// 게시글 내용 조회.
+	// endpoint ==> /view/게시글아이디 예> /view/BO-20260327-000001
+	// 해야 하는 역할
+	// 1. 게시글 내용을 조회해서 브라우저에게 노출.
+	// 2. 조회수 1증가.
+	@GetMapping("/view/{articleId}")
+	public String viewDetailPage(Model model, @PathVariable String articleId) {
+
+		// articleId로 데이터베이스에서 게시글을 조회한다.
+		// 조회할 때 조회수가 하나 증가해야 한다.
+		BoardVO findResult = this.boardService.findBoardByArticleId(articleId, ReadType.VIEW);
+
+		model.addAttribute("article", findResult);
+
+		return "board/view";
+	}
+
+	@GetMapping("/delete")
+	public String doDeleteAction(@RequestParam String id) {
+
+		boolean deleteResult = this.boardService.deleteBoardByArticleId(id);
+		if (deleteResult) {
+			return "redirect:/";
+		} else {
+			return "error/404";
+		}
+
+	}
+
+	@GetMapping("/update/{articleId}")
+	public String viewUpdatePage(@PathVariable String articleId, Model model) {
+		BoardVO data = this.boardService.findBoardByArticleId(articleId, ReadType.UPDATE);
+		model.addAttribute("article", data);
 		return "board/update";
 	}
-	
-	@PostMapping("update/{boardId}")
-	public String doUpdatePage(@PathVariable String boardId,
-							   UpdateVO updateVO) {
-		updateVO.setId(boardId);
-		boolean isSuccessUpdate = this.boardService.updateOneArticle(updateVO);
-		if (isSuccessUpdate) {
-			return "redirect:/view/" + boardId;
+
+	@PostMapping("/update/{articleId}")
+	public String doUpdateAction(@PathVariable String articleId, UpdateVO updateVO) {
+		updateVO.setId(articleId);
+
+		boolean updateResult = this.boardService.updateBoardByArticleId(updateVO);
+		if (updateResult) {
+			return "redirect:/view/" + articleId;
 		} else {
-			return "404";
+			return "error/404";
 		}
 	}
 
-	@PostMapping("delete/{boardId}")
-	public String doDelete(@PathVariable String boardId) {
-		boolean deleteSucces = this.boardService.deleteOneBoardById(boardId);
-		
-		return "redirect:/";
-	}
 }

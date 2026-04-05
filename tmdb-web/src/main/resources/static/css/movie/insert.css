@@ -16,6 +16,16 @@ h1 {
     font-size: 1.5rem;
 }
 
+.span__error {
+    font-size: 12px;
+    font-weight: 400;
+    color: #f00;
+    margin-left: 10px;
+}
+/* select {
+    width: 100%;
+} */
+
 form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -56,9 +66,10 @@ textarea:focus {
     border-radius: 8px;
     box-shadow: 0 .25rem 1.25rem rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    padding: 4px 8px;
+    padding: 6px 8px;
     width: 20%;
     text-align: center;
+    margin: auto 0;
 }
 
 #label__button:hover {

@@ -5,14 +5,18 @@
   <head>
     <meta charset="UTF-8" />
     <title>게시글 수정</title>
+    <script type="text/javascript" src="/js/jquery-4.0.0.slim.min.js"></script>
+    <script type="text/javascript" src="/js/board.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/hello-spring.css" />
-    <script src="/js/jquery-4.0.0.slim.min.js"></script>
-    <script src="/js/board/files.js"></script>
   </head>
   <body>
     <h1>게시글 수정</h1>
     <%-- action ==> form 내부의 value를 전송할 엔드포인트 --%>
-    <form action="/update/${board.id}" method="post" enctype="multipart/form-data">
+    <form
+      method="post"
+      action="/update/${article.id}"
+      enctype="multipart/form-data"
+    >
       <div class="grid update">
         <label for="subject">제목</label>
         <input
@@ -20,7 +24,7 @@
           id="subject"
           name="subject"
           placeholder="제목을 입력하세요."
-          value="${board.subject}"
+          value="${article.subject}"
         />
 
         <label for="email">이메일</label>
@@ -29,26 +33,34 @@
           id="email"
           name="email"
           placeholder="이메일을 입력하세요."
-          value="${board.email}"
+          value="${article.email}"
         />
 
         <label for="attach-files">첨부파일</label>
         <div id="attach-files" class="attach-files">
-          
-          <c:forEach items="${board.files}" var="file">
-            <div>
-              <input type="checkbox" name="deleteFileNum" id="${file.displayName}" value="${file.fileNum}">
-              <label for="${file.displayName}">${file.displayName}</label>
-            </div>
-            <div></div>
-          </c:forEach>
+          <ul class="vertical-list">
+            <c:forEach items="${article.files}" var="file">
+              <li>
+                <input
+                  type="checkbox"
+                  name="deleteFileNum"
+                  value="${file.fileNum}"
+                />
+                <a href="/file/${file.fileGroupId}/${file.fileNum}"
+                  >${file.displayName}</a
+                >
+              </li>
+            </c:forEach>
+          </ul>
 
           <input type="file" name="attachFile" />
           <button type="button" class="add-file">+</button>
         </div>
 
         <label for="content">내용</label>
-        <textarea id="content" name="content" placeholder="내용을 입력하세요">${board.content}</textarea>
+        <textarea id="content" name="content" placeholder="내용을 입력하세요">
+${article.content}</textarea
+        >
 
         <div class="btn-group">
           <div class="right-align">

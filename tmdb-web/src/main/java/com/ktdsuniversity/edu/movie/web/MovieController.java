@@ -5,41 +5,38 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ktdsuniversity.edu.category.service.CategoryService;
 import com.ktdsuniversity.edu.movie.service.MovieService;
-import com.ktdsuniversity.edu.movie.service.MovieServiceImpl;
 import com.ktdsuniversity.edu.movie.vo.request.InsertVO;
 import com.ktdsuniversity.edu.movie.vo.response.MovieListVO;
 import com.ktdsuniversity.edu.movie.vo.response.OneMovieVO;
 
+import jakarta.validation.Valid;
+
 @Controller
 @RequestMapping("/")
 public class MovieController {
-
-	private final MovieServiceImpl movieServiceImpl;
-
 //	기능		Controller		Service 		Mapper/DAO
 //	조회 목록	view이름List		readAll이름		selectAll이름
-//	조회 상세	view이름Detail	read이름ById		select이름ById
-//	생성 	doInsert이름		insert이름		insert이름
+//	조회 상세	view이름			read이름ById		select이름ById
+//	생성 		doInsert이름		insert이름		insert이름
 //	수정		doUpdate이름		update이름		update이름
 //	삭제		doDelete이름		delete이름		delete이름
-
 	@Autowired
 	private MovieService movieService;
 
 	@Autowired
 	private CategoryService categoryService;
 
-	MovieController(MovieServiceImpl movieServiceImpl) {
-		this.movieServiceImpl = movieServiceImpl;
-	}
-
+	
+	
 	@GetMapping("")
 	public String viewMovieList(Model model) {
 		List<MovieListVO> movieList = this.movieService.readAllMovie();
@@ -63,10 +60,17 @@ public class MovieController {
 		return "movie/insert";
 	}
 
-//	1. tmdb 프로젝트에서 영화를 등록할 때, 포스터 한 장을 업로드 할 수 있도록 개선.
-//	2. 영화 내용 조회할 때 업로드 한 포스터가 이미지로 노출될 수 있도록 개선.
 	@PostMapping("insert")
-	public String doInsert(InsertVO insertVO) {
+	public String doInsert(@Valid @ModelAttribute InsertVO insertVO, BindingResult bindingResult, Model model) {
+
+		if (bindingResult.hasErrors()) {
+			bindingResult.getAllErrors().forEach(error -> {
+				System.out.println("메시지: " + error.getDefaultMessage());
+			});
+			model.addAttribute("errerMessage", insertVO);
+			return "movie/insert";
+		}
+
 		boolean isSuccess = this.movieService.insertMovie(insertVO);
 
 		if (isSuccess) {

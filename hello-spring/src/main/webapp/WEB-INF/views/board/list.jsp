@@ -10,56 +10,62 @@
   <body>
     <div class="grid list">
       <h1>게시글 목록</h1>
-      <div class="header__nav">
-        <div>총 ${searchCount}개의 게시글이 검색되었습니다.</div>
-        <div class="btn-group">
-          <div class="right-align flex">
-            <a href="/create">새로운 게시글 작성</a>
-            <a href="/member/view">회원 목록</a>
-          </div>
+      <div>총 ${searchCount}개의 게시글이 검색되었습니다.</div>
+      <%-- HTML 주석: 브라우저 개발자 도구에서 노출되는 주석. --%>
+      <%-- JSP 주석: 브라우저 개발자 도구에서 노출되지 않는 주석. --%>
+      <%-- <% for (BoardVO board: searchResult) { %>
+          <div ><%=board.getId()%></div>
+      <% } %> --%>
+      <table class="grid">
+        <colgroup>
+          <col width="200" />
+          <col width="*" />
+          <col width="150" />
+          <col width="80" />
+          <col width="180" />
+          <col width="180" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>이메일</th>
+            <th>조회수</th>
+            <th>등록일</th>
+            <th>수정일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <c:choose>
+            <c:when test="${not empty searchResult}">
+              <%-- searchResult가 존재하면, 반복하여 데이터를 보여주고 --%>
+              <c:forEach items="${searchResult}" var="board">
+                <tr>
+                  <td>${board.id}</td>
+                  <td>
+                    <a href="/view/${board.id}">${board.subject}</a>
+                  </td>
+                  <td>${board.email}</td>
+                  <td>${board.viewCnt}</td>
+                  <td>${board.crtDt}</td>
+                  <td>${board.mdfyDt}</td>
+                </tr>
+              </c:forEach>
+            </c:when>
+            <c:otherwise>
+              <%-- searchResult가 존재하지 않으면, "검색된 데이터가 없습니다"를 보여주고 --%>
+              <tr>
+                <td colspan="6">검색된 데이터가 없습니다.</td>
+              </tr>
+            </c:otherwise>
+          </c:choose>
+        </tbody>
+      </table>
+      <div class="btn-group">
+        <div class="right-align">
+          <a href="/write">새로운 게시글 작성</a>
         </div>
       </div>
-      <ul class="grid articles">
-        <li class="header">
-          <ul class="header-item">
-            <li>번호</li>
-            <li>제목</li>
-            <li>이메일</li>
-            <li>조회수</li>
-            <li>등록일</li>
-            <li>수정일</li>
-          </ul>
-        </li>
-        <c:choose>
-          <c:when test="${not empty boardList}">
-            <%-- boardList가 존재하면, 반복하여 데이터를 보여주고 --%>
-            <li class="body">
-              <c:forEach items="${boardList}" var="board">
-                <ul class="body-item">
-                  <li class="center">${board.id}</li>
-                  <li>
-                    <a href="/view/${board.id}">${board.subject}</a>
-                  </li>
-                  <li>${board.email}</li>
-                  <li class="center">${board.viewCnt}</li>
-                  <li class="center">${board.crtDt}</li>
-                  <li class="center">${board.mdfyDt}</li>
-                </ul>
-              </c:forEach>
-            </li>
-          </c:when>
-          <c:otherwise>
-            <%-- boardList가 존재하지 않으면, "검색된 데이터가 없습니다"를 보여주고 --%>
-            <li class="footer">
-              <ul class="footer-item">
-                <li class="center">검색된 데이터가 없습니다.</li>
-              </ul>
-            </li>
-          </c:otherwise>
-        </c:choose>
-      </ul>
-
-      
     </div>
   </body>
 </html>

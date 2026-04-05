@@ -18,8 +18,8 @@
         </div>
         <div class="header__right">
             <a href="/insert">영화 등록</a>
-            <div>로그인</div>
-            <div>회원가입</div>
+            <a href="/members/login">로그인</a>
+            <a href="/members/regist">회원가입</a>
             <img class="search--img" src="/images/search.svg" alt="검색 이미지">
         </div>
     </div>

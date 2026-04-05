@@ -1,17 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="./calc.css"/>
-    <title>Calc</title>
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
     <div>
-        <span>${firstnum} + </span>
-        <span>${secondnum} = </span>
-        <span>${result}</span>
+      <span>${firstNum}</span>
+      <span>+ ${secondNum}</span>
+      <span>= ${result}</span>
     </div>
-</body>
+  </body>
 </html>

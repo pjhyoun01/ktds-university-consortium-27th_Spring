@@ -15,4 +15,4 @@ spring:
 
 mybatis:
   config-location: classpath:mybatis-config.xml
-  mapper-locations: classpath:com/ktdsuniversity/edu/**/dao/*Mapper.xml
+  mapper-locations: classpath:com/ktdsuniversity/edu/**/dao/mapper/*Mapper.xml
