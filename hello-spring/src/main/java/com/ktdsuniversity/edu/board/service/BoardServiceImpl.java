@@ -58,12 +58,13 @@ public class BoardServiceImpl implements BoardService {
 		// 예> insert ==> insert 된 row의 개수 반환.
 		// update ==> update 된 row의 개수 반환.
 		// delete ==> delete 된 row의 개수 반환.
-		int insertCount = this.boardDao.insertNewBoard(writeVO);
-
 		// 첨부파일 업로드
 		List<MultipartFile> attachFiles = writeVO.getAttachFile();
-		this.multipartFileHandler.upload(attachFiles, writeVO.getId());
+		String fileGroupId =this.multipartFileHandler.upload(attachFiles);
+		writeVO.setFileGroupId(fileGroupId);
 
+		System.out.println("" + writeVO.getFileGroupId());
+		int insertCount = this.boardDao.insertNewBoard(writeVO);
 		return insertCount == 1;
 	}
 
@@ -109,8 +110,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean updateBoardByArticleId(UpdateVO updateVO) {
-		int updateCount = this.boardDao.updateBoardById(updateVO);
-
 		// 선택한 파일들만 삭제.
 		if (updateVO.getDeleteFileNum() != null && updateVO.getDeleteFileNum().size() > 0) {
 			// 선택한 파일들의 정보를 조회 --> 파일의 경로 --> 실제 파일을 제거.
@@ -126,7 +125,16 @@ public class BoardServiceImpl implements BoardService {
 
 		// 첨부파일 업로드
 		List<MultipartFile> attachFiles = updateVO.getAttachFile();
-		this.multipartFileHandler.upload(attachFiles, updateVO.getId());
+		String fileGroupId = updateVO.getFileGroupId();
+		
+		if (fileGroupId == null || fileGroupId.length() == 0) {
+			fileGroupId = this.multipartFileHandler.upload(attachFiles);
+			updateVO.setFileGroupId(fileGroupId);
+		} else {
+			this.multipartFileHandler.upload(attachFiles, updateVO.getFileGroupId());
+		}
+
+		int updateCount = this.boardDao.updateBoardById(updateVO);
 
 		return updateCount == 1;
 	}

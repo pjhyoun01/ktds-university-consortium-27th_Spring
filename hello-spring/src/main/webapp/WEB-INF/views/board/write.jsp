@@ -37,7 +37,7 @@
                        element="div" />
         </div>
 
-        <label for="email">이메일</label>
+        <%-- <label for="email">이메일</label>
         <div class="input-div">
           <input
             type="text"
@@ -49,7 +49,7 @@
           <form:errors path="email" 
                        cssClass="validation-error"
                        element="div" />
-        </div>
+        </div> --%>
 
         <label for="attach-files">첨부파일</label>
         <div id="attach-files" class="attach-files">

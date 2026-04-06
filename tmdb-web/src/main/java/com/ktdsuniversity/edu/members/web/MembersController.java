@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ktdsuniversity.edu.members.service.MembersService;
 import com.ktdsuniversity.edu.members.vo.MembersVO;
+import com.ktdsuniversity.edu.members.vo.request.LoginVO;
 import com.ktdsuniversity.edu.members.vo.request.RegistVO;
 import com.ktdsuniversity.edu.members.vo.response.DuplicateVO;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @Controller
@@ -26,6 +28,24 @@ public class MembersController {
 
 	@Autowired
 	private MembersService membersService;
+	
+	@GetMapping("login")
+	public String viewLoginPage() {
+		return "members/login";
+	}
+	
+	@PostMapping("login")
+	public String doLogin(@Valid @ModelAttribute LoginVO loginVO, BindingResult bindingResult, Model model, HttpServletRequest request) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("loginData", loginVO);
+			return "members/login";
+		}
+		
+		
+		
+		return "";
+	}
+	
 
 	@GetMapping("view")
 	public String viewMembers(Model model) {

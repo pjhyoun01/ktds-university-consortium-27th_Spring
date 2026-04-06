@@ -14,59 +14,50 @@ import jakarta.validation.constraints.Size;
  * Spring이 파라미터를 WriteVO의 멤버변수로 할당할 때 setter를 이용.
  */
 public class WriteVO {
-
 	private String id;
 
 	@NotEmpty(message = "제목은 반드시 입력해주세요.")
-	@Size(min = 3)
 	private String subject;
-	
-	@NotEmpty(message="이메일 형태가 아닙니다.")
-	@Email(message="이메일 형태가 아닙니다.")
-	private String email;
-	
-	private String content;
 
+	private String email;
+	private String content;
 	private List<MultipartFile> attachFile;
+	private String fileGroupId;
 
 	public String getId() {
 		return this.id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
 	public String getSubject() {
 		return this.subject;
 	}
-
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-
 	public String getEmail() {
 		return this.email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getContent() {
 		return this.content;
 	}
-
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 	public List<MultipartFile> getAttachFile() {
 		return this.attachFile;
 	}
-
 	public void setAttachFile(List<MultipartFile> attachFile) {
 		this.attachFile = attachFile;
 	}
-
+	public String getFileGroupId() {
+		return this.fileGroupId;
+	}
+	public void setFileGroupId(String fileGroupId) {
+		this.fileGroupId = fileGroupId;
+	}
 }

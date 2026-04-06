@@ -18,7 +18,10 @@ import com.ktdsuniversity.edu.board.vo.BoardVO;
 import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
+import com.ktdsuniversity.edu.members.vo.MembersVO;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -30,7 +33,7 @@ public class BoardController {
 	private BoardService boardService;
 
 	@GetMapping("/")
-	public String viewListPage(Model model) {
+	public String viewListPage(Model model, HttpServletRequest request) {
 
 		SearchResultVO searchResult = this.boardService.findAllBoard();
 
@@ -42,13 +45,24 @@ public class BoardController {
 
 		model.addAttribute("searchResult", list);
 		model.addAttribute("searchCount", searchCount);
+		if (request.getSession().getAttribute("__LOGIN_DATA__") != null) {
+			model.addAttribute("loginData", true);
+		} 
+//		else {
+//			model.addAttribute("loginData", false);
+//		}
 
 		return "board/newlist";
 	}
 
 	// 게시글 등록 화면 보여주는 EndPoint
 	@GetMapping("/write")
-	public String viewWritePage() {
+	public String viewWritePage(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+
+		if (session.getAttribute("__LOGIN_DATA__") == null) {
+			return "redirect:/";
+		}
 		return "board/write";
 	}
 
@@ -57,7 +71,7 @@ public class BoardController {
 	public String doWriteAction(@Valid @ModelAttribute WriteVO writeVO,
 			// @Valid의 결과를 받아오는 파라미터.
 			// 반드시 @Valid 파라미터 이후에 작성!
-			BindingResult bindingResult, Model model) {
+			BindingResult bindingResult, Model model, HttpServletRequest request) {
 		// 사용자의 입력값을 검증 했을 때, 에러가 있다면
 		if (bindingResult.hasErrors()) {
 			// 브라우저에게 "board/write" 페이지를 보여주도록 하고
@@ -66,6 +80,14 @@ public class BoardController {
 			return "board/write";
 		}
 
+		HttpSession session = request.getSession();
+		MembersVO loginMember = (MembersVO) session.getAttribute("__LOGIN_DATA__");
+		if (session.getAttribute("__LOGIN_DATA__") == null) {
+			return "redirect:/login";
+		}
+		
+		writeVO.setEmail(loginMember.getEmail());
+		
 		// create, update, delete => 성공/실패 여부 반환.
 		boolean createResult = this.boardService.createNewBoard(writeVO);
 		if (createResult) {
@@ -95,18 +117,6 @@ public class BoardController {
 		return "board/view";
 	}
 
-	@GetMapping("/delete")
-	public String doDeleteAction(@RequestParam String id) {
-
-		boolean deleteResult = this.boardService.deleteBoardByArticleId(id);
-		if (deleteResult) {
-			return "redirect:/";
-		} else {
-			return "error/404";
-		}
-
-	}
-
 	@GetMapping("/update/{articleId}")
 	public String viewUpdatePage(@PathVariable String articleId, Model model) {
 		BoardVO data = this.boardService.findBoardByArticleId(articleId, ReadType.UPDATE);
@@ -117,7 +127,7 @@ public class BoardController {
 	@PostMapping("/update/{articleId}")
 	public String doUpdateAction(@PathVariable String articleId, UpdateVO updateVO) {
 		updateVO.setId(articleId);
-
+		System.out.println("업데이트 파일 그룹 아이디" + updateVO.getFileGroupId());
 		boolean updateResult = this.boardService.updateBoardByArticleId(updateVO);
 		if (updateResult) {
 			return "redirect:/view/" + articleId;
@@ -126,4 +136,14 @@ public class BoardController {
 		}
 	}
 
+	@GetMapping("/delete")
+	public String doDeleteAction(@RequestParam String id) {
+
+		boolean deleteResult = this.boardService.deleteBoardByArticleId(id);
+		if (deleteResult) {
+			return "redirect:/";
+		} else {
+			return "error/404";
+		}
+	}
 }

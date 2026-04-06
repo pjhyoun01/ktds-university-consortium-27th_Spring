@@ -11,7 +11,23 @@ pageEncoding="UTF-8"%>
   <body>
     <div class="grid list">
       <h1>회원 목록</h1>
-      <div>총 ${searchCount}명의 회원이 검색되었습니다.</div>
+      <div class="flex">
+	    <div>총 ${searchCount}명의 회원이 검색되었습니다.</div>
+		<div class="btn-group">
+          <div class="right-align">
+            <a href="/regist">새로운 회원 등록</a>
+            <a href="/">게시글 목록</a>
+            <c:choose>
+				<c:when test="${empty loginData}">
+					<a href="/login">로그인</a>
+				</c:when>
+				<c:otherwise>
+					<a href="/logout">로그아웃</a>
+				</c:otherwise>
+			</c:choose>
+          </div>
+        </div>
+      </div>
       <ul class="grid member-list">
         <li class="header">
           <ul class="header-item">
@@ -46,11 +62,7 @@ pageEncoding="UTF-8"%>
           </c:choose>
       </ul>
 
-      <div class="btn-group">
-        <div class="right-align">
-          <a href="/regist">새로운 회원 등록</a>
-        </div>
-      </div>
+      
     </div>
   </body>
 </html>
