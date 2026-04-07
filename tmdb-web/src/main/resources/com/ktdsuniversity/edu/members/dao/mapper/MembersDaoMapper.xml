@@ -35,9 +35,42 @@
 			 , LOGIN_FAIL_COUNT
 			 , LATEST_LOGIN_FAIL_DATE
 			 , BLOCK_YN
+			 , FILE_GROUP_ID
 		  FROM MEMBERS
 		 WHERE EMAIL = #{_parameter}
 	</select>
+
+	<update id="updateLoginFailCountPlusOne"
+			parameterType="string">
+		UPDATE MEMBERS
+		   SET LOGIN_FAIL_COUNT = LOGIN_FAIL_COUNT + 1
+		 WHERE EMAIL = #{_parameter}
+	</update>
+
+	<update id="updateBlockY"
+			parameterType="string">
+		UPDATE MEMBERS
+		   SET BLOCK_YN = 'Y'
+		 WHERE EMAIL = #{_parameter}
+	</update>
+
+	<update id="updateBlockN"
+			parameterType="string">
+		UPDATE MEMBERS
+		   SET BLOCK_YN = 'N'
+		 WHERE EMAIL = #{_parameter}
+			 , LOGIN_FAIL_COUNT >= 5
+	</update>
+
+	<update id="updateLoginSuccess"
+			parameterType="com.ktdsuniversity.edu.members.vo.request.LoginVO">
+		UPDATE MEMBERS
+		   SET LOGIN_DATE = SYSDATE
+			 , LATEST_LOGIN_IP #{latestLoginIp}
+			 , LOGIN_FAIL_COUNT = 0
+			 , LATEST_LOGIN_FAIL_DATE = NULL
+		 WHERE EMAIL = #{email}
+	</update>
 
 	<insert id="insertMembers"
 			parameterType="com.ktdsuniversity.edu.members.vo.request.RegistVO">

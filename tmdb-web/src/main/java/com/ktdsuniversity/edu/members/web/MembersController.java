@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ktdsuniversity.edu.members.service.MembersService;
@@ -20,58 +19,68 @@ import com.ktdsuniversity.edu.members.vo.request.RegistVO;
 import com.ktdsuniversity.edu.members.vo.response.DuplicateVO;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/members/")
 public class MembersController {
 
 	@Autowired
 	private MembersService membersService;
-	
-	@GetMapping("login")
+
+	@GetMapping("/login")
 	public String viewLoginPage() {
 		return "members/login";
 	}
-	
-	@PostMapping("login")
-	public String doLogin(@Valid @ModelAttribute LoginVO loginVO, BindingResult bindingResult, Model model, HttpServletRequest request) {
+
+	@PostMapping("/login")
+	public String doLogin(@Valid @ModelAttribute LoginVO loginVO, BindingResult bindingResult, Model model,
+			HttpServletRequest request) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("loginData", loginVO);
 			return "members/login";
 		}
-		
-		
-		
-		return "";
-	}
-	
+		String ip = request.getRemoteAddr();
+		loginVO.setLatestLoginIp(ip);
 
-	@GetMapping("view")
+		MembersVO loginUser = this.membersService.readMemberByEmailAndPassword(loginVO);
+
+		HttpSession session = request.getSession(true);
+		session.setAttribute("__LOGIN__", loginUser);
+
+		return "redirect:/";
+	}
+
+	@GetMapping("/logout")
+	public String doLogout() {
+		return "redirect:/";
+	}
+
+	@GetMapping("/member/view")
 	public String viewMembers(Model model) {
 		List<MembersVO> memberList = this.membersService.readAllMember();
 
 		model.addAttribute("memberList", memberList);
 
-		return "member/list";
+		return "members/list";
 	}
 
-	@GetMapping("view/{email}")
+	@GetMapping("/member/view/{email}")
 	public String viewOneMembers(@PathVariable String email, Model model) {
 		MembersVO membersVO = this.membersService.readMemberByEmail(email);
 
 		model.addAttribute("memberList", membersVO);
 
-		return "member/view";
+		return "members/view";
 	}
 
-	@GetMapping("regist")
+	@GetMapping("/member/regist")
 	public String viewRegistPage() {
 		return "members/regist";
 	}
 
 	@ResponseBody
-	@GetMapping("regist/{email}")
+	@GetMapping("/member/regist/{email}")
 	public DuplicateVO doCheckDuplicateEmail(@PathVariable String email) {
 		MembersVO membersVO = this.membersService.readMemberByEmail(email);
 
@@ -82,7 +91,7 @@ public class MembersController {
 		return duplicateVO;
 	}
 
-	@PostMapping("regist")
+	@PostMapping("/member/regist")
 	public String doRegist(@Valid @ModelAttribute RegistVO registVO, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("validError", registVO);
@@ -97,13 +106,14 @@ public class MembersController {
 		}
 	}
 
-	@PostMapping("delete/{email}")
-	public String deleteMembersByEmail(@PathVariable String email) {
-		boolean deleteSuccecc = this.membersService.deleteMemberByEmail(email);
+	@PostMapping("/member/delete")
+	public String deleteMembersByEmail(HttpSession session) {
+		MembersVO loginUser = (MembersVO) session.getAttribute("__LOGIN__");
+		boolean deleteSuccecc = this.membersService.deleteMemberByEmail(loginUser.getEmail());
 		if (deleteSuccecc) {
-			return "";
+			return "redirect:/";
 		} else {
-			return "";
+			return "error/404";
 		}
 	}
 }

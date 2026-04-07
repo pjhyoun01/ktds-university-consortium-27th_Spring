@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>회원 정보 수정</title>
-    <link rel="stylesheet" type="text/css" href="/css/hello-spring.css" />
-  </head>
-  <body>
+<jsp:include page="/WEB-INF/views/templates/header.jsp"/>
     <h1>회원 정보 수정</h1>
     <%-- action ==> form 내부의 value를 전송할 엔드포인트 --%>
     <form method="post" action="/member/update/${member.email}">
@@ -45,5 +38,6 @@
         </div>
       </div>
     </form>
+    </div>
   </body>
 </html>

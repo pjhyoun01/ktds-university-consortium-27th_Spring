@@ -5,7 +5,9 @@
 }
 
 body {
-  margin: 10px 50px 0px 50px;
+  width: 1400px;
+  margin: 0 auto;
+  margin-top: 20px;
   color: #333;
 }
 
@@ -13,6 +15,15 @@ body {
 	display: flex;
 	justify-content: space-between;
 	padding: 8px;
+}
+
+.aling--left {
+  text-align: right;
+  margin-right: 16px;
+}
+
+.margin--right{
+	margin-right: 10px;
 }
 
 div.validation-error {
@@ -188,7 +199,7 @@ ul.articles > li.header > ul.header-item {
 /* 글쓰기 style 시작 */
 div.update {
   grid-template-columns: 5rem 1fr;
-  grid-template-rows: 1.75rem 1.75rem minmax(1.75rem, auto) 20rem 1fr;
+  grid-template-rows: 1.75rem minmax(1.75rem, auto) 20rem 1fr;
   row-gap: 0.625rem;
 }
 

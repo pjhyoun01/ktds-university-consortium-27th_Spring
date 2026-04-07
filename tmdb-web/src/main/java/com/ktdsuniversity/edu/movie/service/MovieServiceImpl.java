@@ -36,9 +36,10 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public boolean insertMovie(InsertVO insertVO) {
-		int insertSuccessCount = this.movieDao.insertMovie(insertVO);
+		String filegroupId = this.fileHandler.uploadOneFile(insertVO.getFile());
+		insertVO.setFileGroupId(filegroupId);
 
-		this.fileHandler.uploadOneFile(insertVO.getFile(), insertVO.getMovieId());
+		int insertSuccessCount = this.movieDao.insertMovie(insertVO);
 
 		return insertSuccessCount == 1;
 	}

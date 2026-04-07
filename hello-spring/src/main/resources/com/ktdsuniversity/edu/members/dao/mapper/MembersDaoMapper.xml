@@ -54,14 +54,7 @@
 			 , PASSWORD = #{password}
 		 WHERE EMAIL = #{email}
 	</update>
-	
-	<delete id="deleteMemberByEmail"
-			parameterType="string">
-		DELETE
-		  FROM MEMBERS
-		 WHERE EMAIL = #{_parameter}
-	</delete>
-	
+
 	<select id="selectMembersCount" resultType="_int">
 		SELECT COUNT(EMAIL)
 		  FROM MEMBERS
@@ -99,4 +92,12 @@
 		     , BLOCK_YN = 'Y'
 		 WHERE EMAIL = #{_parameter}
 	</update>
+
+	<delete id="deleteMemberByEmail"
+			parameterType="string">
+		DELETE
+		  FROM MEMBERS
+		 WHERE EMAIL = #{_parameter}
+	</delete>
+
 </mapper>

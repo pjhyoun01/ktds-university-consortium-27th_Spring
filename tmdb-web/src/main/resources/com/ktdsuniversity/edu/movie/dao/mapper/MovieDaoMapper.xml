@@ -48,12 +48,6 @@
 	</select>
 
 	<insert id="insertMovie" parameterType="com.ktdsuniversity.edu.movie.vo.request.InsertVO">
-		<selectKey order="BEFORE"
-				   resultType="string"
-				   keyProperty="movieId">
-			SELECT 'MV-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_MOVIE_PK.NEXTVAL, 6, '0')
-			  FROM DUAL
-		</selectKey>
 		INSERT INTO MOVIE
 		 (MOVIE_ID
 		, POSTER_URL
@@ -69,7 +63,7 @@
 		, LANGUAGE
 		, BUDGET
 		, PROFIT) VALUES
-		 (#{movieId}
+		 ('MV-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_MOVIE_PK.NEXTVAL, 6, '0')
 		, #{title} || 'URL'
 		, #{title}
 		, #{movieRating}

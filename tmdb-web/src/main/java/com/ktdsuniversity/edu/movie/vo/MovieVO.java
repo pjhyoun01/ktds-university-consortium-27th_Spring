@@ -15,6 +15,7 @@ public class MovieVO {
 	private String language;
 	private double budget;
 	private double profit;
+	private String fileGroupId;
 
 	public String getMovieId() {
 		return this.movieId;
@@ -99,5 +100,11 @@ public class MovieVO {
 	}
 	public void setProfit(double profit) {
 		this.profit = profit;
+	}
+	public String getFileGroupId() {
+		return this.fileGroupId;
+	}
+	public void setFileGroupId(String fileGroupId) {
+		this.fileGroupId = fileGroupId;
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ktdsuniversity.edu.file.dao.FileDao;
+import com.ktdsuniversity.edu.file.vo.FilesGroupVO;
 import com.ktdsuniversity.edu.file.vo.request.InsertVO;
 
 @Component
@@ -17,11 +18,23 @@ public class FileHandler {
 	@Autowired
 	private FileDao fileDao;
 
-	public void uploadOneFile(MultipartFile file, String fileGroupId) {
-		if (file != null /* 이거 필요할까? && file.getSize() > 0 */) {
+	public String uploadOneFile(MultipartFile file) {
+		if (file != null /* && file.getSize() > 0 */) {
+			FilesGroupVO filesGroupVO = new FilesGroupVO();
+
+			this.fileDao.insertFileGroupId(filesGroupVO);
+			this.uploadOneFile(file, filesGroupVO.getFileGroupId());
+
+			return filesGroupVO.getFileGroupId();
+		}
+		return null;
+	}
+
+	public String uploadOneFile(MultipartFile file, String fileGroupId) {
+		if (file != null && file.getSize() > 0) {
 			String obfuscateName = UUID.randomUUID().toString();
 
-			File storeFile = new File("C:\\dev_programs\\test", obfuscateName);
+			File storeFile = new File("C:\\dev_programs\\files", obfuscateName);
 			if (!storeFile.getParentFile().exists()) {
 				storeFile.getParentFile().mkdirs();
 			}
@@ -44,6 +57,8 @@ public class FileHandler {
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
+			return fileGroupId;
 		}
+		return null;
 	}
 }

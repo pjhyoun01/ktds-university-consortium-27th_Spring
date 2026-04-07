@@ -22,7 +22,7 @@ public class InsertVO {
 
 //	@Max(4)
 //	@Positive
-	private Integer runningTime;
+	private int runningTime;
 	
 //	@Size(max = 60)
 	private String introduce;
@@ -38,8 +38,9 @@ public class InsertVO {
 
 	@NotBlank(message = "언어를 입력해주세요.")
 	private String language;
-	private Long budget;
-	private Long profit;
+	private long budget;
+	private long profit;
+	private String fileGroupId;
 
 	private MultipartFile file;
 
@@ -130,10 +131,13 @@ public class InsertVO {
 	public MultipartFile getFile() {
 		return this.file;
 	}
-	public void setFile(MultipartFile file) {
-		this.file = file;
+	public String getFileGroupId() {
+		return this.fileGroupId;
 	}
-	
+	public void setFileGroupId(String fileGroupId) {
+		this.fileGroupId = fileGroupId;
+	}
+
 	public String replaceTag(String replaceStr) {
 		if (replaceStr != null) {
 			replaceStr = replaceStr.replace("<", "&lt")

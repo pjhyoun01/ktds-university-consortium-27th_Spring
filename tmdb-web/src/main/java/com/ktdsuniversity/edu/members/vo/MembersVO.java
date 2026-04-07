@@ -10,9 +10,10 @@ public class MembersVO {
 	private String latestPasswordChangeDate;
 	private String loginDate;
 	private String latestLoginIp;
-	private String loginFailCount;
+	private int loginFailCount;
 	private String latestLoginFailDate;
 	private String blockYn;
+	private String fileGroupId;
 
 	public String getEmail() {
 		return this.email;
@@ -68,10 +69,10 @@ public class MembersVO {
 	public void setLatestLoginIp(String latestLoginIp) {
 		this.latestLoginIp = latestLoginIp;
 	}
-	public String getLoginFailCount() {
+	public int getLoginFailCount() {
 		return this.loginFailCount;
 	}
-	public void setLoginFailCount(String loginFailCount) {
+	public void setLoginFailCount(int loginFailCount) {
 		this.loginFailCount = loginFailCount;
 	}
 	public String getLatestLoginFailDate() {
@@ -85,5 +86,11 @@ public class MembersVO {
 	}
 	public void setBlockYn(String blockYn) {
 		this.blockYn = blockYn;
+	}
+	public String getFileGroupId() {
+		return this.fileGroupId;
+	}
+	public void setFileGroupId(String fileGroupId) {
+		this.fileGroupId = fileGroupId;
 	}
 }

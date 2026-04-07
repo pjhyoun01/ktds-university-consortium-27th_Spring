@@ -35,8 +35,6 @@ public class MovieController {
 	@Autowired
 	private CategoryService categoryService;
 
-	
-	
 	@GetMapping("")
 	public String viewMovieList(Model model) {
 		List<MovieListVO> movieList = this.movieService.readAllMovie();
