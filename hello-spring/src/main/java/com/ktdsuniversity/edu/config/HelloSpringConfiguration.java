@@ -28,7 +28,7 @@ public class HelloSpringConfiguration implements
 		SessionInterceptor interceptor = new SessionInterceptor();
 		registry.addInterceptor(interceptor).addPathPatterns("/**")// 모든 URL을 대상으로 SessionInterceptor를 수행
 				.excludePathPatterns("/login", "/regist", "/regist/check/duplicate/**", "/", "/js/**", "/css/**",
-						"/image/**", "/view/**", "/file/**")// SessionInterceptor를 수행하지 않을 URL 명시
+						"/image/**", "/view/**", "/file/**", "/error")// SessionInterceptor를 수행하지 않을 URL 명시
 		;
 		IllegalAccessInterceptor illegalAccessInterceptor = new IllegalAccessInterceptor();
 		registry.addInterceptor(illegalAccessInterceptor).addPathPatterns("/login", "/regist",

@@ -6,6 +6,7 @@ public class MovieListVO {
 	private String title;	
 	private String openYear;
 	private String openDate;
+	private String fileGroupId;
 
 	public String getMovieId() {
 		return this.movieId;
@@ -36,5 +37,11 @@ public class MovieListVO {
 	}
 	public void setOpenDate(String openDate) {
 		this.openDate = openDate;
+	}
+	public String getFileGroupId() {
+		return this.fileGroupId;
+	}
+	public void setFileGroupId(String fileGroupId) {
+		this.fileGroupId = fileGroupId;
 	}
 }

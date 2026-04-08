@@ -4,6 +4,7 @@ public class ActorVO {
 	private String actorId;
 	private String actorName;
 	private String actorProfileUrl;
+	private String fileGroupId;
 
 	public String getActorId() {
 		return this.actorId;
@@ -22,5 +23,11 @@ public class ActorVO {
 	}
 	public void setActorProfileUrl(String actorProfileUrl) {
 		this.actorProfileUrl = actorProfileUrl;
+	}
+	public String getFileGroupId() {
+		return this.fileGroupId;
+	}
+	public void setFileGroupId(String fileGroupId) {
+		this.fileGroupId = fileGroupId;
 	}
 }

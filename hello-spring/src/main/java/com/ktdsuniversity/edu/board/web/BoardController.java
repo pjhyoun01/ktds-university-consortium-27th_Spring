@@ -2,6 +2,8 @@ package com.ktdsuniversity.edu.board.web;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,15 +21,17 @@ import com.ktdsuniversity.edu.board.vo.BoardVO;
 import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
+import com.ktdsuniversity.edu.exceptions.HelloSpringException;
 import com.ktdsuniversity.edu.members.vo.MembersVO;
 import com.ktdsuniversity.edu.members.vo.response.LoginUserVO;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
 public class BoardController {
+
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	/**
 	 * 빈 컨테이너에 들어있는 객체 중 타입이 일치하는 객체를 할당 받는다.
 	 */
@@ -91,8 +95,7 @@ public class BoardController {
 	public String doWriteAction(@Valid @ModelAttribute WriteVO writeVO,
 			// @Valid의 결과를 받아오는 파라미터.
 			// 반드시 @Valid 파라미터 이후에 작성!
-			BindingResult bindingResult, Model model,
-			@SessionAttribute("__LOGIN_DATA__") MembersVO loginUser) {
+			BindingResult bindingResult, Model model, @SessionAttribute("__LOGIN_DATA__") MembersVO loginUser) {
 		// 사용자의 입력값을 검증 했을 때, 에러가 있다면
 		if (bindingResult.hasErrors()) {
 			// 브라우저에게 "board/write" 페이지를 보여주도록 하고
@@ -113,9 +116,13 @@ public class BoardController {
 	}
 
 	@GetMapping("/update/{articleId}")
-	public String viewUpdatePage(@PathVariable String articleId, Model model) {
+	public String viewUpdatePage(@PathVariable String articleId, Model model,
+			@SessionAttribute("__LOGIN_DATA__") MembersVO loginUser) {
 		BoardVO board = this.boardService.findBoardByArticleId(articleId, ReadType.UPDATE);
 
+		if (!loginUser.getEmail().equals(board.getEmail())) {
+			throw new HelloSpringException("본인이 작성한 게시글만 수정할 수 있습니다", "error/404");
+		}
 		return "board/update";
 	}
 
@@ -123,6 +130,7 @@ public class BoardController {
 	public String doUpdateAction(@PathVariable String articleId, UpdateVO updateVO) {
 		updateVO.setId(articleId);
 
+		logger.debug("파일그룹아이디: ", updateVO.getFileGroupId());
 		System.out.println("업데이트 파일 그룹 아이디" + updateVO.getFileGroupId());
 		boolean updateResult = this.boardService.updateBoardByArticleId(updateVO);
 		if (updateResult) {

@@ -1,22 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>영화 등록</title>
-	<link type="text/css" rel="stylesheet" href="/css/common.css">
-	<link type="text/css" rel="stylesheet" href="/css/movie/insert.css">
-	<script type="text/javascript" src="/js/jquery-4.0.0.slim.min.js"></script>
-	<!-- <script type="text/javascript" src="/js/movie/insert.js"></script> -->
-</head>
-<body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+	<jsp:include page="/WEB-INF/views/common/header.jsp">
+		<jsp:param value="영화 등록" name="title"/>
+		<jsp:param value="movie/insert" name="css"/>
+		<jsp:param value="movie/insert" name="script"/>
+	</jsp:include>
 	<div class="content">
 		<div class="form-container">
 			<h1>영화 등록</h1>
-			<form:form modelAttribute="insertVO" action="/insert" method="post" enctype="multipart/form-data">
+			<form:form modelAttribute="insertVO" action="/movie/insert" method="post" enctype="multipart/form-data">
 				<div>
 					<label>제목 
 						<span id="span__title">
@@ -72,14 +66,6 @@
 						</span>
 					</label>
 					<input type="text" placeholder="개봉상태를 입력해 주세요" name="state" id="state"/>
-					
-					<!-- <select name="state">
-						<option>개봉 상태</option>
-						<option value="제작예정">제작예정</option>
-						<option value="제작중">제작중</option>
-						<option value="상영예정">상영예정</option>
-						<option value="상영중">상영중</option>
-					</select> -->
 				</div>
 				<div>
 					<label>수익</label>

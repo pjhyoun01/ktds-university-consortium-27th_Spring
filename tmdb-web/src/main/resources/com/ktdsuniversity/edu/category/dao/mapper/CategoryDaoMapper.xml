@@ -1,16 +1,33 @@
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ktdsuniversity.edu.category.dao.CategoryDao">
 
-    <select id="readAllCategoryNameByMovieId"
-            parameterType="string"
-            resultType="string">
-        SELECT C.CATEGORY_NAME 
+	<select id="seleteAllCategory"
+			resultType="com.ktdsuniversity.edu.category.vo.CategoryVO">
+		SELECT CATEGORY_ID
+			 , CATEGORY_NAME
+		  FROM CATEGORY
+	</select>
+
+	<select id="readAllCategoryNameByMovieId"
+			parameterType="string"
+			resultType="string">
+		SELECT C.CATEGORY_NAME 
 		  FROM GENRE G
 		 INNER JOIN CATEGORY C
-		    ON G.CATEGORY_ID = C.CATEGORY_ID
+			ON G.CATEGORY_ID = C.CATEGORY_ID
 		 WHERE MOVIE_ID = #{_parameter}
-    </select>
+	</select>
+
+	<insert id="insertCategory"
+			parameterType="com.ktdsuniversity.edu.category.vo.request.InsertVO">
+		INSERT INTO CATEGORY 
+		( CATEGORY_ID
+		, CATEGORY_NAME)
+		VALUES
+		( 'CT-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_CATEGORY_PK.NEXTVAL, 6, '0')
+		, #{categoryName})
+	</insert>
 
 </mapper>

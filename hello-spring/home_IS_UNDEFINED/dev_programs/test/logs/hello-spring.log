@@ -1,0 +1,608 @@
+2026-04-08 11:00:30.411 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 5640 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 11:00:30.412 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 11:00:30.596 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 11:00:30.597 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 11:00:30.597 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 11:00:30.598 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 11:00:30.665 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 11:00:30.668 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 255 ms
+2026-04-08 11:00:30.785 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 11:00:30.790 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 11:00:30.792 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.419 seconds (process running for 223.808)
+2026-04-08 11:00:30.793 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 11:00:43.274 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:168 -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 11:00:43.274 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:523 -- Initializing Servlet 'dispatcherServlet'
+2026-04-08 11:00:43.275 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:545 -- Completed initialization in 1 ms
+2026-04-08 11:00:43.431 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 11:00:43.431 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 11:06:56.244 [RMI TCP Connection(24)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin:150 -- Application shutdown requested.
+2026-04-08 11:06:56.246 [RMI TCP Connection(24)-127.0.0.1] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 11:06:56.247 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 11:06:56.251 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 11:06:56.251 [RMI TCP Connection(24)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:27:38.501 [background-preinit] INFO  o.h.validator.internal.util.Version:18 -- HV000001: Hibernate Validator 9.0.1.Final
+2026-04-08 14:27:38.537 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 14:27:38.539 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 14:27:38.590 [restartedMain] INFO  o.s.b.d.restart.ChangeableUrls:69 -- The Class-Path manifest attribute in C:\Users\pjhyo\.m2\repository\com\oracle\database\jdbc\ojdbc11\23.9.0.25.07\ojdbc11-23.9.0.25.07.jar referenced one or more files that do not exist: file:/C:/Users/pjhyo/.m2/repository/com/oracle/database/jdbc/ojdbc11/23.9.0.25.07/oraclepki.jar
+2026-04-08 14:27:38.590 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:69 -- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-04-08 14:27:38.592 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor:69 -- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-04-08 14:27:39.514 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 14:27:39.524 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:27:39.526 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 14:27:39.527 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 14:27:39.687 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 14:27:39.695 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 1102 ms
+2026-04-08 14:27:40.316 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:27:40.341 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 14:27:40.346 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 2.121 seconds (process running for 2.975)
+2026-04-08 14:27:45.706 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:168 -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 14:27:45.706 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:523 -- Initializing Servlet 'dispatcherServlet'
+2026-04-08 14:27:45.708 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:545 -- Completed initialization in 1 ms
+2026-04-08 14:27:45.758 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:109 -- HikariPool-1 - Starting...
+2026-04-08 14:27:45.761 [http-nio-8080-exec-1] WARN  c.z.hikari.util.DriverDataSource:75 -- Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2026-04-08 14:27:46.107 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.pool.HikariPool:580 -- HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@47f3c52
+2026-04-08 14:27:46.108 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:122 -- HikariPool-1 - Start completed.
+2026-04-08 14:27:47.261 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 14:27:47.264 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 14:29:40.787 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 14:29:40.796 [Thread-1] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 14:29:40.798 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:29:40.806 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 14:29:40.807 [Thread-1] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:29:40.811 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource:349 -- HikariPool-1 - Shutdown initiated...
+2026-04-08 14:29:40.820 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource:351 -- HikariPool-1 - Shutdown completed.
+2026-04-08 14:29:40.902 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 14:29:40.902 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 14:29:41.107 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 14:29:41.107 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:29:41.107 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 14:29:41.107 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 14:29:41.184 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 14:29:41.189 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 285 ms
+2026-04-08 14:29:41.325 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:29:41.329 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 14:29:41.332 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.461 seconds (process running for 123.962)
+2026-04-08 14:29:41.334 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 14:34:01.769 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 14:34:01.771 [Thread-7] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 14:34:01.772 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:34:01.778 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 14:34:01.778 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:34:01.853 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 14:34:01.853 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 14:34:02.082 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 14:34:02.083 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:34:02.084 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 14:34:02.084 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 14:34:02.161 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 14:34:02.164 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 308 ms
+2026-04-08 14:34:02.322 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:34:02.326 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 14:34:02.329 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.505 seconds (process running for 384.959)
+2026-04-08 14:34:02.330 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 14:34:13.943 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 14:34:13.944 [Thread-11] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 14:34:13.945 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:34:13.950 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 14:34:13.950 [Thread-11] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:34:14.017 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 14:34:14.017 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 14:34:14.186 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 14:34:14.187 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:34:14.187 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 14:34:14.187 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 14:34:14.259 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 14:34:14.261 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 242 ms
+2026-04-08 14:34:14.381 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:34:14.386 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 14:34:14.387 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.395 seconds (process running for 397.017)
+2026-04-08 14:34:14.389 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 14:40:51.293 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:168 -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 14:40:51.293 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:523 -- Initializing Servlet 'dispatcherServlet'
+2026-04-08 14:40:51.295 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:545 -- Completed initialization in 2 ms
+2026-04-08 14:40:51.474 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 14:40:51.475 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 14:41:03.271 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 14:41:03.272 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 14:41:03.504 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 14:41:03.505 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 14:41:03.648 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 14:41:03.649 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 14:41:39.250 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 14:41:39.251 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 14:41:41.470 [http-nio-8080-exec-8] INFO  com.zaxxer.hikari.HikariDataSource:109 -- HikariPool-2 - Starting...
+2026-04-08 14:41:41.471 [http-nio-8080-exec-8] WARN  c.z.hikari.util.DriverDataSource:75 -- Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2026-04-08 14:41:41.548 [http-nio-8080-exec-8] INFO  com.zaxxer.hikari.pool.HikariPool:580 -- HikariPool-2 - Added connection oracle.jdbc.driver.T4CConnection@35d82909
+2026-04-08 14:41:41.548 [http-nio-8080-exec-8] INFO  com.zaxxer.hikari.HikariDataSource:122 -- HikariPool-2 - Start completed.
+2026-04-08 14:41:50.312 [http-nio-8080-exec-9] ERROR c.k.e.e.HelloSpringException:23 -- jaehyoun@gmail.com은 이미 사용중입니다
+com.ktdsuniversity.edu.exceptions.HelloSpringException: jaehyoun@gmail.com은 이미 사용중입니다
+	at com.ktdsuniversity.edu.members.service.MembersServiceImpl.createNewMember(MembersServiceImpl.java:29)
+	at com.ktdsuniversity.edu.members.web.MembersController.doRegistAction(MembersController.java:97)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:184)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:653)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:723)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-04-08 14:49:24.035 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 14:49:24.037 [Thread-15] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 14:49:24.037 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:49:24.042 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 14:49:24.042 [Thread-15] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:49:24.044 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource:349 -- HikariPool-2 - Shutdown initiated...
+2026-04-08 14:49:24.051 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource:351 -- HikariPool-2 - Shutdown completed.
+2026-04-08 14:49:24.125 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 14:49:24.125 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 14:49:24.312 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 14:49:24.313 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:49:24.313 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 14:49:24.313 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 14:49:24.390 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 14:49:24.393 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 266 ms
+2026-04-08 14:49:24.529 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 14:49:24.533 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 14:49:24.535 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.438 seconds (process running for 1307.164)
+2026-04-08 14:49:24.536 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 15:01:59.840 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2026-04-08 15:01:59.843 [Thread-19] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 15:01:59.844 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:01:59.856 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 15:01:59.856 [Thread-19] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:01:59.930 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 15:01:59.930 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 15:02:00.119 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 15:02:00.121 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:02:00.121 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 15:02:00.121 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 15:02:00.202 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 15:02:00.205 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 274 ms
+2026-04-08 15:02:00.337 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:02:00.343 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 15:02:00.346 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.445 seconds (process running for 2062.975)
+2026-04-08 15:02:00.347 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 15:06:02.412 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 15:06:02.413 [Thread-23] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 15:06:02.414 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:06:02.421 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 15:06:02.421 [Thread-23] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:06:02.492 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 15:06:02.492 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 15:06:02.679 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 15:06:02.680 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:06:02.681 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 15:06:02.681 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 15:06:02.750 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 15:06:02.752 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 258 ms
+2026-04-08 15:06:02.876 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:06:02.880 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 15:06:02.882 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.419 seconds (process running for 2305.512)
+2026-04-08 15:06:02.886 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:61 -- Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+    None
+
+
+Negative matches:
+-----------------
+
+   ErrorMvcAutoConfiguration#basicErrorController:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.boot.webmvc.error.ErrorController; SearchStrategy: current) found beans of type 'org.springframework.boot.webmvc.error.ErrorController' noEndpointController (OnBeanCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2026-04-08 15:06:10.435 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 15:06:10.438 [Thread-27] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 15:06:10.439 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:06:10.457 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 15:06:10.457 [Thread-27] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:06:10.520 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 15:06:10.520 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 15:06:10.694 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 15:06:10.694 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:06:10.694 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 15:06:10.695 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 15:06:10.761 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 15:06:10.763 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 241 ms
+2026-04-08 15:06:10.868 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:06:10.872 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 15:06:10.874 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.377 seconds (process running for 2313.503)
+2026-04-08 15:06:10.876 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 15:26:51.672 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:168 -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 15:26:51.672 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:523 -- Initializing Servlet 'dispatcherServlet'
+2026-04-08 15:26:51.674 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:545 -- Completed initialization in 2 ms
+2026-04-08 15:26:51.676 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:109 -- HikariPool-3 - Starting...
+2026-04-08 15:26:51.676 [http-nio-8080-exec-1] WARN  c.z.hikari.util.DriverDataSource:75 -- Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2026-04-08 15:26:51.759 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.pool.HikariPool:580 -- HikariPool-3 - Added connection oracle.jdbc.driver.T4CConnection@626a2556
+2026-04-08 15:26:51.760 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource:122 -- HikariPool-3 - Start completed.
+2026-04-08 15:27:11.925 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:27:11.925 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:36:11.135 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:36:11.135 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:36:11.193 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:36:11.194 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:36:11.307 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:36:11.310 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:36:11.374 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:36:11.375 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:36:11.466 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:36:11.467 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:36:11.523 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:36:11.525 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:36:11.617 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:36:11.618 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:36:11.673 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:36:11.673 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:36:11.819 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:36:11.820 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:36:11.897 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:36:11.897 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:36:11.941 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:36:11.943 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:36:12.017 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:36:12.018 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:36:12.096 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:36:12.096 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:36:12.156 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:36:12.157 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:36:22.736 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for POST /login/write
+2026-04-08 15:36:22.737 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint POST /login/write.
+2026-04-08 15:36:22.787 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:36:22.788 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:37:07.848 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for POST /login/write
+2026-04-08 15:37:07.849 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint POST /login/write.
+2026-04-08 15:37:07.896 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:07.896 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:37:14.837 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:14.838 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:37:15.306 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:15.306 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:37:15.890 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:15.891 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:37:16.025 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:16.026 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:37:16.202 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:16.203 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:37:16.360 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:16.360 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:37:16.535 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:16.536 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:37:28.118 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:37:28.118 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:38:22.337 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:38:22.337 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:38:22.812 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:38:22.813 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:38:23.004 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:38:23.004 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:38:23.191 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:38:23.192 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:39:30.224 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:39:30.224 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:39:40.408 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:39:40.408 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:45:42.609 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 15:45:42.610 [Thread-31] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 15:45:42.611 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:45:42.616 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 15:45:42.616 [Thread-31] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:45:42.618 [Thread-31] INFO  com.zaxxer.hikari.HikariDataSource:349 -- HikariPool-3 - Shutdown initiated...
+2026-04-08 15:45:42.625 [Thread-31] INFO  com.zaxxer.hikari.HikariDataSource:351 -- HikariPool-3 - Shutdown completed.
+2026-04-08 15:45:42.701 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 15:45:42.703 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 15:45:42.914 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 15:45:42.915 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:45:42.915 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 15:45:42.915 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 15:45:42.994 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 15:45:42.997 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 293 ms
+2026-04-08 15:45:43.151 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:45:43.157 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 15:45:43.159 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.485 seconds (process running for 4685.789)
+2026-04-08 15:45:43.162 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 15:46:06.075 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 15:46:06.078 [Thread-35] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 15:46:06.080 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:46:06.092 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 15:46:06.093 [Thread-35] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:46:06.159 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 15:46:06.159 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 15:46:06.322 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 15:46:06.323 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:46:06.323 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 15:46:06.323 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 15:46:06.385 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 15:46:06.387 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 226 ms
+2026-04-08 15:46:06.491 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:46:06.496 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 15:46:06.498 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.362 seconds (process running for 4709.127)
+2026-04-08 15:46:06.499 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 15:46:32.954 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:168 -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 15:46:32.954 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:523 -- Initializing Servlet 'dispatcherServlet'
+2026-04-08 15:46:32.955 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:545 -- Completed initialization in 1 ms
+2026-04-08 15:46:33.115 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:46:33.115 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:46:33.172 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:46:33.173 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:46:34.606 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:46:34.606 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:46:34.622 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:46:34.624 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:46:38.463 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:46:38.463 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:46:44.700 [http-nio-8080-exec-2] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver:248 -- Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2026-04-08 15:46:44.744 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:46:44.745 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:33.990 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 15:47:33.991 [Thread-39] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 15:47:33.991 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:47:33.996 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 15:47:33.996 [Thread-39] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:47:34.067 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 15:47:34.067 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 15:47:34.231 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 15:47:34.231 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:47:34.231 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 15:47:34.231 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 15:47:34.303 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 15:47:34.305 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 236 ms
+2026-04-08 15:47:34.420 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:47:34.424 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 15:47:34.426 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.385 seconds (process running for 4797.056)
+2026-04-08 15:47:34.427 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 15:47:35.962 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:168 -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 15:47:35.962 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:523 -- Initializing Servlet 'dispatcherServlet'
+2026-04-08 15:47:35.963 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:545 -- Completed initialization in 1 ms
+2026-04-08 15:47:35.964 [http-nio-8080-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver:248 -- Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2026-04-08 15:47:36.174 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:36.174 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:36.211 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:47:36.211 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:47:37.758 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:37.758 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:37.773 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:37.774 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:39.005 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:39.005 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:39.055 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:47:39.055 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:47:39.300 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:39.301 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:39.354 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:47:39.355 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:47:39.461 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:39.461 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:39.511 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:47:39.512 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:47:39.679 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:39.680 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:39.727 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:47:39.727 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:47:39.792 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:39.793 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:47:39.841 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:47:39.842 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:47:44.251 [http-nio-8080-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver:248 -- Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2026-04-08 15:47:44.307 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:47:44.307 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:44.798 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 15:49:44.801 [Thread-43] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 15:49:44.802 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:49:44.809 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 15:49:44.809 [Thread-43] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:49:44.881 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 15:49:44.881 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 15:49:45.053 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 15:49:45.053 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:49:45.054 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 15:49:45.054 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 15:49:45.123 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 15:49:45.125 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 243 ms
+2026-04-08 15:49:45.234 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 15:49:45.239 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 15:49:45.240 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.384 seconds (process running for 4927.869)
+2026-04-08 15:49:45.241 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 15:49:47.439 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:168 -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 15:49:47.440 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:523 -- Initializing Servlet 'dispatcherServlet'
+2026-04-08 15:49:47.440 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet:545 -- Completed initialization in 0 ms
+2026-04-08 15:49:47.441 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:49:47.442 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:47.640 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:49:47.640 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:50.080 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:49:50.084 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:50.138 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:49:50.139 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:49:50.203 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:49:50.203 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:50.253 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:49:50.253 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:49:50.305 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:49:50.307 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:50.358 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:49:50.358 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:49:50.528 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:49:50.530 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:50.571 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:49:50.572 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:49:50.661 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:49:50.663 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:50.699 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:49:50.700 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:49:50.827 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:49:50.828 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 15:49:50.899 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 15:49:50.900 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 15:50:00.472 [http-nio-8080-exec-9] INFO  com.zaxxer.hikari.HikariDataSource:109 -- HikariPool-4 - Starting...
+2026-04-08 15:50:00.473 [http-nio-8080-exec-9] WARN  c.z.hikari.util.DriverDataSource:75 -- Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2026-04-08 15:50:00.534 [http-nio-8080-exec-9] INFO  com.zaxxer.hikari.pool.HikariPool:580 -- HikariPool-4 - Added connection oracle.jdbc.driver.T4CConnection@31fe542f
+2026-04-08 15:50:00.534 [http-nio-8080-exec-9] INFO  com.zaxxer.hikari.HikariDataSource:122 -- HikariPool-4 - Start completed.
+2026-04-08 15:50:00.660 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 15:50:00.661 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:39.386 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:39.387 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:39.892 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:39.892 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:40.084 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:40.084 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:41.090 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:41.090 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:41.158 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 16:29:41.158 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 16:29:41.280 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:41.281 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:41.350 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 16:29:41.350 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 16:29:41.451 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:41.451 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:41.509 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 16:29:41.509 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 16:29:41.627 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:41.628 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:41.693 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 16:29:41.693 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 16:29:41.804 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:41.804 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:41.877 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 16:29:41.877 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 16:29:46.855 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /.well-known/appspecific/com.chrome.devtools.json
+2026-04-08 16:29:46.857 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /.well-known/appspecific/com.chrome.devtools.json.
+2026-04-08 16:29:57.853 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /login/
+2026-04-08 16:29:57.854 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /login/.
+2026-04-08 16:42:29.156 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 16:42:29.158 [Thread-47] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 16:42:29.159 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:42:29.172 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 16:42:29.172 [Thread-47] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:42:29.174 [Thread-47] INFO  com.zaxxer.hikari.HikariDataSource:349 -- HikariPool-4 - Shutdown initiated...
+2026-04-08 16:42:29.180 [Thread-47] INFO  com.zaxxer.hikari.HikariDataSource:351 -- HikariPool-4 - Shutdown completed.
+2026-04-08 16:42:29.267 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 16:42:29.268 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:42:29.448 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 16:42:29.450 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:42:29.450 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 16:42:29.450 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 16:42:29.522 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 16:42:29.523 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 254 ms
+2026-04-08 16:42:29.673 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:42:29.677 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 16:42:29.681 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.44 seconds (process running for 8093.526)
+2026-04-08 16:42:29.682 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 16:44:19.365 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 16:44:19.367 [Thread-51] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 16:44:19.367 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:44:19.370 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 16:44:19.371 [Thread-51] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:44:19.436 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 16:44:19.436 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:44:19.604 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 16:44:19.604 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:44:19.604 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 16:44:19.604 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 16:44:19.673 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 16:44:19.676 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 238 ms
+2026-04-08 16:44:19.786 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:44:19.790 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 16:44:19.791 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.376 seconds (process running for 8203.637)
+2026-04-08 16:44:19.792 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 16:44:35.137 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:168 -- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 16:44:35.138 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet:523 -- Initializing Servlet 'dispatcherServlet'
+2026-04-08 16:44:35.140 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet:545 -- Completed initialization in 2 ms
+2026-04-08 16:44:35.144 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource:109 -- HikariPool-5 - Starting...
+2026-04-08 16:44:35.145 [http-nio-8080-exec-2] WARN  c.z.hikari.util.DriverDataSource:75 -- Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2026-04-08 16:44:35.213 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.pool.HikariPool:580 -- HikariPool-5 - Added connection oracle.jdbc.driver.T4CConnection@75139a1e
+2026-04-08 16:44:35.213 [http-nio-8080-exec-2] INFO  com.zaxxer.hikari.HikariDataSource:122 -- HikariPool-5 - Start completed.
+2026-04-08 16:44:35.493 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:1174 -- No mapping for GET /favicon.ico
+2026-04-08 16:44:35.494 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound:448 -- No endpoint GET /favicon.ico.
+2026-04-08 16:46:42.919 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 16:46:42.922 [Thread-55] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 16:46:42.923 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:46:42.942 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 16:46:42.942 [Thread-55] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:46:42.944 [Thread-55] INFO  com.zaxxer.hikari.HikariDataSource:349 -- HikariPool-5 - Shutdown initiated...
+2026-04-08 16:46:42.950 [Thread-55] INFO  com.zaxxer.hikari.HikariDataSource:351 -- HikariPool-5 - Shutdown completed.
+2026-04-08 16:46:43.018 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 16:46:43.019 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:46:43.179 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 16:46:43.180 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:46:43.180 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 16:46:43.180 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 16:46:43.242 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 16:46:43.244 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 224 ms
+2026-04-08 16:46:43.361 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:46:43.366 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 16:46:43.367 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.37 seconds (process running for 8347.213)
+2026-04-08 16:46:43.368 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 16:50:59.570 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:214 -- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-08 16:50:59.571 [Thread-59] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 16:50:59.572 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:50:59.578 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 16:50:59.578 [Thread-59] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:50:59.648 [restartedMain] INFO  c.k.edu.HelloSpringApplication:54 -- Starting HelloSpringApplication using Java 25.0.1 with PID 18536 (C:\dev_programs\workspace\spring\hello-spring\target\classes started by pjhyo in C:\dev_programs\workspace\spring\hello-spring)
+2026-04-08 16:50:59.649 [restartedMain] INFO  c.k.edu.HelloSpringApplication:652 -- No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:50:59.822 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:114 -- Tomcat initialized with port 8080 (http)
+2026-04-08 16:50:59.823 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Initializing ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:50:59.823 [restartedMain] INFO  o.a.catalina.core.StandardService:168 -- Starting service [Tomcat]
+2026-04-08 16:50:59.823 [restartedMain] INFO  o.a.catalina.core.StandardEngine:168 -- Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-08 16:50:59.898 [restartedMain] INFO  o.apache.jasper.servlet.TldScanner:168 -- At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-08 16:50:59.901 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer:77 -- Root WebApplicationContext: initialization completed in 251 ms
+2026-04-08 16:51:00.035 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Starting ProtocolHandler ["http-nio-8080"]
+2026-04-08 16:51:00.039 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer:240 -- Tomcat started on port 8080 (http) with context path '/'
+2026-04-08 16:51:00.051 [restartedMain] INFO  c.k.edu.HelloSpringApplication:60 -- Started HelloSpringApplication in 0.428 seconds (process running for 8603.896)
+2026-04-08 16:51:00.051 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener:66 -- Condition evaluation unchanged
+2026-04-08 17:08:48.850 [RMI TCP Connection(229)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin:150 -- Application shutdown requested.
+2026-04-08 17:08:48.851 [RMI TCP Connection(229)-127.0.0.1] INFO  o.s.boot.tomcat.GracefulShutdown:54 -- Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-08 17:08:48.851 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-08 17:08:48.857 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown:76 -- Graceful shutdown complete
+2026-04-08 17:08:48.858 [RMI TCP Connection(229)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol:168 -- Stopping ProtocolHandler ["http-nio-8080"]

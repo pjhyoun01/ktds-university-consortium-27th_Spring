@@ -4,7 +4,6 @@ import com.ktdsuniversity.edu.file.vo.response.LoadVO;
 
 public interface FileService {
 
-	LoadVO readFileByMovieId(String movieId);
-
+	LoadVO readFileByFileGroupId(String fileGroupId);
 
 }

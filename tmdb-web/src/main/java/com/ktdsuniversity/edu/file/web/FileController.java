@@ -43,9 +43,9 @@ public class FileController {
 
 	}
 
-	@GetMapping("/file/{movieId}")
-	public ResponseEntity<Resource> doLoadFile(@PathVariable String movieId) {
-		LoadVO loadVO = this.fileService.readFileByMovieId(movieId);
+	@GetMapping("/file/{fileGroupId}")
+	public ResponseEntity<Resource> doLoadFile(@PathVariable String fileGroupId) {
+		LoadVO loadVO = this.fileService.readFileByFileGroupId(fileGroupId);
 
 		if (loadVO == null) {
 			return ResponseEntity.notFound().build();

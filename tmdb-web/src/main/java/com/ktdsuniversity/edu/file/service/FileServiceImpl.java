@@ -11,10 +11,11 @@ public class FileServiceImpl implements FileService{
 
 	@Autowired
 	private FileDao fileDao;
-	
+
 	@Override
-	public LoadVO readFileByMovieId(String movieId) {
-		LoadVO fileVO = this.fileDao.selectFileByMovieId(movieId);
+	public LoadVO readFileByFileGroupId(String fileGroupId) {
+		LoadVO fileVO = this.fileDao.selectFileByFileGroupId(fileGroupId);
+
 		return fileVO;
 	}
 

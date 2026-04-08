@@ -19,7 +19,7 @@ public class FileHandler {
 	private FileDao fileDao;
 
 	public String uploadOneFile(MultipartFile file) {
-		if (file != null /* && file.getSize() > 0 */) {
+		if (file != null && file.getSize() > 0) {
 			FilesGroupVO filesGroupVO = new FilesGroupVO();
 
 			this.fileDao.insertFileGroupId(filesGroupVO);

@@ -8,6 +8,16 @@ $().ready(function () {
   //     $("#email").trigger("keyup");
   //   }, 150);
   // });
+  
+  // 현재 Locarion의 parhname을 가지고 온다
+  var pathname = location.pathname;
+  // parhname 이 /lofin이 아니라면 acrion을 /lofin?go={pathname}으로 수정
+  if(pathname !== "/login") {
+	pathname = "?go=" + pathname;
+  } else {
+	pathname = "";
+  }
+  $("#loginVO").attr({action: "/login" + pathname});
 
   var delay;
   $("#email").on("keyup", function () {

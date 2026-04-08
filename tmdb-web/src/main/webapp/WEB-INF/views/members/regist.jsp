@@ -1,22 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>회원 가입</title>
-	<link type="text/css" rel="stylesheet" href="/css/common.css">
-	<link type="text/css" rel="stylesheet" href="/css/members/regist.css">
-	<script type="text/javascript" src="/js/jquery-4.0.0.slim.min.js"></script>
-	<script type="text/javascript" src="/js/members/regist.js"></script>
-</head>
-<body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
+
+	<jsp:include page="/WEB-INF/views/common/header.jsp">
+		<jsp:param value="회원 가입" name="title"/>
+		<jsp:param value="members/regist" name="css"/>
+		<jsp:param value="members/regist" name="script"/>
+	</jsp:include>
 	<div class="content">
 		<div class="form-container">
 			<h1>회원 등록</h1>
-			<form:form modelAttribute="registVO" action="/members/regist" method="post">
+			<form:form modelAttribute="registVO" action="/member/regist" method="post">
 				<div>
 					<div>
 						<label for="email">이메일</label>

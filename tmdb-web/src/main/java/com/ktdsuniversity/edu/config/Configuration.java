@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.config.interceptor;
+package com.ktdsuniversity.edu.config;
 
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

@@ -4,12 +4,17 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * SHA-256 암호화
  * 
  * @author Minchang Jang
  */
 public class SHA256Util {
+	
+	private static final Logger logger = LoggerFactory.getLogger(SHA256Util.class);
 	/**
 	 * SHA-256 암호화 함
 	 * 
@@ -44,7 +49,8 @@ public class SHA256Util {
 			}
 			result = sb.toString();
 		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+			logger.debug("존재하지 않는 알고리즘: ", e);
+			
 		}
 		return result;
 	}

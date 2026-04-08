@@ -3,8 +3,11 @@ package com.ktdsuniversity.edu.board.service;
 import java.io.File;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ktdsuniversity.edu.board.dao.BoardDao;
@@ -13,12 +16,15 @@ import com.ktdsuniversity.edu.board.vo.BoardVO;
 import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
+import com.ktdsuniversity.edu.exceptions.HelloSpringException;
 import com.ktdsuniversity.edu.files.dao.FilesDao;
 import com.ktdsuniversity.edu.files.helpers.MultipartFileHandler;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
+	private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
+	
 	/**
 	 * 빈 컨테이너에 들어있는 객체 중 타입이 일치하는 객체를 할당 받는다.
 	 */
@@ -34,9 +40,9 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public SearchResultVO findAllBoard() {
 		SearchResultVO result = new SearchResultVO();
-
 		// 게시글 개수 조회. ==> 1
 		int count = this.boardDao.selectBoardCount();
+		logger.debug("생성된 게시글의 수는?: ", count);
 		result.setCount(count);
 
 		if (count == 0) {
@@ -50,6 +56,7 @@ public class BoardServiceImpl implements BoardService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public boolean createNewBoard(WriteVO writeVO) {
 		// dao => insert 요청
@@ -68,6 +75,7 @@ public class BoardServiceImpl implements BoardService {
 		return insertCount == 1;
 	}
 
+	@Transactional
 	@Override
 	public BoardVO findBoardByArticleId(String articleId, ReadType readType) {
 		if (readType == ReadType.VIEW) {
@@ -76,8 +84,8 @@ public class BoardServiceImpl implements BoardService {
 
 			if (updateCount == 0) {
 				// 존재하지 않는 게시글을 조회하려 했다.
-				return null;
 				// throw new RuntimeException("존재하지 않는 게시글입니다.");
+				throw new HelloSpringException("존재하지 않는 게시글입니다", "error/404");
 			}
 		}
 
@@ -88,6 +96,7 @@ public class BoardServiceImpl implements BoardService {
 		return board;
 	}
 
+	@Transactional
 	@Override
 	public boolean deleteBoardByArticleId(String id) {
 		int deleteCount = this.boardDao.deleteBoardById(id);
@@ -108,6 +117,7 @@ public class BoardServiceImpl implements BoardService {
 		return deleteCount == 1;
 	}
 
+	@Transactional
 	@Override
 	public boolean updateBoardByArticleId(UpdateVO updateVO) {
 		// 선택한 파일들만 삭제.

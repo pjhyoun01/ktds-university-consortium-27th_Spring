@@ -131,6 +131,9 @@ public class InsertVO {
 	public MultipartFile getFile() {
 		return this.file;
 	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public String getFileGroupId() {
 		return this.fileGroupId;
 	}

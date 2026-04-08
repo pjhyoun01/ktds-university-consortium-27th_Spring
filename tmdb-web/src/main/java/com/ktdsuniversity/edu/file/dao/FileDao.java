@@ -9,12 +9,14 @@ import com.ktdsuniversity.edu.file.vo.response.LoadVO;
 @Mapper
 public interface FileDao {
 
-	int insertFile(InsertVO insertVO);
+	LoadVO selectFileByFileGroupId(String fileGroupId);
 
-	LoadVO selectFileByMovieId(String movieId);
-
-	String selectNextFilesGroupPK();
+	String selectPathByFileGroupId(String fileGroupId);
 
 	int insertFileGroupId(FilesGroupVO filesGroupVO);
+
+	int insertFile(InsertVO insertVO);
+
+	int deleteFileByFileGroupId(String fileGroupId);
 
 }

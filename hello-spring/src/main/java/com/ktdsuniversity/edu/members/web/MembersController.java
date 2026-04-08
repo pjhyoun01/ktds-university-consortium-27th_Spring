@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ktdsuniversity.edu.members.service.MembersService;
@@ -38,7 +39,7 @@ public class MembersController {
 
 	@PostMapping("/login")
 	public String doLogin(@Valid @ModelAttribute LoginVO loginVO, BindingResult bindingResult, Model model,
-			HttpServletRequest request) {
+			HttpServletRequest request, @RequestParam(required = false, defaultValue = "/") String go) {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("loginData", loginVO);
@@ -59,7 +60,7 @@ public class MembersController {
 		HttpSession session = request.getSession(true);
 		session.setAttribute("__LOGIN_DATA__", member);
 		session.setMaxInactiveInterval(1800);
-		return "redirect:/";
+		return "redirect:" + go;
 	}
 
 	@GetMapping("/logout")

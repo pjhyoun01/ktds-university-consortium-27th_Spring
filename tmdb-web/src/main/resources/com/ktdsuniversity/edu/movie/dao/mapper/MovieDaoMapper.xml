@@ -10,20 +10,9 @@
 			 , MOVIE_RATING
 			 , TO_CHAR(OPEN_DATE, 'YYYY') AS openYear
 			 , TO_CHAR(OPEN_DATE, 'MM"월 "DD') AS openDate
+			 , FILE_GROUP_ID
 		  FROM MOVIE
 	</select>
-
-	<!-- <resultMap type="com.ktdsuniversity.edu.movie.vo.response.OneMovieVO"
-			   id="OneMovieVOMap"
-			   autoMapping="true">
-		<id column="MOVIE_ID" property="movieId"/>
-		<association javaType="com.ktdsuniversity.edu.file.vo.FileVO" 
-					 property="fileVO"
-					 autoMapping="true">
-			<id column="FILE_NUM" property="fileNum"/>
-			<id column="FILE_GROUP_ID" property="fileGroupId"/>
-		</association>
-	</resultMap> -->
 
 	<select id="selectMovieById"
 			parameterType="string"
@@ -43,6 +32,7 @@
 			 , LANGUAGE
 			 , BUDGET
 			 , PROFIT
+			 , FILE_GROUP_ID
 		  FROM MOVIE 
 		 WHERE MOVIE_ID = #{_parameter}
 	</select>
@@ -62,9 +52,10 @@
 		, STATE
 		, LANGUAGE
 		, BUDGET
-		, PROFIT) VALUES
+		, PROFIT
+		, FILE_GROUP_ID) VALUES
 		 ('MV-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_MOVIE_PK.NEXTVAL, 6, '0')
-		, #{title} || 'URL'
+		, #{posterUrl}
 		, #{title}
 		, #{movieRating}
 		, TO_DATE(#{openDate}, 'YYYY-MM-DD hh:mi:ss')
@@ -76,7 +67,34 @@
 		, #{state}
 		, #{language}
 		, #{budget}
-		, #{profit})
+		, #{profit}
+		, #{fileGroupId})
 	</insert>
+
+	<update id="updateMovieByMovieId"
+			parameterType="com.ktdsuniversity.edu.movie.vo.request.UpdateVO">
+		UPDATE MOVIE
+		   SET POSTER_URL = #{posterUrl}
+			 , TITLE = #{title}
+			 , MOVIE_RATING = #{movieRating}
+			 , OPEN_DATE = #{openDate}
+			 , OPEN_COUNTRY = #{openCountry}
+			 , RUNNING_TIME = #{runningTime}
+			 , INTRODUCE = #{introduce}
+			 , SYNOPSIS = #{synopsis}
+			 , ORIGINAL_TITLE = #{originalTitle}
+			 , STATE = #{state}
+			 , LANGUAGE = #{language}
+			 , BUDGET = #{budget}
+			 , PROFIT = #{profit}
+		 WHERE MOVIE_ID = #{movieId}
+	</update>
+
+	<delete id="deleteMovieById"
+			parameterType="string">
+		DELETE
+		  FROM MOVIE
+		 WHERE MOVIE_ID = #{_parameter}
+	</delete>
 
 </mapper>
