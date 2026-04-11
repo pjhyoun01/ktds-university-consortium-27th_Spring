@@ -2,102 +2,122 @@
 회원페이지와 관련된 스크립트 작성.
  */
 $().ready(function () {
-
-  // $("#email").on("blur", function () {
-  //   setTimeout(function () {
-  //     $("#email").trigger("keyup");
-  //   }, 150);
-  // });
   
-  // 현재 Locarion의 parhname을 가지고 온다
+  // 현재 Location의 pathname을 가지고 온다.
   var pathname = location.pathname;
-  // parhname 이 /lofin이 아니라면 acrion을 /lofin?go={pathname}으로 수정
-  if(pathname !== "/login") {
-	pathname = "?go=" + pathname;
-  } else {
-	pathname = "";
+  // pathname이 "/login"이 아니라면 action을 "/login?go={pathname}" 으로 수정한다.
+  if (pathname !== "/login") {
+    pathname = "?go=" + pathname;
   }
-  $("#loginVO").attr({action: "/login" + pathname});
+  else {
+    pathname = "";
+  }
+  
+  $("#loginVO")
+      .attr({action: "/login" + pathname});
+    
+  // 이메일 포커스가 해제되면, 0.15초 이후에 이메일 재검사.
+  $("#email").on("blur", function () {
+    setTimeout(function () {
+      $("#email").trigger("keyup");
+    }, 150);
+  });
 
-  var delay;
+  // email 키 입력을 시작한 시간.
+  var keyUpStartTime = new Date().getTime();
+
   $("#email").on("keyup", function () {
     var emailValue = $(this).val();
-    $(this)
-      .closest(".input-div")
-      .children(".validation-ok, .validation-error")
-      .remove();
 
-    clearTimeout(delay);
-    // 이메일 입력을 했을 때만
-    if (emailValue) {
-      // 비동기로 중복여부 검사
-      delay = setTimeout(function () {
-        var emailPattern =
-          /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-        if (emailPattern.test(emailValue)) {
-          fetch("/regist/check/duplicate/" + emailValue)
-            // 비동기결과를 이용해서 메시지를 노출하거나 숨긴다
-            .then(function (fetchResult) {
-              return fetchResult.json();
-            })
-            .then(function (json) {
-              // var duplicateResult = $("#email").closest(".input-div").children(".validation-error");
+    // 이메일 키 입력이 발생한 시간.
+    var nowTime = new Date().getTime();
+    // 시간의 차가 0.1초 이내라면 이벤트 반응하지 않음.
+    if (nowTime - keyUpStartTime < 100) {
+      return;
+    }
+    keyUpStartTime = nowTime;
 
-              // if (duplicateResult.length === 0) {
-              //   duplicateResult = $("#email").closest(".input-div").children(".validation-ok");
-              // }
+    // $(this)
+    //   .closest(".input-div")
+    //   .children(".validation-ok, .validation-error")
+    //   .remove();
 
-              // if (duplicateResult.length === 0) {
-                  // duplicateResult = $("<div>");
-                  // $("#email").after(duplicateResult);
-                // }
-                duplicateResult = $("<div>");
-                
-                if (!json.duplicate) {
-                  duplicateResult.addClass("validation-ok");
-                  duplicateResult.text(json.email + " 사용가능한 이메일 입니다");
-                } else {
-                  duplicateResult.addClass("validation-error");
-                  duplicateResult.text(json.email + " 사용중인 이메일 입니다");
-                }
-                $("#email").after(duplicateResult);
-            });
-        }
-      }, 300);
+    var emailPattern =
+      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+
+    // 이메일을 입력을 했을 때!
+    if (emailPattern.test(emailValue)) {
+      // 비동기로 중복 여부를 검사해 온다.
+      fetch("/regist/check/duplicate/" + emailValue)
+        // 비동기결과를 이용해서 메시지를 노출하거나 숨긴다.
+        .then(function (fetchResult) {
+          return fetchResult.json();
+        })
+        .then(function (json) {
+          var duplicateResult = $("#email")
+            .closest(".input-div")
+            .children(".validation-error");
+
+          if (duplicateResult.length === 0) {
+            duplicateResult = $("#email")
+              .closest(".input-div")
+              .children(".validation-ok");
+          }
+
+          if (duplicateResult.length === 0) {
+            duplicateResult = $("<div>");
+            $("#email").after(duplicateResult);
+          }
+
+          if (!json.duplicate) {
+            // 사용 가능한 이메일
+            duplicateResult.removeClass("validation-error");
+            duplicateResult.addClass("validation-ok");
+            duplicateResult.text(json.email + "은 사용 가능합니다.");
+          } else {
+            // 사용 불가능한 이메일
+            duplicateResult.removeClass("validation-ok");
+            duplicateResult.addClass("validation-error");
+            duplicateResult.text(json.email + "은 이미 사용중입니다.");
+          }
+        });
+    } else {
+      $(this)
+        .closest(".input-div")
+        .children(".validation-ok, .validation-error")
+        .remove();
     }
   });
 
   $("#confirm-password, #password").on("keyup", function () {
-    var confirmpasswordValue = $("#confirm-password").val();
+    var confirmPasswordValue = $("#confirm-password").val();
     var passwordValue = $("#password").val();
 
     $("#password, #confirm-password")
       .closest(".input-div")
       .children(".validation-error")
       .remove();
-    // $("").closest(".input-div").children(".validation-error").remove();
 
-    if (confirmpasswordValue !== passwordValue) {
+    if (confirmPasswordValue !== passwordValue) {
       var passwordErrorMessage = $("<div>");
       passwordErrorMessage.addClass("validation-error");
-      passwordErrorMessage.text("비밀번호가 일치하지 않니다.");
-      // var confirmErrorMessage = $("<div>");
-      // confirmErrorMessage.addClass("validation-error");
-      // confirmErrorMessage.text("비밀번호가 일치하지 않니다.");
+      passwordErrorMessage.text("비밀번호가 일치하지 않습니다.");
 
-      $("#password, #confirm-password").after(passwordErrorMessage);
-      // $("#confirm-password").after(confirmErrorMessage);
+      var confirmPasswordErrorMessage = $("<div>");
+      confirmPasswordErrorMessage.addClass("validation-error");
+      confirmPasswordErrorMessage.text("비밀번호가 일치하지 않습니다.");
+
+      $("#password").after(passwordErrorMessage);
+      $("#confirm-password").after(confirmPasswordErrorMessage);
     }
   });
 
   $("#show-password").on("change", function () {
     var checked = $(this).prop("checked");
     if (checked) {
-      // 아래와 같은 코드
-      // if (this.check) {
-      $("#password, #confirm-password").attr("type", "text");
+      $("#password").attr("type", "text");
     } else {
-      $("#password, #confirm-password").attr("type", "password");
+      $("#password").attr("type", "password");
     }
   });
 
@@ -142,7 +162,7 @@ $().ready(function () {
       var passwordErrorMessage = $("<div>");
       passwordErrorMessage.addClass("validation-error");
       passwordErrorMessage.text(
-        "비밀번호는 영소문자, 영대문자, 숫자 최소 1개를 포함하여 8글자 이상으로 입력하세요.",
+        "비밀번호는 영소문자, 영대문자, 숫자 최소 1개를 포함하여 8글자 이상으로 입력하세요."
       );
 
       $("#password").after(passwordErrorMessage);

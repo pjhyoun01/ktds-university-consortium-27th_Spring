@@ -1,0 +1,25 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ktdsuniversity.edu.producer.dao.ProducerDao">
+
+	<select id="selectAllProducer"
+			resultType="com.ktdsuniversity.edu.producer.vo.ProducerVO">
+		SELECT PRODUCER_ID
+			 , PRODUCER_NAME
+			 , FILE_GROUP_ID
+		  FROM PRODUCER
+	</select>
+
+	<insert id="insertProducer"
+			parameterType="com.ktdsuniversity.edu.producer.vo.request.InsertVO">
+		INSERT INTO PRODUCER
+		( PRODUCER_ID
+		, PRODUCER_NAME
+		, FILE_GROUP_ID)
+		VALUES
+		( 'PD-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_PRODUCER_PK.NEXTVAL, 6, '0')
+		, #{producerName}
+		, #{fileGroupId})
+	</insert>
+</mapper>

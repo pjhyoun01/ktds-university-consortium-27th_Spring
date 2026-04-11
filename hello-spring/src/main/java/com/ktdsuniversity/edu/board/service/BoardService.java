@@ -24,8 +24,8 @@ public interface BoardService {
 
 	BoardVO findBoardByArticleId(String articleId, ReadType readType);
 
-	boolean updateBoardByArticleId(UpdateVO updateVO);
-
 	boolean deleteBoardByArticleId(String id);
+
+	boolean updateBoardByArticleId(UpdateVO updateVO);
 
 }

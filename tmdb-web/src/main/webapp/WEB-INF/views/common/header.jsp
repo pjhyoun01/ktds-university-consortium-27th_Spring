@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>영화 등록</title>
+	<title>${param.title}</title>
 	<link type="text/css" rel="stylesheet" href="/css/common.css">
 	<c:if test="${not empty param.css}">
 		<link type="text/css" rel="stylesheet" href="/css/${param.css}.css">
@@ -24,13 +24,11 @@
 					<img class="left--logo" src="/images/logo.svg" alt="logo 이미지">
 				</a>
 				<div class="left__nav">
-					<a href="/">
-						<div>영화</div>
-					</a>
-					<div>TV 프로그램</div>
-					<div>인물</div>
-					<div>Awards</div>
-					<div>More</div>
+					<a href="/">영화</a>
+					<a href="/">TV 프로그램</a>
+					<a href="/actor/view">인물</a>
+					<a href="/">Awards</a>
+					<a href="/">More</a>
 				</div>
 			</div>
 			<div class="header__right">

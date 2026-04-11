@@ -1,5 +1,6 @@
 package com.ktdsuniversity.edu.movie.service;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,10 @@ import com.ktdsuniversity.edu.movie.vo.request.InsertVO;
 import com.ktdsuniversity.edu.movie.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.movie.vo.response.MovieListVO;
 import com.ktdsuniversity.edu.movie.vo.response.OneMovieVO;
-import com.ktdsuniversity.edu.movie.web.MovieController;
 import com.ktdsuniversity.edu.utils.FileHandler;
 
 @Service
 public class MovieServiceImpl implements MovieService {
-
-    private final MovieController movieController;
 
 	@Autowired
 	private MovieDao movieDao;
@@ -28,10 +26,6 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	private FileHandler fileHandler;
-
-    MovieServiceImpl(MovieController movieController) {
-        this.movieController = movieController;
-    }
 
 	@Override
 	public List<MovieListVO> readAllMovie() {
@@ -51,7 +45,7 @@ public class MovieServiceImpl implements MovieService {
 	public boolean insertMovie(InsertVO insertVO) {
 		String filegroupId = this.fileHandler.uploadOneFile(insertVO.getFile());
 		insertVO.setFileGroupId(filegroupId);
-		
+
 		String posterUrl = this.fileDao.selectPathByFileGroupId(insertVO.getFileGroupId());
 		insertVO.setPosterUrl(posterUrl);
 
@@ -59,15 +53,13 @@ public class MovieServiceImpl implements MovieService {
 
 		return insertSuccessCount == 1;
 	}
-/*
- * 1 -> 2
- * 기존의 파일을 없앤 경우
- * 기존의 파일을 다른 파일로 바꾼 경우
- * 
- */
+
 	@Override
 	public boolean updateMovieById(UpdateVO updateVO) {
 		if (updateVO.getFileGroupId() != null) {
+			String path = this.fileDao.selectPathByFileGroupId(updateVO.getFileGroupId());
+			new File(path).delete();
+
 			this.fileDao.deleteFileByFileGroupId(updateVO.getFileGroupId());
 
 			this.fileHandler.uploadOneFile(updateVO.getFile(), updateVO.getFileGroupId());

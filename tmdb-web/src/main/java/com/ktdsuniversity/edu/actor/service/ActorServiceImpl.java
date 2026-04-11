@@ -1,5 +1,6 @@
 package com.ktdsuniversity.edu.actor.service;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +10,21 @@ import com.ktdsuniversity.edu.actor.dao.ActorDao;
 import com.ktdsuniversity.edu.actor.vo.ActorVO;
 import com.ktdsuniversity.edu.actor.vo.request.InsertVO;
 import com.ktdsuniversity.edu.actor.vo.request.UpdateVO;
+import com.ktdsuniversity.edu.file.dao.FileDao;
 import com.ktdsuniversity.edu.utils.FileHandler;
 
 @Service
-public class ActorServiceImpl implements ActorService{
+public class ActorServiceImpl implements ActorService {
 
 	@Autowired
 	private ActorDao actorDao;
-	
+
+	@Autowired
+	private FileDao fileDao;
+
 	@Autowired
 	private FileHandler fileHandler;
-	
+
 	@Override
 	public List<ActorVO> readAllActor() {
 		List<ActorVO> actorList = this.actorDao.seleteAllActor();
@@ -43,15 +48,30 @@ public class ActorServiceImpl implements ActorService{
 		String fileGroupId = this.fileHandler.uploadOneFile(insertVO.getFile());
 		insertVO.setFileGroupId(fileGroupId);
 
+		String path = this.fileDao.selectPathByFileGroupId(fileGroupId);
+		insertVO.setActorProfileUrl(path);
+
 		int insertSuccessCount = this.actorDao.insertActor(insertVO);
 		return insertSuccessCount == 1;
 	}
 
 	@Override
 	public boolean updateActorByActorId(UpdateVO updateVO) {
-		String fileGroupId = this.fileHandler.uploadOneFile(updateVO.getFile(), updateVO.getFileGroupId());
-		insertVO
-		
+		if (updateVO.getFileGroupId() != null) {
+			String path = this.fileDao.selectPathByFileGroupId(updateVO.getFileGroupId());
+			new File(path).delete();
+
+			this.fileDao.deleteFileByFileGroupId(updateVO.getFileGroupId());
+
+			this.fileHandler.uploadOneFile(updateVO.getFile(), updateVO.getFileGroupId());
+		} else {
+			String fileGroupId = this.fileHandler.uploadOneFile(updateVO.getFile());
+			updateVO.setFileGroupId(fileGroupId);
+		}
+
+		String path = this.fileDao.selectPathByFileGroupId(updateVO.getFileGroupId());
+		updateVO.setActorProfileUrl(path);
+
 		int updateSuccessCount = this.actorDao.updateActorByActorId(updateVO);
 		return updateSuccessCount == 1;
 	}

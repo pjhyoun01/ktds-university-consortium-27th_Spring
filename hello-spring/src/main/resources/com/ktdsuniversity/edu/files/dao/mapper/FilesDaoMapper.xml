@@ -38,7 +38,7 @@
     </select>
     
     <select id="selectFilePathByFileGroupIdAndFileNums"
-            parameterType="com.ktdsuniversity.edu.board.vo.request.UpdateVO"
+            parameterType="com.ktdsuniversity.edu.files.vo.request.SearchFileGroupVO"
             resultType="string">
         SELECT FILE_PATH
 		  FROM FILES
@@ -54,7 +54,7 @@
     </select>
 
     <delete id="deleteFilesByFileGroupIdAndFileNums"
-            parameterType="com.ktdsuniversity.edu.board.vo.request.UpdateVO">
+            parameterType="com.ktdsuniversity.edu.files.vo.request.SearchFileGroupVO">
         DELETE
           FROM FILES
          WHERE FILE_GROUP_ID = #{fileGroupId}
@@ -83,20 +83,19 @@
          WHERE FILE_GROUP_ID = #{_parameter}
     </delete>
     
-
-	<select id="selectFileGroupId"
-			resultType="string">
-		SELECT 'FG-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_FILE_GROUP_PK.NEXTVAL, 6, '0')
-		  FROM DUAL
-		</select>
-
-	<insert id="insertFileGroupId"
-			parameterType="string">
-		INSERT INTO FILES_GROUP
-		(FILE_GROUP_ID)
-		VALUES
-		(#{_parameter})
-	</insert>
+    <select id="selectNewFileGroupId"
+            resultType="string">
+        SELECT 'FG-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_FILES_GROUP_PK.NEXTVAL, 6, '0')
+          FROM DUAL 
+    </select>
+    
+    <insert id="insertFileGroupId"
+            parameterType="string">
+        INSERT INTO FILES_GROUP
+		 (FILE_GROUP_ID)
+		VALUES 
+		 (#{_parameter})
+    </insert>
 </mapper>
 
 

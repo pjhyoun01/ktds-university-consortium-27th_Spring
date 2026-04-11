@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<jsp:include page="/WEB-INF/views/templates/header.jsp">
-	<jsp:param value="게시글 수정" name="title"/>
-	<jsp:param value="/js/board.js" name="script"/>
-</jsp:include>
-
+  <jsp:include page="/WEB-INF/views/templates/header.jsp">
+    <jsp:param value="게시글 수정" name="title" />
+    <jsp:param value="<script type='text/javascript' src='/js/board.js'></script>" 
+               name="scripts" />
+  </jsp:include>
+  
     <h1>게시글 수정</h1>
     <%-- action ==> form 내부의 value를 전송할 엔드포인트 --%>
     <form
@@ -12,7 +13,8 @@
       action="/update/${article.id}"
       enctype="multipart/form-data"
     >
-      <input type="hidden" name="fileGroupId" value="${article.fileGroupId}"/>
+      <input type="hidden" name="fileGroupId" value="${article.fileGroupId}" />
+
       <div class="grid update">
         <label for="subject">제목</label>
         <input
@@ -21,15 +23,6 @@
           name="subject"
           placeholder="제목을 입력하세요."
           value="${article.subject}"
-        />
-
-        <label for="email">이메일</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="이메일을 입력하세요."
-          value="${article.email}"
         />
 
         <label for="attach-files">첨부파일</label>
@@ -65,6 +58,4 @@ ${article.content}</textarea
         </div>
       </div>
     </form>
-    </div>
-  </body>
-</html>
+  <jsp:include page="/WEB-INF/views/templates/footer.jsp"></jsp:include>

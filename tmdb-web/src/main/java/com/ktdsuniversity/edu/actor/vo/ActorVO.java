@@ -1,10 +1,16 @@
 package com.ktdsuniversity.edu.actor.vo;
 
+import java.util.List;
+
+import com.ktdsuniversity.edu.appearance.vo.AppearanceVO;
+
 public class ActorVO {
 	private String actorId;
 	private String actorName;
 	private String actorProfileUrl;
 	private String fileGroupId;
+
+	private List<AppearanceVO> appearanceVO;
 
 	public String getActorId() {
 		return this.actorId;
@@ -29,5 +35,11 @@ public class ActorVO {
 	}
 	public void setFileGroupId(String fileGroupId) {
 		this.fileGroupId = fileGroupId;
+	}
+	public List<AppearanceVO> getAppearanceVO() {
+		return this.appearanceVO;
+	}
+	public void setAppearanceVO(List<AppearanceVO> appearanceVO) {
+		this.appearanceVO = appearanceVO;
 	}
 }

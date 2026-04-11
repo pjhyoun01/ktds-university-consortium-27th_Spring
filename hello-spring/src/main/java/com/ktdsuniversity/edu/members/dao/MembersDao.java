@@ -24,10 +24,10 @@ public interface MembersDao {
 
 	List<MembersVO> selectMembersList();
 
-	int updateLoginFailCount(String email);
-
-	int updateIpAndLoginDateByEmail(LoginVO loginVO);
+	int updateIncreaseLoginFailCount(String email);
 
 	int updateBlock(String email);
+
+	int updateSuccessLogin(LoginVO loginVO);
 
 }

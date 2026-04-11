@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/templates/header.jsp">
-	<jsp:param value="게시글 작성" name="title"/>
-	<jsp:param value="/js/board.js" name="script"/>	
-</jsp:include>
-
+  <jsp:include page="/WEB-INF/views/templates/header.jsp">
+    <jsp:param value="게시글 작성" name="title" />
+    <jsp:param value="<script type='text/javascript' src='/js/board.js'></script>" 
+               name="scripts" />
+  </jsp:include>
     <h1>게시글 작성</h1>
     <%-- action ==> form 내부의 value를 전송할 엔드포인트 --%>
     <%-- form:form modelAttibute ==> 
@@ -32,20 +32,6 @@
                        element="div" />
         </div>
 
-        <%-- <label for="email">이메일</label>
-        <div class="input-div">
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="이메일을 입력하세요."
-            value="${inputData.email}"
-          />
-          <form:errors path="email" 
-                       cssClass="validation-error"
-                       element="div" />
-        </div> --%>
-
         <label for="attach-files">첨부파일</label>
         <div id="attach-files" class="attach-files">
           <input type="file" name="attachFile" />
@@ -64,6 +50,4 @@ ${inputData.content}</textarea
         </div>
       </div>
     </form:form>
-    </div>
-  </body>
-</html>
+  <jsp:include page="/WEB-INF/views/templates/footer.jsp"></jsp:include>

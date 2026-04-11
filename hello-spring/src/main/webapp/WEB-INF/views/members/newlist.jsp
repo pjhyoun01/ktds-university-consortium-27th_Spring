@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<jsp:include page="/WEB-INF/views/templates/header.jsp"/>
+  <jsp:include page="/WEB-INF/views/templates/header.jsp">
+    <jsp:param value="회원 목록" name="title" />
+  </jsp:include>
+    <div class="grid list">
       <h1>회원 목록</h1>
-      <div class="flex">
-	    <div>총 ${searchCount}명의 회원이 검색되었습니다.</div>
-		<div class="btn-group">
-          <div class="right-align">
-            
-            <a href="/">게시글 목록</a>
-          </div>
-        </div>
-      </div>
+      <div>총 ${searchCount}명의 회원이 검색되었습니다.</div>
       <ul class="grid member-list">
         <li class="header">
           <ul class="header-item">
@@ -46,7 +41,10 @@ pageEncoding="UTF-8"%>
           </c:choose>
       </ul>
 
-      
+      <div class="btn-group">
+        <div class="right-align">
+          <a href="/regist">새로운 회원 등록</a>
+        </div>
+      </div>
     </div>
-  </body>
-</html>
+  <jsp:include page="/WEB-INF/views/templates/footer.jsp"></jsp:include>
