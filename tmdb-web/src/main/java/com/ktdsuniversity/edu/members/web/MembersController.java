@@ -2,6 +2,8 @@ package com.ktdsuniversity.edu.members.web;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,8 @@ import jakarta.validation.Valid;
 
 @Controller
 public class MembersController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(MembersController.class);
 
 	@Autowired
 	private MembersService membersService;
@@ -46,7 +50,7 @@ public class MembersController {
 		MembersVO loginUser = this.membersService.readMemberByEmailAndPassword(loginVO);
 
 		HttpSession session = request.getSession(true);
-		session.setAttribute("__LOGIN__", loginUser);
+		session.setAttribute("__USER__", loginUser);
 
 		return "redirect:/";
 	}
@@ -108,7 +112,7 @@ public class MembersController {
 
 	@PostMapping("/member/delete")
 	public String deleteMembersByEmail(HttpSession session) {
-		MembersVO loginUser = (MembersVO) session.getAttribute("__LOGIN__");
+		MembersVO loginUser = (MembersVO) session.getAttribute("__USER__");
 		boolean deleteSuccecc = this.membersService.deleteMemberByEmail(loginUser.getEmail());
 		if (deleteSuccecc) {
 			return "redirect:/";
