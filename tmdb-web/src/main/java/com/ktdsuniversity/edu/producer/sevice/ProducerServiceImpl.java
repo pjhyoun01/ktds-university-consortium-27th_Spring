@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ktdsuniversity.edu.common.handler.FileHandler;
 import com.ktdsuniversity.edu.file.dao.FileDao;
 import com.ktdsuniversity.edu.producer.dao.ProducerDao;
 import com.ktdsuniversity.edu.producer.vo.ProducerVO;
 import com.ktdsuniversity.edu.producer.vo.request.InsertVO;
-import com.ktdsuniversity.edu.utils.FileHandler;
 
 @Service
 public class ProducerServiceImpl implements ProducerService {

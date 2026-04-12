@@ -1,31 +1,45 @@
 package com.ktdsuniversity.edu.config.interceptor;
 
-import org.jspecify.annotations.Nullable;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
+import java.io.PrintWriter;
 
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class SessionInterceptor implements HandlerInterceptor {
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return HandlerInterceptor.super.preHandle(request, response, handler);
-	}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("__USER__") == null) {
+			String pathname = request.getRequestURI();
+			if (pathname.startsWith("/api/")) {
 
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			@Nullable ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-	}
+				String jsonResult = "{" 
+						+ "    \"status\": 403," 
+						+ "    \"error\" : \"권한이 부족합니다.\"" 
+						+ "}";
 
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
-			@Nullable Exception ex) throws Exception {
-		// TODO Auto-generated method stub
-		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+				response.setCharacterEncoding("UTF-8");
+				response.setContentType("application/json");
+
+				PrintWriter writer = response.getWriter();
+				writer.write(jsonResult);
+				writer.flush();
+
+				return false;
+			}
+
+			String loginPagePath = "/WEB-INF/views/members/login.jsp";
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher(loginPagePath);
+			dispatcher.forward(request, response);
+			return false;
+		}
+		return true;
 	}
 }

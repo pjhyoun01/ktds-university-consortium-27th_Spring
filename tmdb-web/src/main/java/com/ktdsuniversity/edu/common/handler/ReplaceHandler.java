@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.utils;
+package com.ktdsuniversity.edu.common.handler;
 
 import org.springframework.stereotype.Component;
 

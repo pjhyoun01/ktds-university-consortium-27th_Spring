@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.utils;
+package com.ktdsuniversity.edu.common.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

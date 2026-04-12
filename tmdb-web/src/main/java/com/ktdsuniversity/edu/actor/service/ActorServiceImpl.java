@@ -10,8 +10,8 @@ import com.ktdsuniversity.edu.actor.dao.ActorDao;
 import com.ktdsuniversity.edu.actor.vo.ActorVO;
 import com.ktdsuniversity.edu.actor.vo.request.InsertVO;
 import com.ktdsuniversity.edu.actor.vo.request.UpdateVO;
+import com.ktdsuniversity.edu.common.handler.FileHandler;
 import com.ktdsuniversity.edu.file.dao.FileDao;
-import com.ktdsuniversity.edu.utils.FileHandler;
 
 @Service
 public class ActorServiceImpl implements ActorService {

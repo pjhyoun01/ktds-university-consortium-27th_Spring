@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ktdsuniversity.edu.common.handler.FileHandler;
 import com.ktdsuniversity.edu.file.dao.FileDao;
 import com.ktdsuniversity.edu.movie.dao.MovieDao;
 import com.ktdsuniversity.edu.movie.vo.MovieVO;
@@ -13,7 +14,6 @@ import com.ktdsuniversity.edu.movie.vo.request.InsertVO;
 import com.ktdsuniversity.edu.movie.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.movie.vo.response.MovieListVO;
 import com.ktdsuniversity.edu.movie.vo.response.OneMovieVO;
-import com.ktdsuniversity.edu.utils.FileHandler;
 
 @Service
 public class MovieServiceImpl implements MovieService {
