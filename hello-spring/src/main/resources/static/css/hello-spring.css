@@ -384,3 +384,17 @@ div.login {
 }
 
 /* 댓글 style 끝 */
+
+ul.page-navigator {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  justify-content: center;
+  margin: 0.625rem 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.page-navigator > li.active > a {
+  color: #f00;
+}
