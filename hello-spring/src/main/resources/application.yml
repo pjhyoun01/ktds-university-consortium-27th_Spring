@@ -18,10 +18,10 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
   datasource:
-    url: jdbc:oracle:thin:@192.168.211.11:1523:XE
+    url: jdbc:oracle:thin:@localhost:1521:XE
     driver-class-name: oracle.jdbc.driver.OracleDriver
     username: SPRING_BOOT
-    password: SPRING_BOOT
+    password: 1234
   application:
     name: hello-spring
     

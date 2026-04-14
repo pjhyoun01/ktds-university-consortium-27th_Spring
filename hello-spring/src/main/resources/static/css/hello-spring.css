@@ -385,6 +385,7 @@ div.login {
 
 /* 댓글 style 끝 */
 
+/* page-navigator */
 ul.page-navigator {
   display: flex;
   flex-direction: row;
@@ -398,3 +399,16 @@ ul.page-navigator {
 ul.page-navigator > li.active > a {
   color: #f00;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

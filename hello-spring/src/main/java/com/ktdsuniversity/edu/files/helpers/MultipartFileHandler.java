@@ -39,7 +39,7 @@ public class MultipartFileHandler {
 				String obfuscateName = UUID.randomUUID().toString();
 				
 				// 업로드한 파일이 서버컴퓨터의 파일 시스템에 저장되도록 한다.
-				File storeFile = new File("C:/dev_repository/files"
+				File storeFile = new File("/Users/codemakers/uploadFiles"
 										 , obfuscateName);
 				// C:\\uploadFiles 폴더가 없으면 생성해라!
 				if (!storeFile.getParentFile().exists()) {
