@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.ktdsuniversity.edu.common.utils.TokenUtils;
 import com.ktdsuniversity.edu.exceptions.HelloSpringApiException;
-import com.ktdsuniversity.edu.members.vo.MembersVO;
 import com.ktdsuniversity.edu.replies.service.RepliesService;
 import com.ktdsuniversity.edu.replies.vo.RepliesVO;
 import com.ktdsuniversity.edu.replies.vo.request.CreateVO;
@@ -48,15 +47,16 @@ public class RepliesController {
 	@PostMapping("/api/replies-with-file")
 	public RepliesVO doCreateNewReplyWithFileAction(
 			@Valid CreateVO createVO,
-			BindingResult bindingResult,
-			@SessionAttribute("__LOGIN_DATA__") MembersVO loginMember) {
+			BindingResult bindingResult) {
 		
 		if (bindingResult.hasErrors()) {
 			List<FieldError> errors = bindingResult.getFieldErrors();
 			throw new HelloSpringApiException("파라미터가 충분하지 않습니다.", HttpStatus.BAD_REQUEST.value(), errors);
 		}
 		
-		createVO.setEmail(loginMember.getEmail());
+		// TODO Token test
+//		MembersVO loginUser = (MembersVO) authentication.getPrincipal();
+		createVO.setEmail(TokenUtils.getLoginUserEmail());
 		
 		logger.debug("reply: {}", createVO.getReply());
 		logger.debug("email: {}", createVO.getEmail());
@@ -76,15 +76,16 @@ public class RepliesController {
 	@PostMapping("/api/replies")
 	public RepliesVO doCreateNewReplyAction(
 			@RequestBody @Valid CreateVO createVO,
-			BindingResult bindingResult,
-			@SessionAttribute("__LOGIN_DATA__") MembersVO loginMember) {
+			BindingResult bindingResult) {
 		
 		if (bindingResult.hasErrors()) {
 			List<FieldError> errors = bindingResult.getFieldErrors();
 			throw new HelloSpringApiException("파라미터가 충분하지 않습니다.", HttpStatus.BAD_REQUEST.value(), errors);
 		}
 		
-		createVO.setEmail(loginMember.getEmail());
+		// TODO Token test
+//		MembersVO loginUser = (MembersVO) authentication.getPrincipal();
+		createVO.setEmail(TokenUtils.getLoginUserEmail());
 		
 		logger.debug("reply: {}", createVO.getReply());
 		logger.debug("email: {}", createVO.getEmail());

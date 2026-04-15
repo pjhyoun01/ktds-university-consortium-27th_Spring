@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.ktdsuniversity.edu.members.vo.MembersVO;
@@ -31,8 +32,16 @@ public class SecurityUser implements UserDetails {
 	 * Collection <- List
 	 */
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
-		return null;
+		// Spring Security 가 체크하는 권한 2가지
+		// 1.ROLE ==> 권한
+		// 2.ACTION ==> 생성, 조회, 수정, 삭제, 다룽호드, 업로드...
+		// Spring Security 가 ROLE과 ACTION을 구분하는 방법
+		// ROLE ==> Prefix == 'ROLE_RL...'
+		// ACTION ==> ACTION의 이름으로 작성(CREATE_RL..., UPDATE_RL..., ...)
+		return this.membersVO.getRoles()
+							 .stream()
+							 .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+							 .toList();
 	}
 
 	/** 로그인한 회원의 패스워드

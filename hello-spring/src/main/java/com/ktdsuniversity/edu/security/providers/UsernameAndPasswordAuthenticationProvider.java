@@ -22,6 +22,12 @@ public class UsernameAndPasswordAuthenticationProvider implements Authentication
 	// 사용자가 로그인항 때 전송한 아이디로 비밀번호 조회
 	private PasswordEncoder passwordEncoder;
 
+	public UsernameAndPasswordAuthenticationProvider(UserDetailsService userDetailsService,
+			PasswordEncoder passwordEncoder) {
+		this.userDetailsService = userDetailsService;
+		this.passwordEncoder = passwordEncoder;
+	}
+
 	/** 사용자로부터 Spring Security 로그인 요청이 있을 때 마다 실행
 	 *  사용자가 보내준 아이디와 비밀번호를 이용해 인증을 수행한다
 	 *  UserDetailsService 인터페이스를 이용해 사용자의 정보를 조회하고
@@ -34,7 +40,7 @@ public class UsernameAndPasswordAuthenticationProvider implements Authentication
 	@Override
 	public @Nullable Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-		// 로그ㅏ인에 사용된 사용자의 아이디
+		// 로그인에 사용된 사용자의 아이디
 		String email = authentication.getName();
 
 		// UserDetails ==> securityUser
