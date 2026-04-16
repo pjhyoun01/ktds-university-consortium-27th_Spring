@@ -24,4 +24,5 @@ public interface RepliesService {
 
 	UpdateResultVO updateReply(@Valid UpdateVO updateVO);
 
+	boolean deleteAllReplyByReplyId(String articleId);
 }

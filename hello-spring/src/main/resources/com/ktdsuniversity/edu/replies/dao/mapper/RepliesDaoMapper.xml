@@ -136,7 +136,18 @@
              , MDFY_DT = SYSDATE
          WHERE ID = #{replyId}
     </update>
-    
+
+    <delete id="deleteAllReplyByReplyId"
+            parameterType="string">
+        DELETE
+          FROM REPLIES
+         WHERE ARTICLE_ID = #{_parameter}
+    </delete>
+
+    <delete id="deleteALLReply">
+        DELETE
+          FROM REPLIES
+    </delete>
 </mapper>
 
 

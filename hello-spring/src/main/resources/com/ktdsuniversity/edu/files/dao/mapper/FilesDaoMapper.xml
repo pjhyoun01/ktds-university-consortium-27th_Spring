@@ -5,14 +5,14 @@
 <mapper namespace="com.ktdsuniversity.edu.files.dao.FilesDao">
     <insert id="insertAttachFile"
             parameterType="com.ktdsuniversity.edu.files.vo.request.UploadVO">
-        INSERT INTO FILES 
+        INSERT INTO FILES
          (FILE_NUM
         , FILE_GROUP_ID
         , OBFUSCATE_NAME
         , DISPLAY_NAME
         , EXTEND_NAME
         , FILE_LENGTH
-        , FILE_PATH) 
+        , FILE_PATH)
         VALUES
          ((SELECT NVL(MAX(FILE_NUM), 0) + 1
 			 FROM FILES
@@ -24,7 +24,7 @@
         , #{fileLength}
         , #{filePath})
     </insert>
-    
+
     <select id="selectFilesByFileGroupIdAndFileNum"
             parameterType="com.ktdsuniversity.edu.files.vo.request.SearchFileVO"
             resultType="com.ktdsuniversity.edu.files.vo.response.DownloadVO">
@@ -36,7 +36,7 @@
 		 WHERE FILE_GROUP_ID = #{fileGroupId}
 		   AND FILE_NUM = #{fileNum}
     </select>
-    
+
     <select id="selectFilePathByFileGroupIdAndFileNums"
             parameterType="com.ktdsuniversity.edu.files.vo.request.SearchFileGroupVO"
             resultType="string">
@@ -44,10 +44,10 @@
 		  FROM FILES
 		 WHERE FILE_GROUP_ID = #{fileGroupId}
 		   AND FILE_NUM IN
-		   <foreach collection="deleteFileNum" 
-		            item="fileNum" 
-		            open="(" 
-		            close=")" 
+		   <foreach collection="deleteFileNum"
+		            item="fileNum"
+		            open="("
+		            close=")"
 		            separator=", ">
 		       #{fileNum}
 		   </foreach>
@@ -59,15 +59,15 @@
           FROM FILES
          WHERE FILE_GROUP_ID = #{fileGroupId}
            AND FILE_NUM IN
-           <foreach collection="deleteFileNum" 
-                    item="fileNum" 
-                    open="(" 
-                    close=")" 
+           <foreach collection="deleteFileNum"
+                    item="fileNum"
+                    open="("
+                    close=")"
                     separator=", ">
                #{fileNum}
            </foreach>
     </delete>
-    
+
     <select id="selectFilePathByFileGroupId"
             parameterType="string"
             resultType="string">
@@ -82,20 +82,55 @@
           FROM FILES
          WHERE FILE_GROUP_ID = #{_parameter}
     </delete>
-    
+
     <select id="selectNewFileGroupId"
             resultType="string">
         SELECT 'FG-' || TO_CHAR(SYSDATE, 'YYYYMMDD-') || LPAD(SEQ_FILES_GROUP_PK.NEXTVAL, 6, '0')
-          FROM DUAL 
+          FROM DUAL
     </select>
-    
+
     <insert id="insertFileGroupId"
             parameterType="string">
         INSERT INTO FILES_GROUP
 		 (FILE_GROUP_ID)
-		VALUES 
+		VALUES
 		 (#{_parameter})
     </insert>
+
+    <select id="selectAllFilePath">
+        SELECT FILE_PATH
+          FROM FILES
+    </select>
+
+    <delete id="deleteAllFile">
+        DELETE
+          FROM FILES
+    </delete>
+
+    <delete id="deleteAllFilesGroup">
+        DELETE
+          FROM FILES_GROUP
+    </delete>
+
+    <delete id="deleteFilesGroupByFileGroupId"
+            parameterType="string">
+        DELETE
+          FROM FILES_GROUP
+         WHERE FILE_GROUP_ID = #{_parameter}
+    </delete>
+
+    <select id="selectFileGroupIdFromBoard"
+            resultType="string">
+        SELECT FILE_GROUP_ID
+          FROM BOARD
+    </select>
+
+    <select id="selectFileGroupIdFromReply"
+            resultType="string">
+        SELECT FILE_GROUP_ID
+          FROM REPLIES
+    </select>
+
 </mapper>
 
 

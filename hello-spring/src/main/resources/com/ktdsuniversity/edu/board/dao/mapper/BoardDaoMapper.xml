@@ -215,6 +215,11 @@
 		     , FILE_GROUP_ID = #{fileGroupId}
 		 WHERE ID = #{id}
     </update>
+
+    <delete id="deleteAllBoard">
+        DELETE
+          FROM BOARD
+    </delete>
 </mapper>
 
 

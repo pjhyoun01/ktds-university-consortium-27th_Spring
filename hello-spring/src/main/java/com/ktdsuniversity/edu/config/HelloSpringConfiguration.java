@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -35,6 +36,8 @@ import com.ktdsuniversity.edu.security.providers.UsernameAndPasswordAuthenticati
 // Spring Security 라이브러리를 활성화 시킴
 // Spring Security 의 필터 목록을 확인하기 위해 사용
 @EnableWebSecurity(debug = true) // 생략 가능
+// 컨트롤러 혹은 서비스 코드에서 권한 검사를 수행하기 위한 Annotation add
+@EnableMethodSecurity
 public class HelloSpringConfiguration implements
 		// WebMvc 설정을 위한 Configuration
 		// @EnableWebMvc Annotation 에서 적용하는 기본 설정들을 변경하기 위함.
@@ -44,8 +47,8 @@ public class HelloSpringConfiguration implements
 	private MembersDao membersDao;
 
 	// SecurityPasswordEncoder의 Bean을 생성한다
-	//
-	@Bean // <- 메소드가 실행되어서 반환되는 객체를 Bean Container 에 적재
+	@Bean
+	// <- 메소드가 실행되어서 반환되는 객체를 Bean Container 에 적재
 	PasswordEncoder createsPasswordEncoder() {
 		return new SecurityPasswordEncoder();
 	}
@@ -58,7 +61,8 @@ public class HelloSpringConfiguration implements
 	}
 
 	// UsernameAndPasswordAuthenticationProvider의 Bean을 생성한다
-	@Bean // <- 유일한 객체로 관리함 / 익명클래스를 Bean으로 관리하고 싶을 때 사용할 수 있는 이점 존재
+	@Bean
+	// <- 유일한 객체로 관리함 / 익명클래스를 Bean으로 관리하고 싶을 때 사용할 수 있는 이점 존재
 	AuthenticationProvider vreateAuthenticationProvider() {
 		// 메소드가 여러번 실행되더라도 Bean 에 이미 적재된 객체가 있다면 생성하지 않음
 		UserDetailsService userDetailsService = this.createUserDetailsService();
@@ -77,10 +81,13 @@ public class HelloSpringConfiguration implements
 		return new LoginFailureHandler(this.membersDao);
 	}
 
-	// TODO Spring Login Filter(BasicAuthenticationFilter) 등록
 	// Spring Security 의 기본 로그인 절차를 수행하는 작업
 	@Bean
 	SecurityFilterChain configureFilterChain(HttpSecurity httpSecurity) {
+
+		// CSRF 수정 (댓글 추가나 기타 기능들을 사용할 수 없음)
+		// Spring Security CSRF 무효화
+		httpSecurity.csrf(csrf -> csrf.disable());
 
 		// usernamePasswordAuthenticationFilter 수정
 		httpSecurity.formLogin(formLogin -> {
@@ -97,57 +104,58 @@ public class HelloSpringConfiguration implements
 					// 로그인에 실패하면
 					// this.membersDao.updateIncreaseLoginFailCount(email)
 					// this.membersDao.updateBlock(email)
-					.failureHandler(this.createLoginFailureHandler());
+					.failureHandler(this.createLoginFailureHandler())
+			;
 		});
-//		DisableEncodeUrlFilter
-//		WebAsyncManagerIntegrationFilter
-//		SecurityContextHolderFilter
-//		HeaderWriterFilter
-//		CsrfFilter
-//		LogoutFilter
-//		UsernamePasswordAuthenticationFilter
+		//		DisableEncodeUrlFilter
+		//		WebAsyncManagerIntegrationFilter
+		//		SecurityContextHolderFilter
+		//		HeaderWriterFilter
+		//		CsrfFilter
+		//		LogoutFilter
+		//		UsernamePasswordAuthenticationFilter
 
-//		-- DefaultResourcesFilter
-//		-- DefaultLoginPageGeneratingFilter
-//		-- DefaultLogoutPageGeneratingFilter
-//		-- BasicAuthenticationFilter
+		//		-- DefaultResourcesFilter
+		//		-- DefaultLoginPageGeneratingFilter
+		//		-- DefaultLogoutPageGeneratingFilter
+		//		-- BasicAuthenticationFilter
 
-//		RequestCacheAwareFilter
-//		SecurityContextHolderAwareRequestFilter
-//		AnonymousAuthenticationFilter
-//		ExceptionTranslationFilter
+		//		RequestCacheAwareFilter
+		//		SecurityContextHolderAwareRequestFilter
+		//		AnonymousAuthenticationFilter
+		//		ExceptionTranslationFilter
 
-//		-- AuthorizationFilter
+		//		-- AuthorizationFilter
 		return httpSecurity.build();
 	}
 
 	// Interceptor 등록 및 대상 URL 지정.
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-//		SessionInterceptor sessionInterceptor = new SessionInterceptor();
-//		
-//		registry.addInterceptor(sessionInterceptor)
-//				.addPathPatterns("/**") // 모든 URL을 대상으로 sessionInterceptor를 수행해라!
-//				.excludePathPatterns(
-//						"/regist/check/duplicate/**", // 회원가입 이메일 중복 검사.
-//						"/regist", // 회원가입 페이지 & 처리
-//						"/login", // 로그인 페이지 & 처리
-//						"/js/**", // static resources
-//						"/css/**", // static resources
-//						"/image/**", // static resources
-//						"/", // 게시글 목록 조회
-//						"/view/**", // 게시글 내용 조회
-//						"/file/**", // 첨부파일 다운로드
-//						"/error" // 에러 내용이 보여지는 페이지.
-//						) // sessionInterceptor가 적용되지 않을 URL 명시.
-//				;
-//		IllegalAccessInterceptor illegalAccessInterceptor = new IllegalAccessInterceptor();
-//		registry.addInterceptor(illegalAccessInterceptor)
-//				.addPathPatterns(
-//						"/regist/check/duplicate/**", // 회원가입 이메일 중복 검사.
-//						"/regist", // 회원가입 페이지 & 처리
-//						"/login" // 로그인 페이지 & 처리 URL
-//						);
+		//		SessionInterceptor sessionInterceptor = new SessionInterceptor();
+		//
+		//		registry.addInterceptor(sessionInterceptor)
+		//				.addPathPatterns("/**") // 모든 URL을 대상으로 sessionInterceptor를 수행해라!
+		//				.excludePathPatterns(
+		//						"/regist/check/duplicate/**", // 회원가입 이메일 중복 검사.
+		//						"/regist", // 회원가입 페이지 & 처리
+		//						"/login", // 로그인 페이지 & 처리
+		//						"/js/**", // static resources
+		//						"/css/**", // static resources
+		//						"/image/**", // static resources
+		//						"/", // 게시글 목록 조회
+		//						"/view/**", // 게시글 내용 조회
+		//						"/file/**", // 첨부파일 다운로드
+		//						"/error" // 에러 내용이 보여지는 페이지.
+		//						) // sessionInterceptor가 적용되지 않을 URL 명시.
+		//				;
+		//		IllegalAccessInterceptor illegalAccessInterceptor = new IllegalAccessInterceptor();
+		//		registry.addInterceptor(illegalAccessInterceptor)
+		//				.addPathPatterns(
+		//						"/regist/check/duplicate/**", // 회원가입 이메일 중복 검사.
+		//						"/regist", // 회원가입 페이지 & 처리
+		//						"/login" // 로그인 페이지 & 처리 URL
+		//						);
 
 	}
 

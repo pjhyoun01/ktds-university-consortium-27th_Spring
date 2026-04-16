@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,7 +22,7 @@ import com.ktdsuniversity.edu.board.vo.request.SearchListVO;
 import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
-import com.ktdsuniversity.edu.common.utils.TokenUtils;
+import com.ktdsuniversity.edu.common.utils.AuthUtils;
 import com.ktdsuniversity.edu.exceptions.HelloSpringException;
 
 import jakarta.validation.Valid;
@@ -58,17 +59,19 @@ public class BoardController {
 	}
 
 	// 게시글 등록 화면 보여주는 EndPoint
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/write")
 	public String viewWritePage() {
 		return "board/write";
 	}
 
 	// 게시글을 등록하는 EndPoint
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/write")
 	public String doWriteAction(@Valid @ModelAttribute WriteVO writeVO,
-			// @Valid의 결과를 받아오는 파라미터.
-			// 반드시 @Valid 파라미터 이후에 작성!
-			BindingResult bindingResult, Model model) {
+	                            // @Valid의 결과를 받아오는 파라미터.
+	                            // 반드시 @Valid 파라미터 이후에 작성!
+	                            BindingResult bindingResult, Model model) {
 		// 사용자의 입력값을 검증 했을 때, 에러가 있다면
 		if (bindingResult.hasErrors()) {
 			// 브라우저에게 "board/write" 페이지를 보여주도록 하고
@@ -78,13 +81,9 @@ public class BoardController {
 		}
 
 		// 로그인 데이터(__LOGIN_DATA__)에서 로그인 한 사용자의 이메일을 가져온다.
-//		writeVO.setEmail(loginMember.getEmail());
+		//		writeVO.setEmail(loginMember.getEmail());
 
-		
-		// authentication 에서 로그인 한 사용자의 이메일을 가져온다.
-//		MembersVO loginUser = (MembersVO) authentication.getPrincipal();
-		// TODO Token test
-		writeVO.setEmail(TokenUtils.getLoginUserEmail());
+		writeVO.setEmail(AuthUtils.getUserEmail());
 
 		logger.debug(writeVO.getSubject());
 		logger.debug(writeVO.getEmail());
@@ -117,43 +116,49 @@ public class BoardController {
 		return "board/view";
 	}
 
+	// 삭제하려는 게시글의 작성지가 본인이거나 슈퍼관리자인 경우만 삭제를 수행
+	// 슈퍼관리자, 관리자, 본인이 작성한 게시글이 아닌 경우 HelloSpringException을 throw
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/delete")
 	public String doDeleteAction(@RequestParam String id) {
-
 		boolean deleteResult = this.boardService.deleteBoardByArticleId(id);
 		logger.debug("삭제 결과? {}", deleteResult);
 		return "redirect:/";
-
 	}
 
+	// 인증을 받은 사용자만 이 엔드포인트 사용 가능
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/update/{articleId}")
 	public String viewUpdatePage(@PathVariable String articleId, Model model) {
 		BoardVO data = this.boardService.findBoardByArticleId(articleId, ReadType.UPDATE);
 		model.addAttribute("article", data);
 
-		// TODO 게시글의 이메일과 세션의 이메일을 비교할 때에는
-		// 항상 ServiceImpl에서 수행한다.
-//		MembersVO loginUser = (MembersVO) authentication.getPrincipal();
-		// TODO Token test
-		if (!TokenUtils.getLoginUserEmail().equals(data.getEmail())) {
+		if (!AuthUtils.getUserEmail().equals(data.getEmail())) {
 			throw new HelloSpringException("잘못된 접근입니다.", "errors/403");
 		}
 		return "board/update";
 	}
 
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/update/{articleId}")
 	public String doUpdateAction(@PathVariable String articleId, UpdateVO updateVO) {
 
 		updateVO.setId(articleId);
 
-//		MembersVO loginUser = (MembersVO) authentication.getPrincipal();
-		// TODO Token test
-		updateVO.setEmail(TokenUtils.getLoginUserEmail());
+		updateVO.setEmail(AuthUtils.getUserEmail());
 
 		boolean updateResult = this.boardService.updateBoardByArticleId(updateVO);
 		logger.debug("수정 성공? {}", updateResult);
 
 		return "redirect:/view/" + articleId;
+	}
+
+//	<a href="/board/delete/all">게시글 전체 삭제</a>
+	@PreAuthorize("isAuthenticated()")
+	@PostMapping("/board/delete/all")
+	public String doDeleteAllAction() {
+		boolean isSuccess = this.boardService.deleteAllBoard();
+		return "redirect:/";
 	}
 
 }

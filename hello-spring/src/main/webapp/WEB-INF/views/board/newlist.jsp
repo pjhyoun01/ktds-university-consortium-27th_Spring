@@ -12,7 +12,12 @@
     
       <div class="grid list">
         <h1>게시글 목록</h1>
-        <div>총 ${searchCount}개의 게시글이 검색되었습니다.</div>
+        <div>
+            총 ${searchCount}개의 게시글이 검색되었습니다.
+            <sec:authorize access="hasRole('RL-20260414-000001')">
+                <a href="/board/delete/all">게시글 전체 삭제</a>
+            </sec:authorize>
+        </div>
         <ul class="grid articles">
           <li class="header">
             <ul class="header-item">

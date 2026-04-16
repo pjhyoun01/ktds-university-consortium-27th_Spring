@@ -5,6 +5,8 @@ import com.ktdsuniversity.edu.members.vo.request.RegistVO;
 import com.ktdsuniversity.edu.members.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.members.vo.response.SearchResultVO;
 
+import java.util.List;
+
 public interface MembersService {
 
 	boolean createNewMember(RegistVO registVO);
@@ -17,6 +19,5 @@ public interface MembersService {
 
 	SearchResultVO findMembersList();
 
-//	MembersVO findMemberByEmailAndPassword(LoginVO loginVO);
-
+	//	MembersVO findMemberByEmailAndPassword(LoginVO loginVO);
 }

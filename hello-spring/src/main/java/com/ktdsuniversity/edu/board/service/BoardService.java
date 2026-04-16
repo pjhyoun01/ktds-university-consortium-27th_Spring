@@ -29,4 +29,5 @@ public interface BoardService {
 
 	boolean updateBoardByArticleId(UpdateVO updateVO);
 
+	boolean deleteAllBoard();
 }

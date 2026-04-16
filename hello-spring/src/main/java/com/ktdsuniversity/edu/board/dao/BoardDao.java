@@ -26,4 +26,6 @@ public interface BoardDao {
 
 	int updateBoardById(UpdateVO updateVO);
 
+	int deleteAllBoard();
+
 }
