@@ -1,61 +1,39 @@
-package com.ktdsuniversity.edu.board.vo.request;
+package com.ktdsuniversity.edu.common.vo;
 
-/**
- * 게시글 검색 사용. 게시글 페이지네이션 사용.
- */
-public class SearchListVO {
-
+public class PaginationVO {
 	// 목록을 보여준 페이지의 번호. (0-base)
 	private int pageNo;
-
 	// 하나에 페이지에 보여줄 게시글의 개수
 	private int listSize;
-
 	// 총 몇 개의 페이지가 생성되느냐
 	// 올림(게시글의 개수 / listSize)
 	private int pageCount;
-
 	// 하나의 페이지 그룹에 보여줄 페이지의 개수.
 	private int pageCountInGroup;
-
 	// 페이지 그룹의 개수 : 올림(pageCount / pageCountInGroup)
 	private int pageGroupCount;
-
 	// 현재 노출되고 있는 페이지 번호가 속한 그룹의 번호
 	private int groupNo;
-
 	// 현재 노출되고 있는 페이지 그룹의 시작 페이지 번호
 	private int groupStartPageNo;
-
 	// 현재 노출되고 있는 페이지 그룹의 마지막 페이지 번호
 	private int groupEndPageNo;
-
 	// 현재 노출되고 있는 페이지 그룹의 다음 그룹이 있는지 여부
 	private boolean hasNextPageGroup;
-
 	// 현재 노출되고 있는 페이지 그룹의 이전 그룹이 있는지 여부
 	private boolean hasPrevPageGroup;
-
 	// 현재 노출되고 있는 페이지 그룹의 다음 그룹 페이지 시작 번호
 	private int nextPageGroupStartPageNo;
-
 	// 현재 노출되고 있는 페이지 그룹의 이전 그룹 페이지 시작 번호
 	private int prevPageGroupStartPageNo;
 
-	private String searchType;
-
-	private String searchKeyword;
-
-	// listSize의 기본값 할당을 위한 생성자.
-	public SearchListVO() {
-		// 한 페이지에 10개의 게시글이 노출되도록 설정.
+	public PaginationVO() {
 		this.listSize = 10;
-		// 한 페이지 그룹에 10개의 페이지가 노출되도록 설정.
 		this.pageCountInGroup = 10;
 	}
 
 	public int getPageNo() {
-		return this.pageNo;
+		return pageNo;
 	}
 
 	public void setPageNo(int pageNo) {
@@ -63,7 +41,7 @@ public class SearchListVO {
 	}
 
 	public int getListSize() {
-		return this.listSize;
+		return listSize;
 	}
 
 	public void setListSize(int listSize) {
@@ -71,7 +49,7 @@ public class SearchListVO {
 	}
 
 	public int getPageCount() {
-		return this.pageCount;
+		return pageCount;
 	}
 
 	public void setPageCount(int pageCount) {
@@ -79,7 +57,7 @@ public class SearchListVO {
 	}
 
 	public int getPageCountInGroup() {
-		return this.pageCountInGroup;
+		return pageCountInGroup;
 	}
 
 	public void setPageCountInGroup(int pageCountInGroup) {
@@ -87,7 +65,7 @@ public class SearchListVO {
 	}
 
 	public int getPageGroupCount() {
-		return this.pageGroupCount;
+		return pageGroupCount;
 	}
 
 	public void setPageGroupCount(int pageGroupCount) {
@@ -95,7 +73,7 @@ public class SearchListVO {
 	}
 
 	public int getGroupNo() {
-		return this.groupNo;
+		return groupNo;
 	}
 
 	public void setGroupNo(int groupNo) {
@@ -103,7 +81,7 @@ public class SearchListVO {
 	}
 
 	public int getGroupStartPageNo() {
-		return this.groupStartPageNo;
+		return groupStartPageNo;
 	}
 
 	public void setGroupStartPageNo(int groupStartPageNo) {
@@ -111,23 +89,23 @@ public class SearchListVO {
 	}
 
 	public int getGroupEndPageNo() {
-		return this.groupEndPageNo;
+		return groupEndPageNo;
 	}
 
 	public void setGroupEndPageNo(int groupEndPageNo) {
 		this.groupEndPageNo = groupEndPageNo;
 	}
 
-	public boolean getHasNextPageGroup() {
-		return this.hasNextPageGroup;
+	public boolean isHasNextPageGroup() {
+		return hasNextPageGroup;
 	}
 
 	public void setHasNextPageGroup(boolean hasNextPageGroup) {
 		this.hasNextPageGroup = hasNextPageGroup;
 	}
 
-	public boolean getHasPrevPageGroup() {
-		return this.hasPrevPageGroup;
+	public boolean isHasPrevPageGroup() {
+		return hasPrevPageGroup;
 	}
 
 	public void setHasPrevPageGroup(boolean hasPrevPageGroup) {
@@ -135,7 +113,7 @@ public class SearchListVO {
 	}
 
 	public int getNextPageGroupStartPageNo() {
-		return this.nextPageGroupStartPageNo;
+		return nextPageGroupStartPageNo;
 	}
 
 	public void setNextPageGroupStartPageNo(int nextPageGroupStartPageNo) {
@@ -143,37 +121,21 @@ public class SearchListVO {
 	}
 
 	public int getPrevPageGroupStartPageNo() {
-		return this.prevPageGroupStartPageNo;
+		return prevPageGroupStartPageNo;
 	}
 
 	public void setPrevPageGroupStartPageNo(int prevPageGroupStartPageNo) {
 		this.prevPageGroupStartPageNo = prevPageGroupStartPageNo;
 	}
 
-	public String getSearchType() {
-		return this.searchType;
-	}
-
-	public void setSearchType(String searchType) {
-		this.searchType = searchType;
-	}
-
-	public String getSearchKeyword() {
-		return this.searchKeyword;
-	}
-
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
-
 	/**
-	 * 조회된 게시글의 개수와 listSize를 이용해 총 몇 개의 페이지가 필요한 지 계산.
-	 * 
-	 * @param articleCount 게시글의 개수
+	 * 조회된 데이터의 목록의 개수와 ListSize를 이용하여 pagination에 사용되는 변수들을 계산
+	 *
+	 * @param dataCount 조회된 데이터의 수
 	 */
-	public void computePagination(int articleCount) {
+	public void computePagination(int dataCount) {
 		// 페이지의 개수 계산.
-		this.pageCount = (int) Math.ceil(articleCount / (double) this.listSize);
+		this.pageCount = (int) Math.ceil(dataCount / (double) this.listSize);
 
 		// 페이지를 페이지네이션하기 위한 계산.
 		// 페이지 그룹의 개수 계산.
@@ -213,7 +175,5 @@ public class SearchListVO {
 		// 이전 그룹의 시작 페이지 번호 계산.
 		// 현재 페이지 그룹의 시작 페이지 번호 - 페이지 그룹당 페이지의 개수
 		this.prevPageGroupStartPageNo = this.groupStartPageNo - this.pageCountInGroup;
-
 	}
-
 }

@@ -3,6 +3,8 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
   <jsp:include page="/WEB-INF/views/templates/header.jsp">
     <jsp:param value="회원 목록" name="title" />
+      <jsp:param name="scripts" value="members"/>
+      <jsp:param name="pagination" value="pagination"/>
   </jsp:include>
     <div class="grid list">
       <h1>회원 목록</h1>
@@ -44,7 +46,11 @@ pageEncoding="UTF-8"%>
       <div class="btn-group">
         <div class="right-align">
           <a href="/regist">새로운 회원 등록</a>
+          <a href="/">게시물 목록</a>
         </div>
       </div>
+
+        <jsp:include page="/WEB-INF/views/templates/pagination.jsp" />
+
     </div>
   <jsp:include page="/WEB-INF/views/templates/footer.jsp"></jsp:include>

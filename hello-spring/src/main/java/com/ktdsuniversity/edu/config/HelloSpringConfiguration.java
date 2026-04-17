@@ -1,5 +1,7 @@
 package com.ktdsuniversity.edu.config;
 
+import jakarta.servlet.ServletRequest;
+import org.apache.tomcat.util.file.ConfigurationSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -24,6 +28,9 @@ import com.ktdsuniversity.edu.security.authenticate.handler.LoginSuccessHandler;
 import com.ktdsuniversity.edu.security.authenticate.service.SecurityPasswordEncoder;
 import com.ktdsuniversity.edu.security.authenticate.service.SecurityUserDetailsSevice;
 import com.ktdsuniversity.edu.security.providers.UsernameAndPasswordAuthenticationProvider;
+
+import java.io.IOException;
+import java.net.URI;
 
 // application.yml에서 작성할 수 없는 설정들을 적용하기 위한 Annotation
 // @Component 의 자식 Annotation
@@ -85,6 +92,34 @@ public class HelloSpringConfiguration implements
 	@Bean
 	SecurityFilterChain configureFilterChain(HttpSecurity httpSecurity) {
 
+		// 상대방이 내 서버로 접속할 수 있도록 허용하기
+		// ==> 내 서버로 접속 가능한 안전한 URL 등록하기
+		httpSecurity.cors(cors -> {
+			CorsConfigurationSource source = (httpServletRequest) -> {
+				//허용할 타 사이트의 도메인을 작성
+				CorsConfiguration config = new CorsConfiguration();
+
+				//허용할 타 사이트의 URL
+				//192.168.211.11:3737에서 오는 모든 접근(API) 허용
+				config.addAllowedOrigin("http://192.168.211.11:3737");
+				config.addAllowedOrigin("http://192.168.211.11:8081");
+
+				//허용할 타 사이트의 Method
+				//192.168.211.11:3737에서 오는 POST와 GET으로 요청하는 접근만 허용
+				// PUT, DELETE: 허용 X
+				config.addAllowedMethod("POST");
+				config.addAllowedMethod("GET");
+
+				// 허용할 타 사이트의 요청 HttpHeader
+				// 모든 요청 HttpHeader 허용
+				config.addAllowedHeader("*");
+
+				return config;
+			};
+
+			cors.configurationSource(source);
+		});
+
 		// CSRF 수정 (댓글 추가나 기타 기능들을 사용할 수 없음)
 		// Spring Security CSRF 무효화
 		httpSecurity.csrf(csrf -> csrf.disable());
@@ -107,55 +142,12 @@ public class HelloSpringConfiguration implements
 					.failureHandler(this.createLoginFailureHandler())
 			;
 		});
-		//		DisableEncodeUrlFilter
-		//		WebAsyncManagerIntegrationFilter
-		//		SecurityContextHolderFilter
-		//		HeaderWriterFilter
-		//		CsrfFilter
-		//		LogoutFilter
-		//		UsernamePasswordAuthenticationFilter
-
-		//		-- DefaultResourcesFilter
-		//		-- DefaultLoginPageGeneratingFilter
-		//		-- DefaultLogoutPageGeneratingFilter
-		//		-- BasicAuthenticationFilter
-
-		//		RequestCacheAwareFilter
-		//		SecurityContextHolderAwareRequestFilter
-		//		AnonymousAuthenticationFilter
-		//		ExceptionTranslationFilter
-
-		//		-- AuthorizationFilter
 		return httpSecurity.build();
 	}
 
 	// Interceptor 등록 및 대상 URL 지정.
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		//		SessionInterceptor sessionInterceptor = new SessionInterceptor();
-		//
-		//		registry.addInterceptor(sessionInterceptor)
-		//				.addPathPatterns("/**") // 모든 URL을 대상으로 sessionInterceptor를 수행해라!
-		//				.excludePathPatterns(
-		//						"/regist/check/duplicate/**", // 회원가입 이메일 중복 검사.
-		//						"/regist", // 회원가입 페이지 & 처리
-		//						"/login", // 로그인 페이지 & 처리
-		//						"/js/**", // static resources
-		//						"/css/**", // static resources
-		//						"/image/**", // static resources
-		//						"/", // 게시글 목록 조회
-		//						"/view/**", // 게시글 내용 조회
-		//						"/file/**", // 첨부파일 다운로드
-		//						"/error" // 에러 내용이 보여지는 페이지.
-		//						) // sessionInterceptor가 적용되지 않을 URL 명시.
-		//				;
-		//		IllegalAccessInterceptor illegalAccessInterceptor = new IllegalAccessInterceptor();
-		//		registry.addInterceptor(illegalAccessInterceptor)
-		//				.addPathPatterns(
-		//						"/regist/check/duplicate/**", // 회원가입 이메일 중복 검사.
-		//						"/regist", // 회원가입 페이지 & 처리
-		//						"/login" // 로그인 페이지 & 처리 URL
-		//						);
 
 	}
 

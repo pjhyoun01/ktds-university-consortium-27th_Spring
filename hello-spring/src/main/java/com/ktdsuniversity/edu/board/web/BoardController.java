@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ktdsuniversity.edu.board.enums.ReadType;
 import com.ktdsuniversity.edu.board.service.BoardService;
 import com.ktdsuniversity.edu.board.vo.BoardVO;
-import com.ktdsuniversity.edu.board.vo.request.SearchListVO;
+import com.ktdsuniversity.edu.common.vo.SearchListVO;
 import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;

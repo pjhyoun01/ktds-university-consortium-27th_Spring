@@ -2,6 +2,7 @@ package com.ktdsuniversity.edu.members.dao;
 
 import java.util.List;
 
+import com.ktdsuniversity.edu.members.vo.request.MemberSearchVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ktdsuniversity.edu.members.vo.MembersVO;
@@ -22,7 +23,7 @@ public interface MembersDao {
 
 	int selectMembersCount();
 
-	List<MembersVO> selectMembersList();
+	List<MembersVO> selectMembersList(MemberSearchVO memberSearchVO);
 
 	int updateIncreaseLoginFailCount(String email);
 

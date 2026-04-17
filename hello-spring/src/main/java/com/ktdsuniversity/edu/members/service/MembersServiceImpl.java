@@ -3,6 +3,7 @@ package com.ktdsuniversity.edu.members.service;
 import java.util.List;
 
 import com.ktdsuniversity.edu.common.utils.AuthUtils;
+import com.ktdsuniversity.edu.members.vo.request.MemberSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,16 +68,16 @@ public class MembersServiceImpl implements MembersService {
 	}
 
 	@Override
-	public SearchResultVO findMembersList() {
+	public SearchResultVO findMembersList(MemberSearchVO memberSearchVO) {
 		SearchResultVO result = new SearchResultVO();
 		int searchCount = this.membersDao.selectMembersCount();
 		result.setCount(searchCount);
-
+		memberSearchVO.computePagination(searchCount);
 		if (searchCount == 0) {
 			return result;
 		}
 
-		List<MembersVO> searchResult = this.membersDao.selectMembersList();
+		List<MembersVO> searchResult = this.membersDao.selectMembersList(memberSearchVO);
 		result.setResult(searchResult);
 
 		return result;

@@ -4,7 +4,7 @@
 
 <jsp:include page="/WEB-INF/views/templates/header.jsp">
     <jsp:param value="게시글 내용 조회 : ${article.id}" name="title"/>
-    <jsp:param value="<script type='text/javascript' src='/js/reply.js'></script>" name="scripts"/>
+    <jsp:param name="scripts" value="reply"/>
 </jsp:include>
 
 <h1>게시글 내용 조회</h1>

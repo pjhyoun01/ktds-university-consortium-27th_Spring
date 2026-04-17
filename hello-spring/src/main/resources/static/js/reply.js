@@ -125,7 +125,6 @@ $().ready(function () {
             });
 
             updateFormDom.find(".update-save").on("click", function () {
-              console.log("저장버튼을 클릭했습니다.");
 
               // 수정을 위해 필요한 데이터
               // 1. 수정하려는 댓글의 아이디
@@ -240,6 +239,7 @@ $().ready(function () {
     formData.append("reply", replyContent);
     formData.append("articleId", articleId);
     formData.append("parentReplyId", parentReplyId);
+    formData.append("_csrf", $("meta[name='_csrf']").attr("content"));
 
     if (files.files.length > 0) {
       for (var i = 0; i < files.files.length; i++) {

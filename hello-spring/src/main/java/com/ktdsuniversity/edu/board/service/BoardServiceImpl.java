@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ktdsuniversity.edu.common.utils.AuthUtils;
-import com.ktdsuniversity.edu.exceptions.HelloSpringApiException;
-import com.ktdsuniversity.edu.members.dao.MembersDao;
 import com.ktdsuniversity.edu.replies.dao.RepliesDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ktdsuniversity.edu.board.dao.BoardDao;
 import com.ktdsuniversity.edu.board.enums.ReadType;
 import com.ktdsuniversity.edu.board.vo.BoardVO;
-import com.ktdsuniversity.edu.board.vo.request.SearchListVO;
+import com.ktdsuniversity.edu.common.vo.SearchListVO;
 import com.ktdsuniversity.edu.board.vo.request.UpdateVO;
 import com.ktdsuniversity.edu.board.vo.request.WriteVO;
 import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;

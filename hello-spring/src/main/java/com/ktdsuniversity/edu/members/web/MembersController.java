@@ -1,5 +1,6 @@
 package com.ktdsuniversity.edu.members.web;
 
+import com.ktdsuniversity.edu.members.vo.request.MemberSearchVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class MembersController {
 
 	@GetMapping("/regist")
 	public String viewRegistPage() {
-		if (AuthUtils.getAuthentication() != null) {
+		if (!AuthUtils.isAuthenticated()) {
 			return "redirect:/";
 		}
 		return "members/regist";
@@ -110,10 +111,11 @@ public class MembersController {
 
 	@PreAuthorize("hasRole('RL-20260414-000002')")
 	@GetMapping("/member")
-	public String viewMembersPage(Model model) {
-		SearchResultVO searchResult = this.membersService.findMembersList();
+	public String viewMembersPage(Model model, MemberSearchVO memberSearchVO) {
+		SearchResultVO searchResult = this.membersService.findMembersList(memberSearchVO);
 		model.addAttribute("searchList", searchResult.getResult());
 		model.addAttribute("searchCount", searchResult.getCount());
+		model.addAttribute("pagination", memberSearchVO);
 		return "members/newlist";
 	}
 

@@ -4,7 +4,7 @@
 
 <mapper namespace="com.ktdsuniversity.edu.board.dao.BoardDao">
     <select id="selectBoardCount" 
-            parameterType="com.ktdsuniversity.edu.board.vo.request.SearchListVO"
+            parameterType="com.ktdsuniversity.edu.common.vo.SearchListVO"
             resultType="_int">
         SELECT COUNT(B.ID)
           FROM BOARD B
@@ -31,49 +31,48 @@
     </select>
     
     <select id="selectBoardList" 
-            parameterType="com.ktdsuniversity.edu.board.vo.request.SearchListVO"
+            parameterType="com.ktdsuniversity.edu.common.vo.SearchListVO"
             resultMap="BoardVOMap">
-        SELECT *
-          FROM (SELECT S.*
-                     , ROWNUM AS RNUM
-                  FROM (SELECT B.ID
-				             , B.SUBJECT
-				             , B.CONTENT
-				             , B.EMAIL
-				             , B.VIEW_CNT
-				             , TO_CHAR(B.CRT_DT, 'YYYY-MM-DD HH24:MI:SS') AS CRT_DT
-				             , TO_CHAR(B.MDFY_DT, 'YYYY-MM-DD HH24:MI:SS') AS MDFY_DT
-				             , B.FILE_NAME
-				             , B.ORIGIN_FILE_NAME
-				             , M.NAME
-				             , M.REGIST_DATE
-				          FROM BOARD B
-				         INNER JOIN MEMBERS M
-				            ON B.EMAIL = M.EMAIL
-				       <if test='searchKeyword != null and searchKeyword != ""'>
-				         <if test='searchType == "email"'>
-				         WHERE M.EMAIL LIKE '%' || #{searchKeyword}|| '%'
-				         </if>
-				         <if test='searchType == "name"'>
-				         WHERE M.NAME LIKE '%' || #{searchKeyword}|| '%'
-				         </if>
-				         <if test='searchType == "subject"'>
-				         WHERE B.SUBJECT LIKE '%' || #{searchKeyword}|| '%'
-				         </if>
-				         <if test='searchType == "content"'>
-				         WHERE B.CONTENT LIKE '%' || #{searchKeyword}|| '%'
-				         </if>
-				         <if test='searchType == "subject content"'>
-				         WHERE B.SUBJECT LIKE '%' || #{searchKeyword}|| '%'
-				            OR B.CONTENT LIKE '%' || #{searchKeyword}|| '%'
-				         </if>
-				       </if>
-				         ORDER BY B.ID DESC) S
-                 WHERE ROWNUM <![CDATA[ <= ]]> (#{pageNo} + 1) * #{listSize})
-         WHERE RNUM >= #{pageNo} * #{listSize} + 1
+        <!--Pagination을 위해 Common namespace의 pagination_header 쿼리 import-->
+        <include refid="Common.pagination_header" />
+        SELECT B.ID
+             , B.SUBJECT
+             , B.CONTENT
+             , B.EMAIL
+             , B.VIEW_CNT
+             , TO_CHAR(B.CRT_DT, 'YYYY-MM-DD HH24:MI:SS') AS CRT_DT
+             , TO_CHAR(B.MDFY_DT, 'YYYY-MM-DD HH24:MI:SS') AS MDFY_DT
+             , B.FILE_NAME
+             , B.ORIGIN_FILE_NAME
+             , M.NAME
+             , M.REGIST_DATE
+          FROM BOARD B
+         INNER JOIN MEMBERS M
+            ON B.EMAIL = M.EMAIL
+       <if test='searchKeyword != null and searchKeyword != ""'>
+         <if test='searchType == "email"'>
+         WHERE M.EMAIL LIKE '%' || #{searchKeyword}|| '%'
+         </if>
+         <if test='searchType == "name"'>
+         WHERE M.NAME LIKE '%' || #{searchKeyword}|| '%'
+         </if>
+         <if test='searchType == "subject"'>
+         WHERE B.SUBJECT LIKE '%' || #{searchKeyword}|| '%'
+         </if>
+         <if test='searchType == "content"'>
+         WHERE B.CONTENT LIKE '%' || #{searchKeyword}|| '%'
+         </if>
+         <if test='searchType == "subject content"'>
+         WHERE B.SUBJECT LIKE '%' || #{searchKeyword}|| '%'
+            OR B.CONTENT LIKE '%' || #{searchKeyword}|| '%'
+         </if>
+       </if>
+         ORDER BY B.ID DESC
+        <!--Pagination을 위해 Common namespace의 pagination_footer 쿼리 import-->
+        <include refid="Common.pagination_footer" />
     </select>
-    
-    <insert id="insertNewBoard" 
+
+    <insert id="insertNewBoard"
             parameterType="com.ktdsuniversity.edu.board.vo.request.WriteVO">
         <!-- 새롭게 만들어지는 게시글의 PK를 미리 생성해서 WriteVO의 id 라는 변수에 할당한다. -->
         <selectKey order="BEFORE"

@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
   <jsp:include page="/WEB-INF/views/templates/header.jsp">
     <jsp:param value="회원 가입" name="title" />
-    <jsp:param value="<script type='text/javascript' src='/js/members.js'></script>" 
-               name="scripts" />
+      <jsp:param name="scripts" value="members"/>
   </jsp:include>
     <h1>회원 가입</h1>
     <%-- action ==> form 내부의 value를 전송할 엔드포인트 --%>

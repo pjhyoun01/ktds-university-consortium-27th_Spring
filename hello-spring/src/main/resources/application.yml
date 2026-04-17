@@ -5,6 +5,13 @@
 
 # spring.application.name=hello-spring
 
+#Spring 이외의 Custom 설정
+app:
+  jwt:
+    issuer: hello-spring
+    # 비밀 키 - 임의로 지정
+    secret-key: jvjoauet1hn0v948gndsvotya2q49038t
+
 # mybatis 연동 설정
 mybatis:
   # mybatis 설정 파일 위치 지정.
