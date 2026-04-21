@@ -1,0 +1,24 @@
+package com.ktdsuniversity.edu.members.service;
+
+import com.ktdsuniversity.edu.members.vo.MembersVO;
+import com.ktdsuniversity.edu.members.vo.request.MemberSearchVO;
+import com.ktdsuniversity.edu.members.vo.request.RegistVO;
+import com.ktdsuniversity.edu.members.vo.request.UpdateVO;
+import com.ktdsuniversity.edu.members.vo.response.SearchResultVO;
+
+import java.util.List;
+
+public interface MembersService {
+
+	boolean createNewMember(RegistVO registVO);
+
+	MembersVO findMemberByEmail(String email);
+
+	boolean updateMemberByEmail(UpdateVO updateVO);
+
+	boolean deleteMemberByEmail(String email);
+
+	SearchResultVO findMembersList(MemberSearchVO memberSearchVO);
+
+	//	MembersVO findMemberByEmailAndPassword(LoginVO loginVO);
+}
