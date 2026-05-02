@@ -9,7 +9,6 @@ import com.ktdsuniversity.edu.board.vo.response.SearchResultVO;
 import com.ktdsuniversity.edu.common.utils.AuthUtils;
 import com.ktdsuniversity.edu.common.vo.SearchListVO;
 import com.ktdsuniversity.edu.exceptions.HelloSpringApiException;
-import com.ktdsuniversity.edu.exceptions.HelloSpringException;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -56,6 +54,7 @@ public class BoardApiController {
 	@PostMapping("/articles")
 	// @RequestBody는 파일이 없을 때만 사용가능 (file은 json으로 통신할 수 없기 때문)
 	public Map<String, Boolean> doWriteAction(@Valid WriteVO writeVO, BindingResult bindingResult) {
+		logger.debug("게시글 생성 api 진입");
 		if (bindingResult.hasErrors()) {
 			throw new HelloSpringApiException("글쓰기 실패", HttpStatus.BAD_REQUEST.value(), bindingResult.getFieldError());
 		}

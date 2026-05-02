@@ -88,12 +88,12 @@ public class JsonWebTokenAuthenticationProvider {
 		return jsonWebToken;
 	}
 
-	public static void main(String[] args) {
-		JsonWebTokenAuthenticationProvider jwtProvider = new JsonWebTokenAuthenticationProvider("jvjoauet1hn0v948gndsvotya2q49038t", "hello-spring");
-		String jwt = jwtProvider.makeJsonWebToken("test@gmail.com", Duration.ofMinutes(20));
-		System.out.println(jwt);
-
-		String email = jwtProvider.decryptJsonWebToken(jwt);
-		System.out.println(email);
-	}
+//	public static void main(String[] args) {
+//		JsonWebTokenAuthenticationProvider jwtProvider = new JsonWebTokenAuthenticationProvider("jvjoauet1hn0v948gndsvotya2q49038t", "hello-spring");
+//		String jwt = jwtProvider.makeJsonWebToken("test@gmail.com", Duration.ofMinutes(20));
+//		System.out.println(jwt);
+//
+//		String email = jwtProvider.decryptJsonWebToken(jwt);
+//		System.out.println(email);
+//	}
 }

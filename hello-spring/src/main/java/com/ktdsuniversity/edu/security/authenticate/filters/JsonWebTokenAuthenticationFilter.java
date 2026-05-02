@@ -1,7 +1,6 @@
 package com.ktdsuniversity.edu.security.authenticate.filters;
 
 import com.ktdsuniversity.edu.common.utils.StringUtils;
-import com.ktdsuniversity.edu.members.vo.MembersVO;
 import com.ktdsuniversity.edu.security.providers.JsonWebTokenAuthenticationProvider;
 import com.ktdsuniversity.edu.security.user.SecurityUser;
 import io.jsonwebtoken.JwtException;
@@ -51,7 +50,7 @@ public class JsonWebTokenAuthenticationFilter extends OncePerRequestFilter {
 		if (requestURI.startsWith("/api/")) {
 			// Request에서 header에 있는 Authorization 꺼내온다
 			String jsonWebToken = request.getHeader("Authorization");
-
+			System.out.println("jsonWebToken: " +  jsonWebToken);
 			if (!StringUtils.isEmpty(jsonWebToken)) {
 //				String errorMessage = "{ \"error\": \"인증이 필요합니다\" }";
 //
@@ -68,6 +67,7 @@ public class JsonWebTokenAuthenticationFilter extends OncePerRequestFilter {
 				String email = null;
 				try {
 					email = this.jsonWebTokenAuthenticationProvider.decryptJsonWebToken(jsonWebToken);
+					System.out.println("email: " + email);
 				} catch (JwtException je) {
 					response.setCharacterEncoding("UTF-8");
 					response.setContentType("application/json");
@@ -79,7 +79,7 @@ public class JsonWebTokenAuthenticationFilter extends OncePerRequestFilter {
 
 				// email을 이용해서 사용자의 정보와 권한을 조회한다
 				UserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
-
+				System.out.println("userDetails: " + userDetails);
 				// 사용자의 정보를 이용해 AuthenticationToken(UsernamePasswordAuthenticationToken)을 발행
 				Authentication authToken = new UsernamePasswordAuthenticationToken(((SecurityUser) userDetails).getMembersVO(), userDetails.getPassword(), userDetails.getAuthorities());
 

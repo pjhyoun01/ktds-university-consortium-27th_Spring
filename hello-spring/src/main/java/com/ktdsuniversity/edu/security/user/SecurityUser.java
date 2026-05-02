@@ -1,13 +1,12 @@
 package com.ktdsuniversity.edu.security.user;
 
-import java.util.Collection;
-
+import com.ktdsuniversity.edu.members.vo.MembersVO;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.ktdsuniversity.edu.members.vo.MembersVO;
+import java.util.Collection;
 
 // Spring Security가 사용자를 식별할 때 사용
 public class SecurityUser implements UserDetails {

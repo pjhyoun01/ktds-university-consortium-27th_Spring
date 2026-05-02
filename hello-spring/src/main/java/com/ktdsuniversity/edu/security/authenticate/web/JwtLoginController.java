@@ -11,7 +11,6 @@ import com.ktdsuniversity.edu.security.user.SecurityUser;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -44,8 +43,8 @@ public class JwtLoginController {
 	@PostMapping("/api/authorization")
 	public Map<String, String> doJwtLogin(@Valid @RequestBody LoginVO loginVO, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			bindingResult.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage()));
-			throw new HelloSpringApiException("로그인 실패", HttpStatus.BAD_REQUEST.value(), bindingResult.getFieldError());
+			bindingResult.getAllErrors().forEach(error -> System.out.println("valid error: " + error.getDefaultMessage()));
+			throw new HelloSpringApiException("로그인 실패", HttpStatus.BAD_REQUEST.value(), bindingResult.getFieldErrors());
 		}
 
 		UserDetails userDetails = null;

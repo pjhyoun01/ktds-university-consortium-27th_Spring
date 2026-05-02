@@ -133,7 +133,7 @@ public class HelloSpringConfiguration implements
 
 				//허용할 타 사이트의 URL
 				//192.168.211.11:3737에서 오는 모든 접근(API) 허용
-//				config.addAllowedOrigin("http://192.168.211.11:3737");
+				config.addAllowedOrigin("*");
 //				config.addAllowedOrigin("http://192.168.211.11:8081");
 
 				//허용할 타 사이트의 Method
@@ -141,6 +141,8 @@ public class HelloSpringConfiguration implements
 				// PUT, DELETE: 허용 X
 				config.addAllowedMethod("POST");
 				config.addAllowedMethod("GET");
+				config.addAllowedMethod("PUT");
+				config.addAllowedMethod("DELETE");
 
 				// 허용할 타 사이트의 요청 HttpHeader
 				// 모든 요청 HttpHeader 허용
